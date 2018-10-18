@@ -6,9 +6,7 @@
 
 This Project is for Esprit PIDEV 4INFOB2.
 
-  - Type some Markdown on the left
-  - See HTML in the right
-  - Magic
+
 
 # PLEASE READ THIS!
 
