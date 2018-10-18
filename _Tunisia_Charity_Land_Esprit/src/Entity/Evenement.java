@@ -19,6 +19,7 @@ public class Evenement {
     private String localisation;
     private String shortDescription;
     private String longDescription;
+    private int validation_status;
     private Date created_at;
     private Date modified_at;
     private Date date;
@@ -31,13 +32,14 @@ public class Evenement {
         INTERNATIONAL;
     }
 
-    public Evenement(int id , int delegue_id, String img_url, String localisation, Date date, Type type,String shortDescription,String longDescription) {
+    public Evenement(int id , int delegue_id, String img_url, String localisation, Date date, Type type,String shortDescription,String longDescription, int validation_status) {
         this.id = id;
         this.delegue_id = delegue_id;
         this.img_url = img_url;
         this.localisation = localisation;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
+        this.validation_status = validation_status;
         this.type = type;
         this.date= date; 
     }
@@ -111,12 +113,19 @@ public class Evenement {
         this.modified_at = modified_at;
     }
 
+    public int getValidation_status() {
+        return validation_status;
+    }
+
+    public void setValidation_status(int validation_status) {
+        this.validation_status = validation_status;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "Evenement{" + "id=" + id + ", delegue_id=" + delegue_id + ", img_url=" + img_url + ", localisation=" + localisation + ", shortDescription=" + shortDescription + ", longDescription=" + longDescription + ", created_at=" + created_at + ", modified_at=" + modified_at + ", date=" + date + ", type=" + type + '}';
     }
-    
-    
-    
     
 }

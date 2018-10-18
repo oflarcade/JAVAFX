@@ -24,10 +24,10 @@ public class ServiceEvenement {
         connection = DataSource.getInstance().getConnection();
     }
 
-    public void add(Evenement ev)  {
+    public void add(Evenement ev, int validation_status)  {
         String req = "INSERT INTO `esprit`.`evenement` (`id`, `delegue_id`, `img_url`, `localisation`, `date`, `type`, `shortDescription`,"
-                + " `longDescription`, `created_at`, `modified_at`) "
-                + "VALUES (NULL, ?, ?, ?, ?, ?,?,?, CURRENT_DATE(),CURRENT_DATE());";
+                + " `longDescription`, `created_at`, `modified_at`,`validation_status`) "
+                + "VALUES (NULL, ?, ?, ?, ?, ?,?,?, CURRENT_DATE(),CURRENT_DATE(),?);";
         PreparedStatement preStatement;
         try {
             preStatement = connection.prepareStatement(req);
@@ -40,7 +40,7 @@ public class ServiceEvenement {
             preStatement.setString(5, ev.getType().toString());
             preStatement.setString(6, ev.getShortDescription());
             preStatement.setString(7, ev.getLongDescription());
-
+            preStatement.setInt(8, validation_status);// this for event validationCode;
             preStatement.executeUpdate();
             System.out.println("add method was called successfully");
         } catch (SQLException e) {
@@ -172,8 +172,9 @@ public class ServiceEvenement {
                 String longDescription = result.getString(8);
                 Date created_at = result.getDate(9);
                 Date modified_at = result.getDate(10);
+                int validation_status = result.getInt(11);
                 //in every etiration we create a new instance 
-                Evenement ev = new Evenement(id,delegue_id,img_url,localisation,date,Evenement.Type.valueOf(type),shortDescription,longDescription);
+                Evenement ev = new Evenement(id,delegue_id,img_url,localisation,date,Evenement.Type.valueOf(type),shortDescription,longDescription,validation_status);
                 ev.setCreated_at(created_at);
                 ev.setModified_at(modified_at);
                 tab.add(ev);  

@@ -22,7 +22,7 @@ public class DataSource {
 
     private DataSource() throws SQLException {
         try {
-            //Class.forName("com.mysql.jdbc.Driver");
+            
             this.connection = DriverManager.getConnection(urlString, username, password);
         } catch (SQLException ex) {
             System.out.println("Database Connection Creation Failed : " + ex.getMessage());
