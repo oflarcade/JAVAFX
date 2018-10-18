@@ -1,0 +1,122 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entity;
+
+import java.sql.Date;
+
+/**
+ *
+ * @author machd
+ */
+public class Evenement {
+
+    private  int id ; //no set method
+    private int delegue_id; //no set method
+    private String img_url;
+    private String localisation;
+    private String shortDescription;
+    private String longDescription;
+    private Date created_at;
+    private Date modified_at;
+    private Date date;
+    private Type type;//no set method
+    
+    public enum Type{
+        ENVIRONMENTAL,
+        SANTE,
+        EDUCATION,
+        INTERNATIONAL;
+    }
+
+    public Evenement(int id , int delegue_id, String img_url, String localisation, Date date, Type type,String shortDescription,String longDescription) {
+        this.id = id;
+        this.delegue_id = delegue_id;
+        this.img_url = img_url;
+        this.localisation = localisation;
+        this.shortDescription = shortDescription;
+        this.longDescription = longDescription;
+        this.type = type;
+        this.date= date; 
+    }
+   
+    public int getId() {
+        return id;
+    }
+
+    public int getDelegue_id() {
+        return delegue_id;
+    }
+
+
+    public String getImg_url() {
+        return img_url;
+    }
+
+    public void setImg_url(String img_url) {
+        this.img_url = img_url;
+    }
+
+    public String getLocalisation() {
+        return localisation;
+    }
+
+    public void setLocalisation(String localisation) {
+        this.localisation = localisation;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
+
+    public String getLongDescription() {
+        return longDescription;
+    }
+
+    public void setLongDescription(String longDescription) {
+        this.longDescription = longDescription;
+    }
+
+    public Date getCreated_at() {
+        return created_at;
+    }
+
+    public Date getModified_at() {
+        return modified_at;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+//  we need these two methods in read service 
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
+
+    public void setModified_at(Date modified_at) {
+        this.modified_at = modified_at;
+    }
+
+    @Override
+    public String toString() {
+        return "Evenement{" + "id=" + id + ", delegue_id=" + delegue_id + ", img_url=" + img_url + ", localisation=" + localisation + ", shortDescription=" + shortDescription + ", longDescription=" + longDescription + ", created_at=" + created_at + ", modified_at=" + modified_at + ", date=" + date + ", type=" + type + '}';
+    }
+    
+    
+    
+    
+}
