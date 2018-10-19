@@ -123,10 +123,5 @@ public class FosUser {
     public void setRoles(String roles) {
         this.roles = roles;
     }
-    
-    
-    
-   
-    
-    
+        
 }
