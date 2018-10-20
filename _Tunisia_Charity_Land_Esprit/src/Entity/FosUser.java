@@ -25,20 +25,22 @@ public class FosUser {
     private String roles;
     private int crendentials_expired;
     private Date crendentials_expires_at;
+    private int phone_nbr;
+    private String image_url;
+    private String adresse;
     public FosUser() {
     }
 
     //this is for the User part
-    public FosUser(int id, String username, String email, String enabled, String password, int locked, int expired, Date expires_at, String roles) {
-        this.id = id;
+    
+    public FosUser(int user_id, String username, String email, String password, String adresse, int phone_nbr, String roles, String image_url) {
+        this.id = user_id;
         this.username = username;
         this.email = email;
-        this.enabled = enabled;
         this.password = password;
-        this.locked = locked;
-        this.expired = expired;
-        this.expires_at = expires_at;
+        this.adresse = adresse;
         this.roles = roles;
+        this.image_url= image_url;
     }
 
     public FosUser( String username, String email, String password) {
