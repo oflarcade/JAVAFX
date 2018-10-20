@@ -10,7 +10,6 @@ import java.util.Date;
  * @author oflcad
  */
 public class FosUser {
-    
     private int id;
     private String username;
     private String email;
