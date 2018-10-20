@@ -7,7 +7,7 @@ package Entity;
 import java.util.Date;
 /**
  *
- * @author oflcad
+ * @author wissem
  */
 public class FosUser {
     private int id;
@@ -25,7 +25,6 @@ public class FosUser {
     private String roles;
     private int crendentials_expired;
     private Date crendentials_expires_at;
-
     public FosUser() {
     }
 
