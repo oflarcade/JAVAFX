@@ -10,15 +10,15 @@
       <Text layoutX="499.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration" />
       <Text layoutX="120.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username/ email" />
       <Text layoutX="143.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-      <Button fx:id="loginBtn" layoutX="266.0" layoutY="319.0" mnemonicParsing="false" onAction="#goHome" text="Login" />
-      <TextField layoutX="271.0" layoutY="216.0" />
-      <TextField layoutX="249.0" layoutY="257.0" />
-      <TextField layoutX="806.0" layoutY="229.0" />
-      <TextField layoutX="807.0" layoutY="284.0" />
+      <Button fx:id="loginBtn" layoutX="266.0" layoutY="319.0" mnemonicParsing="false" onAction="#navigate" text="Login" />
+      <TextField fx:id="login_username" layoutX="271.0" layoutY="216.0" />
+      <TextField fx:id="login_pass" layoutX="249.0" layoutY="257.0" />
+      <TextField fx:id="username" layoutX="806.0" layoutY="229.0" />
+      <TextField fx:id="email" layoutX="807.0" layoutY="284.0" />
       <Text layoutX="720.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
       <Text layoutX="724.0" layoutY="304.0" strokeType="OUTSIDE" strokeWidth="0.0" text="email" />
       <Text layoutX="727.0" layoutY="363.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-      <TextField layoutX="806.0" layoutY="340.0" />
-      <Button fx:id="SignUpBtn" layoutX="838.0" layoutY="403.0" mnemonicParsing="false" text="Sign up" />
+      <TextField fx:id="password" layoutX="806.0" layoutY="340.0" />
+      <Button fx:id="SignUpBtn" layoutX="838.0" layoutY="403.0" mnemonicParsing="false" onAction="#goSignUp" text="Sign up" />
    </children>
 </AnchorPane>

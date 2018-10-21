@@ -11,7 +11,7 @@ package Entity;
  */
 public class Users extends FosUser {
 
-    private int user_id;
+    private int id;
     private String username;
     private String email;
     private String password;
@@ -19,16 +19,19 @@ public class Users extends FosUser {
     private int phone_nbr;
     private String image_url;
 
-    public Users(int user_id, String username, String email, String password, String adresse, int phone_nbr, String roles, String image_url) {
-        super(user_id, username, email, password, adresse, phone_nbr, roles, image_url);
+    public Users(){
+        
+    }
+    public Users(int id, String username, String email, String password, String adresse, int phone_nbr, String roles, String image_url) {
+        super(id, username, email, password, adresse, phone_nbr, roles, image_url);
     }
 
     public int getUser_id() {
-        return user_id;
+        return id;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUser_id(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -77,6 +80,11 @@ public class Users extends FosUser {
 
     public void setImage_url(String image_url) {
         this.image_url = image_url;
+    }
+
+    @Override
+    public String toString() {
+        return "Users{" + "user_id=" + id + ", username=" + username + ", email=" + email + ", password=" + password + ", adresse=" + adresse + ", phone_nbr=" + phone_nbr + ", image_url=" + image_url + '}';
     }
 
     

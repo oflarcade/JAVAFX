@@ -17,18 +17,17 @@ import javafx.stage.Stage;
  * @author oflcad
  */
 public class GuiTest extends Application {
-    
+
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
-        
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/FXML.fxml"));
+
         Scene scene = new Scene(root);
-        
+
         primaryStage.setScene(scene);
         primaryStage.setTitle("_Tunisia_Charity_Land");
         primaryStage.show();
-        
-        
+
     }
 
     /**
@@ -37,5 +36,5 @@ public class GuiTest extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
