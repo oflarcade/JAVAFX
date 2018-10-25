@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class DataSource {
     private static DataSource instance;
     private Connection connection;
-    private String urlString = "jdbc:mysql://localhost:3306/_Tunisia_Charity_Land";
+    private String urlString = "jdbc:mysql://localhost:3306/esprit";
     private String username = "root";
     private String password = "";
 

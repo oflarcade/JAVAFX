@@ -41,9 +41,7 @@ public class FXMLController implements Initializable {
     private Button blogBtn;
     @FXML
     private Button homrBtn;
-    public Preferences userPreferences;
-    Preferences prefsRoot = Preferences.userRoot();
-    Preferences myPrefs = prefsRoot.node("PreferenceExample");
+    public Users loggedInUser;
     UserAuthenticationService service;
 
     public FXMLController() {
@@ -80,6 +78,12 @@ public class FXMLController implements Initializable {
     public void navigateBlog(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("BlogGuiFXML.fxml"));
         blogBtn.getScene().setRoot(root);
+    }
+    
+    
+    // This is how you pass a user object from one class to another  === Same concept of persistancy
+    public void initData(Users user) {
+        this.loggedInUser = user;
     }
     
     

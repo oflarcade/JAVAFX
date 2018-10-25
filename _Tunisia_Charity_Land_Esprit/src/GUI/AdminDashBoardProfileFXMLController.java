@@ -29,38 +29,63 @@ public class AdminDashBoardProfileFXMLController implements Initializable {
 
     @FXML
     private AnchorPane myPane;
-    @FXML
-    private Button mapBtn;
-    @FXML
-    private Button cnxBtn;
-    @FXML
-    private Button assoBtn;
-    @FXML
-    private Button eventBtn;
-    @FXML
-    private TextField email;
-    @FXML
-    private TextField password;
-    @FXML
-    private TextField role;
-    private Users user;
+    public Users user;
     @FXML
     private Button ProfileButton;
     @FXML
-    private TextField id;
+    private Button ExitButton;
+    @FXML
+    private Button EventsButton;
+    @FXML
+    private Button BlogButton;
+    @FXML
+    private Button UsersButton;
+    @FXML
+    private TextField IdField;
+    @FXML
+    private TextField emailField;
+    @FXML
+    private TextField passwordField;
+    @FXML
+    private TextField adresseField;
+    @FXML
+    private TextField phoneAdresse;
+    @FXML
+    private TextField expiresField;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
-        System.out.println(user.toString());
+//        int userId = user.getId();
+//        try {
+//            UserAuthenticationService service = new UserAuthenticationService();
+//            user = service.getAdminInfo(userId);
+//            System.out.println("we have fresh data from the database");
+//        } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//        String id = String.valueOf(user.getId());
+//        String phone_nbr = String.valueOf(user.getPhone_nbr());
+//        String Date = String.valueOf(user.getExpires_at());
+//        IdField.setText(id);
+//        emailField.setText(user.getEmail());
+//        adresseField.setText(user.getAdresse());
+//        phoneAdresse.setText(phone_nbr);
+//        expiresField.setText(Date);
+
+        System.out.println("this is profile page");
+        //System.out.println(user.toString());
+        
     }   
     
     public void initDate(Users user){
         this.user = user ;
+        System.out.println("from profile admin dash bord");
+        System.out.println(user.toString());
     }
+    
     
  
     

@@ -8,12 +8,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Gui.AdminDashBordFXMLController">
     <children>
-      <Button fx:id="mapBtn" layoutX="991.0" layoutY="3.0" mnemonicParsing="false" text="Exit" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="cnxBtn" layoutX="970.0" mnemonicParsing="false" text="Events" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="assoBtn" layoutX="925.0" mnemonicParsing="false" text="Posts" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="eventBtn" layoutX="862.0" mnemonicParsing="false" text="User" AnchorPane.rightAnchor="164.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="ProfileBtn" layoutX="763.0" mnemonicParsing="false" text="Profile" AnchorPane.rightAnchor="218.0" onAction="#editProfile" AnchorPane.topAnchor="0.0" />
-      <Pane layoutX="42.0" layoutY="33.0" prefHeight="679.0" prefWidth="1037.0">
+      <Pane layoutX="3.0" layoutY="37.0" prefHeight="680.0" prefWidth="1076.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="37.0">
          <children>
             <Text layoutX="25.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
             <Text layoutX="25.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" />
@@ -21,8 +16,18 @@
             <TextField fx:id="email" editable="false" layoutX="255.0" layoutY="26.0" prefHeight="28.0" prefWidth="182.0" />
             <TextField fx:id="password" editable="false" layoutX="255.0" layoutY="55.0" prefHeight="26.0" prefWidth="183.0" />
             <TextField fx:id="role" editable="false" layoutX="255.0" layoutY="84.0" prefHeight="26.0" prefWidth="186.0" />
+            <Text layoutX="31.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" />
+            <Text layoutX="27.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Expires at" />
+            <Text layoutX="30.0" layoutY="197.0" strokeType="OUTSIDE" strokeWidth="0.0" text="enabled" />
+            <TextField fx:id="idField" layoutX="255.0" layoutY="124.0" prefHeight="26.0" prefWidth="186.0" />
+            <TextField fx:id="expiresField" layoutX="256.0" layoutY="153.0" prefHeight="26.0" prefWidth="188.0" />
+            <TextField fx:id="enabledField" layoutX="256.0" layoutY="181.0" prefHeight="26.0" prefWidth="189.0" />
          </children>
       </Pane>
+      <Button fx:id="logouBtn" layoutX="991.0" layoutY="3.0" mnemonicParsing="false" onAction="#logout" text="Exit" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="eventBtn" layoutX="970.0" mnemonicParsing="false" onAction="#navigateToEvents" text="Events" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="blogButton" layoutX="925.0" mnemonicParsing="false" onAction="#navigateToBlog" text="Posts" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="usersBtn" layoutX="862.0" mnemonicParsing="false" onAction="#navigateToUsers" text="User" AnchorPane.rightAnchor="164.0" AnchorPane.topAnchor="0.0" />
       
       
    </children>

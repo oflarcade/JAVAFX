@@ -30,12 +30,6 @@ public class AdminDashBordFXMLController implements Initializable {
     @FXML
     private AnchorPane myPane;
     @FXML
-    private Button mapBtn;
-    @FXML
-    private Button cnxBtn;
-    @FXML
-    private Button assoBtn;
-    @FXML
     private Button eventBtn;
     @FXML
     private TextField email;
@@ -47,6 +41,18 @@ public class AdminDashBordFXMLController implements Initializable {
     private Users selectedUser;
     @FXML
     private Button ProfileBtn;
+    @FXML
+    private TextField idField;
+    @FXML
+    private TextField expiresField;
+    @FXML
+    private TextField enabledField;
+    @FXML
+    private Button logouBtn;
+    @FXML
+    private Button blogButton;
+    @FXML
+    private Button usersBtn;
         
     
     /*
@@ -55,9 +61,18 @@ public class AdminDashBordFXMLController implements Initializable {
     public void initData(Users user){
         
         this.selectedUser = user;
+        
+        String idValue = String.valueOf(selectedUser.getId());
+        String expiresValue = String.valueOf(selectedUser.getExpires_at());
         email.setText(selectedUser.getEmail());
         password.setText(selectedUser.getPassword());
         role.setText(selectedUser.getRoles());
+        
+        idField.setText(idValue);
+        expiresField.setText(expiresValue);
+        enabledField.setText(String.valueOf(selectedUser.getEnabled()));
+        
+        System.out.println(user.toString());
     }
     
     /**
@@ -70,18 +85,36 @@ public class AdminDashBordFXMLController implements Initializable {
     
     @FXML
     public void editProfile() throws SQLException, IOException {
-                FXMLLoader loader = FXMLLoader.load(getClass().getResource("Gui/AdminDashBoardProfileFXML.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminDashBoardProfileFXML.fxml"));
+                
                 
                 Parent root = (Parent) loader.load();
-                AdminDashBoardProfileFXMLController controller = new AdminDashBoardProfileFXMLController();
+                AdminDashBoardProfileFXMLController controller = loader.<AdminDashBoardProfileFXMLController>getController();
                 controller.initDate(selectedUser);
                 
                 ProfileBtn.getScene().setRoot(root);
-                
-                
-                
-                
-                
-                
+    }
+    
+    @FXML
+    public void navigateToUsers() throws SQLException,IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("AdminDashBoardUserFXML.fxml"));
+        usersBtn.getScene().setRoot(root);
+    }
+    
+    @FXML
+    public void navigateToBlog() throws SQLException,IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("AdminDashBoardBlogFXML.fxml"));
+        blogButton.getScene().setRoot(root);
+    }
+    
+    @FXML
+    public void navigateToEvents() throws SQLException,IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("AdminDashBoardEventFXML.fxml"));
+        eventBtn.getScene().setRoot(root);
+    }
+    @FXML 
+    public void logout() throws SQLException,IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("RegistraionGuiFXML.fxml"));
+        logouBtn.getScene().setRoot(root);
     }
 }

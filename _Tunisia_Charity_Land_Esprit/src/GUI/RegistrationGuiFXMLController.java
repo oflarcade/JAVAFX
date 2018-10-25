@@ -18,6 +18,7 @@ import Service.UserAuthenticationService;
 import java.sql.SQLException;
 import javafx.scene.control.TextField;
 import GUI.Gui.AdminDashBordFXMLController;
+import javafx.event.ActionEvent;
 /**
  * FXML Controller class
  *
@@ -28,20 +29,20 @@ public class RegistrationGuiFXMLController implements Initializable {
     
     @FXML
     private Button loginBtn;
-    @FXML
     private Button SignUpBtn;
     private Users user;
     private boolean  isSignedIn = false;
-    @FXML
     private TextField username;
-    @FXML
     private TextField email;
-    @FXML
     private TextField password;
     @FXML
     private TextField login_username;
     @FXML
     private TextField login_pass;
+    @FXML
+    private Button signupBtn;
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -50,8 +51,7 @@ public class RegistrationGuiFXMLController implements Initializable {
         // TODO
     }    
     
-    @FXML
-    public void goHome() throws IOException, SQLException {
+    public void goHome(ActionEvent event) throws IOException, SQLException {
                
                
                String usrname = login_username.getText();
@@ -71,40 +71,60 @@ public class RegistrationGuiFXMLController implements Initializable {
                 }
     }
     
-    @FXML
-    public void goSignUp() throws IOException, SQLException {
-            String username = this.username.getText();
-            String email = this.email.getText();
-            String password  = this.password.getText();
-            
-               Users user = new Users(2,username , email, password, "", 0, "Admin", "./vdqsjvqdjshgfvqdjs.jpg");
-               UserAuthenticationService service  =  new UserAuthenticationService();
-               System.out.println("hello from navigation to sign up");
-               service.signInUserWithCredentials(user);
-               System.err.println("it should be a message just before of user created");
-               Parent root = FXMLLoader.load(getClass().getResource("Gui/SignupFXML.fxml"));
-               SignUpBtn.getScene().setRoot(root);
+    public void goSignUp(ActionEvent event) throws IOException, SQLException {
+        
+            Parent root = FXMLLoader.load(getClass().getResource("Gui/SignupFXML.fxml"));
+            signupBtn.getScene().setRoot(root);
     }
     
+    
+    //this function is called when a user presses the login button
     @FXML
-    public void navigate() throws IOException,SQLException {
+    public void loginUser(ActionEvent event) throws IOException,SQLException {
             
-                
-                
-                
-                String usrname = login_username.getText();
+                    //Getting data from GUI 
+                String username = login_username.getText();
                 String pass = login_pass.getText();
-            
+                
                 UserAuthenticationService service = new UserAuthenticationService();
-                user = service.authenticateUserWithCrendentials(usrname,pass);
-                System.out.println("from profile ");
-                System.out.println(user.toString());
-                Parent root = FXMLLoader.load(getClass().getResource("Gui/AdminDashBordFXML.fxml"));
+                user = service.authenticateUserWithCrendentials(username,pass);
+                String roles = user.getRoles();
+                
+                System.out.println(username);
+                System.out.println(pass);
+                System.out.println(roles);
+                // case treatment for each type of users
+                switch(roles){
+                    case "admin":{
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/AdminDashBordFXML.fxml"));
+                            Parent root =  (Parent) loader.load();
+                            AdminDashBordFXMLController controller = loader.<AdminDashBordFXMLController>getController();
+                            System.out.println("This is for ADMIN !!!");
+                            controller.initData(user);
+                            loginBtn.getScene().setRoot(root);
+                        break;
+                    }
+                    case "user" :{
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/FXML.fxml")); // this is home
+                            Parent root =  (Parent) loader.load();
+                            FXMLController controller = loader.<FXMLController>getController();
+                            System.out.println("This is for NORMAL USER !!!");
+                            controller.initData(user);
+                            loginBtn.getScene().setRoot(root);
+                        break;
+                    }
+                    case "association":{
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/FXML.fxml"));
+                            Parent root =  (Parent) loader.load();
+                            FXMLController controller = loader.<FXMLController>getController();
+                            System.out.println("This is for ASSOCIATION USER !!!");
+                            controller.initData(user);
+                            loginBtn.getScene().setRoot(root);
+                        break;
+                    }
+                }
                 
                 
-                
-                
-                 loginBtn.getScene().setRoot(root);
                 
                  
                   
