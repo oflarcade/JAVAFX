@@ -20,8 +20,12 @@ public class ServiceEvenement {
     private Connection connection;
     private Statement statement;
 
-    public ServiceEvenement() throws SQLException {
-        connection = DataSource.getInstance().getConnection();
+    public ServiceEvenement()  {
+        try {
+              connection = DataSource.getInstance().getConnection();
+        } catch (Exception e) {
+        }
+      
     }
 
     public void add(Evenement ev, int validation_status)  {

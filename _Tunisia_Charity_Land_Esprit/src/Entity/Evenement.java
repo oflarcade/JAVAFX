@@ -19,17 +19,20 @@ public class Evenement {
     private String localisation;
     private String shortDescription;
     private String longDescription;
-    private int validation_status;
     private Date created_at;
     private Date modified_at;
     private Date date;
     private Type type;//no set method
+    private int validation_status;
     
     public enum Type{
         ENVIRONMENTAL,
         SANTE,
         EDUCATION,
         INTERNATIONAL;
+    }
+
+    public Evenement() {
     }
 
     public Evenement(int id , int delegue_id, String img_url, String localisation, Date date, Type type,String shortDescription,String longDescription, int validation_status) {
@@ -120,12 +123,10 @@ public class Evenement {
     public void setValidation_status(int validation_status) {
         this.validation_status = validation_status;
     }
-    
-    
 
     @Override
     public String toString() {
-        return "Evenement{" + "id=" + id + ", delegue_id=" + delegue_id + ", img_url=" + img_url + ", localisation=" + localisation + ", shortDescription=" + shortDescription + ", longDescription=" + longDescription + ", created_at=" + created_at + ", modified_at=" + modified_at + ", date=" + date + ", type=" + type + '}';
+        return "Evenement{" + "id=" + id + ", delegue_id=" + delegue_id + ", img_url=" + img_url + ", localisation=" + localisation + ", shortDescription=" + shortDescription + ", longDescription=" + longDescription + ", created_at=" + created_at + ", modified_at=" + modified_at + ", date=" + date + ", type=" + type + ", validation_status=" + validation_status + '}';
     }
     
 }
