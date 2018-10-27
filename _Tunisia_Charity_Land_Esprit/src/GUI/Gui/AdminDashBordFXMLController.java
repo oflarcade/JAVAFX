@@ -83,7 +83,6 @@ public class AdminDashBordFXMLController implements Initializable {
         // TODO
     }    
     
-    @FXML
     public void editProfile() throws SQLException, IOException {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminDashBoardProfileFXML.fxml"));
                 
@@ -95,7 +94,7 @@ public class AdminDashBordFXMLController implements Initializable {
                 ProfileBtn.getScene().setRoot(root);
     }
     
-    @FXML
+    @FXML // this to check users 
     public void navigateToUsers() throws SQLException,IOException {
         Parent root = FXMLLoader.load(getClass().getResource("AdminDashBoardUserFXML.fxml"));
         usersBtn.getScene().setRoot(root);
@@ -114,7 +113,7 @@ public class AdminDashBordFXMLController implements Initializable {
     }
     @FXML 
     public void logout() throws SQLException,IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("RegistraionGuiFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("registrationGuiFXML.fxml"));
         logouBtn.getScene().setRoot(root);
     }
 }

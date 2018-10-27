@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
@@ -18,7 +19,6 @@
       <Button fx:id="homrBtn" layoutX="693.0" mnemonicParsing="false" onAction="#goHome" text="Home" AnchorPane.rightAnchor="332.0" AnchorPane.topAnchor="0.0" />
       <Text layoutX="455.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Tunisia Charity Land" AnchorPane.bottomAnchor="639.2578125" AnchorPane.leftAnchor="454.10302734375" AnchorPane.rightAnchor="422.89697265625" AnchorPane.topAnchor="62.431640625" />
       <Text layoutX="532.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register" />
-      <Text layoutX="133.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <TitledPane animated="false" layoutX="-1.0" layoutY="237.0" prefHeight="490.0" prefWidth="540.0" text="Personal">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="450.0" prefWidth="540.0">
@@ -32,7 +32,8 @@
                   <TextField fx:id="personalPassword" layoutX="245.0" layoutY="155.0" />
                   <TextField fx:id="personalSecondPassword" layoutX="255.0" layoutY="190.0" />
                   <Button fx:id="personalSignup" layoutX="262.0" layoutY="287.0" mnemonicParsing="false" onAction="#signInUserWithUsernameAndEmailAndPassword" text="Sign in" />
-                  <RadioButton fx:id="personalCheckBox" layoutX="81.0" layoutY="264.0" mnemonicParsing="false" text="I have read and accept the above policy/policies" />
+                  <CheckBox fx:id="checkBoxUser" layoutX="85.0" layoutY="247.0" mnemonicParsing="false" text="I have read and accept the above policy/policies" />
+                  <Text fx:id="errorField" layoutX="106.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="275.1763610839844" />
                </children>
             </AnchorPane>
         </content>
@@ -46,7 +47,7 @@
                   <Text layoutX="67.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
                   <Text layoutX="67.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
                   <RadioButton layoutX="102.0" layoutY="252.0" mnemonicParsing="false" text="i have read and accept the above policy/policies" />
-                  <Button layoutX="240.0" layoutY="295.0" mnemonicParsing="false" onAction="#signInAssociationWithNameAndEmailAndPassword" text="Sign in " />
+                  <Button fx:id="associationSignup" layoutX="240.0" layoutY="295.0" mnemonicParsing="false" onAction="#signInAssociationWithNameAndEmailAndPassword" text="Sign in " />
                   <TextField fx:id="assoName" layoutX="278.0" layoutY="76.0" />
                   <TextField fx:id="assoEmail" layoutX="317.0" layoutY="105.0" />
                   <PasswordField fx:id="assPassword" layoutX="288.0" layoutY="151.0" />

@@ -11,15 +11,15 @@
       <Text layoutX="499.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration" />
       <Text layoutX="315.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username / email" wrappingWidth="121.9466552734375" AnchorPane.bottomAnchor="484.0" AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="643.0533447265625" AnchorPane.topAnchor="216.0" />
       <Text layoutX="353.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" AnchorPane.bottomAnchor="446.2578125" AnchorPane.leftAnchor="352.72509765625" AnchorPane.rightAnchor="667.27490234375" AnchorPane.topAnchor="255.431640625" />
-      <Button fx:id="loginBtn" layoutX="456.0" layoutY="310.0" mnemonicParsing="false" onAction="#loginUser" text="Login" AnchorPane.bottomAnchor="380.0" AnchorPane.leftAnchor="456.0" AnchorPane.rightAnchor="572.0" AnchorPane.topAnchor="310.0" />
-      <TextField fx:id="login_username" layoutX="455.0" layoutY="211.0" AnchorPane.bottomAnchor="479.0" AnchorPane.leftAnchor="455.0" AnchorPane.rightAnchor="458.0" AnchorPane.topAnchor="211.0" />
-      <TextField fx:id="login_pass" layoutX="455.0" layoutY="250.0" prefHeight="27.0" prefWidth="167.0" AnchorPane.bottomAnchor="440.0" AnchorPane.leftAnchor="455.0" AnchorPane.rightAnchor="458.0" AnchorPane.topAnchor="250.0" />
+      <Button fx:id="loginBtn" layoutX="456.0" layoutY="310.0" mnemonicParsing="false" onAction="#loginUser" text="Login" AnchorPane.leftAnchor="456.0" AnchorPane.rightAnchor="572.0" AnchorPane.topAnchor="310.0" />
+      <TextField fx:id="login_username" layoutX="455.0" layoutY="211.0" AnchorPane.leftAnchor="455.0" AnchorPane.rightAnchor="458.0" AnchorPane.topAnchor="211.0" />
+      <TextField fx:id="login_pass" layoutX="455.0" layoutY="250.0" prefHeight="27.0" prefWidth="167.0" AnchorPane.leftAnchor="455.0" AnchorPane.rightAnchor="458.0" AnchorPane.topAnchor="250.0" />
       <Text layoutX="529.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Password ?" AnchorPane.bottomAnchor="423.6796875" AnchorPane.leftAnchor="528.56689453125" AnchorPane.rightAnchor="454.43310546875" AnchorPane.topAnchor="280.365234375">
          <font>
             <Font size="11.0" />
          </font>
       </Text>
-      <Button fx:id="signupBtn" layoutX="565.0" layoutY="310.0" mnemonicParsing="false" onAction="#goSignUp" text="SignUp" AnchorPane.bottomAnchor="380.0" AnchorPane.leftAnchor="565.0" AnchorPane.rightAnchor="452.0" AnchorPane.topAnchor="310.0" />
+      <Button fx:id="signupBtn" layoutX="565.0" layoutY="310.0" mnemonicParsing="false" onAction="#goSignUp" text="SignUp" AnchorPane.leftAnchor="565.0" AnchorPane.rightAnchor="452.0" AnchorPane.topAnchor="310.0" />
       <Text layoutX="526.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Or" />
    </children>
 </AnchorPane>

@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminDashBoardBlogFXMLController">
-    <children>
-        <Button fx:id="logouBtn" layoutX="991.0" layoutY="3.0" mnemonicParsing="false"  text="Exit" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="eventBtn" layoutX="970.0" mnemonicParsing="false"  text="Events" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="blogButton" layoutX="925.0" mnemonicParsing="false"  text="Posts" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="usersBtn" layoutX="862.0" mnemonicParsing="false"  text="User" AnchorPane.rightAnchor="164.0" AnchorPane.topAnchor="0.0" />
-      
+<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminDashBoardBlogFXMLController">
+   <children>
+        <Button fx:id="logouBtn" layoutX="991.0" layoutY="3.0" mnemonicParsing="false" onAction="#navigateToExit" text="Exit" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="eventBtn" layoutX="980.0" mnemonicParsing="false" onAction="#navigateToEvents" text="Events" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="blogButton" layoutX="927.0" mnemonicParsing="false" text="Posts" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="usersBtn" layoutX="879.0" mnemonicParsing="false" onAction="#navigateToUsers" text="User" AnchorPane.rightAnchor="154.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="ProfileBtn" layoutX="820.0" mnemonicParsing="false" onAction="#navigateToProfile" text="Profile" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="0.0" />
+      <TableView fx:id="BlogTable" layoutX="352.0" layoutY="37.0" prefHeight="691.0" prefWidth="379.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="ID" />
+          <TableColumn prefWidth="75.0" text="Title" />
+            <TableColumn prefWidth="97.14665222167969" text="author_id" />
+            <TableColumn prefWidth="125.62088012695312" text="Status" />
+        </columns>
+      </TableView>
+      <Button fx:id="validateButton" layoutX="787.0" layoutY="294.0" mnemonicParsing="false" text="Validate" />
+      <Button layoutX="787.0" layoutY="389.0" mnemonicParsing="false" text="Delete" />
+      <Button layoutX="781.0" layoutY="428.0" mnemonicParsing="false" text="Contact Creater" />
+      <Button layoutX="758.0" layoutY="664.0" mnemonicParsing="false" text="Refresh" />
     </children>
 </AnchorPane>

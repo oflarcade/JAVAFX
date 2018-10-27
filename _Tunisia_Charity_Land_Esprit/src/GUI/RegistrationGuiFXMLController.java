@@ -71,6 +71,7 @@ public class RegistrationGuiFXMLController implements Initializable {
                 }
     }
     
+    @FXML
     public void goSignUp(ActionEvent event) throws IOException, SQLException {
         
             Parent root = FXMLLoader.load(getClass().getResource("Gui/SignupFXML.fxml"));

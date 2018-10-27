@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminDashBoardUserFXMLController">
+<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminDashBoardUserFXMLController">
     <children>
-        <Button fx:id="logouBtn" layoutX="991.0" layoutY="3.0" mnemonicParsing="false"  text="Exit" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="eventBtn" layoutX="970.0" mnemonicParsing="false"  text="Events" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="blogButton" layoutX="925.0" mnemonicParsing="false"  text="Posts" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="usersBtn" layoutX="862.0" mnemonicParsing="false"  text="User" AnchorPane.rightAnchor="164.0" AnchorPane.topAnchor="0.0" />
+        <Button fx:id="logouBtn" layoutX="991.0" layoutY="3.0" mnemonicParsing="false" onAction="#navigateToExit" text="Exit" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="eventBtn" layoutX="980.0" mnemonicParsing="false" onAction="#navigateToEvents" text="Events" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="blogButton" layoutX="927.0" mnemonicParsing="false" onAction="#navigateToPosts" text="Posts" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="usersBtn" layoutX="883.0" mnemonicParsing="false" text="User" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="ProfileBtn" layoutX="825.0" mnemonicParsing="false" onAction="#navigateToProfile" text="Profile" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0" />
+      <TableView fx:id="userTable" layoutY="30.0" prefHeight="688.0" prefWidth="903.0">
+        <columns>
+          <TableColumn prefWidth="31.197316765785217" text="ID" />
+          <TableColumn prefWidth="80.1179084777832" text="USERNAME" />
+            <TableColumn prefWidth="102.66305541992188" text="EMAIL" />
+            <TableColumn prefWidth="68.89045715332031" text="ENABLED" />
+            <TableColumn prefWidth="129.10958862304688" text="PASSWORD" />
+            <TableColumn prefWidth="95.8712158203125" text="LAST LOGIN" />
+            <TableColumn prefWidth="78.12875366210938" text="LOCKED" />
+            <TableColumn prefWidth="75.0" text="EXPIRED" />
+            <TableColumn prefWidth="82.8218994140625" text="EXPIRES AT" />
+            <TableColumn prefWidth="75.0" text="ROLES" />
+            <TableColumn prefWidth="81.257568359375" text="ADRESSE" />
+        </columns>
+      </TableView>
+      <Button layoutX="902.0" layoutY="498.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="181.0" text="SEND EMAIL" />
+      <Button layoutX="902.0" layoutY="462.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="181.0" text="DELETE" />
+      <Button fx:id="refreshButton" layoutX="902.0" layoutY="425.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="181.0" text="Refresh" />
+      
     </children>
 </AnchorPane>
