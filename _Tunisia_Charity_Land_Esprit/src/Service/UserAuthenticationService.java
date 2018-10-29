@@ -12,10 +12,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import javax.mail.internet.InternetAddress;
+import java.util.UUID;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.internet.AddressException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -29,6 +35,10 @@ public class UserAuthenticationService {
     private static final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
     PreparedStatement preparedStatement;
     public Users user;
+    private boolean isUsernameValid =false;
+    private boolean isEmailValid = false;
+    private boolean isPasswordValid = false;
+    
     private String userValidateError;
     private String emailFieldError;
     private String passwordFieldError;
@@ -124,30 +134,7 @@ public class UserAuthenticationService {
     
     
     
-    /*
-    *  service for signin a user with username email and password
-    */
-    public boolean signInUserWithUsernameAndEmailAndPassword(String username, String email,String password,String secondPassword){
-        String query = "INSERT INTO fos_user (username,email,enabled,password,locked,expired,confirmation_token,roles,adresse) VALUES (?,?,?,?,?,?,?,?,?)";
-        boolean isCreadted = false;
-        try {//inserting 11 field into database
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, email);
-            preparedStatement.setString(3, password);
-            preparedStatement.setInt(4, 0);
-            preparedStatement.setInt(5, 0);
-            preparedStatement.setString(6, "lvdbqhfbdshqjk");
-            preparedStatement.setString(7, "user");
-            preparedStatement.setString(8, "");
-            return !isCreadted;
-        } catch (Exception e) {
-            System.out.println("user didn't get created");
-            e.printStackTrace();
-        }
-        return isCreadted;
-    }
-    
+   
     
     /*
     *  service for signin a association with name email and password
@@ -175,14 +162,97 @@ public class UserAuthenticationService {
     } 
     
     
-    public boolean validateUserFields(String username, String email, String password, String secondPassword ){
-        boolean isValide = false;
-        if((!username.equals("") || !(username == null)) && (checkDatabaseUsernames(username)) && (email.contains("@")) && (password.equals(secondPassword))){
-            return !isValide;
+    /*
+    * this method is used to validate the username field from SignupConroller 
+    */
+    public boolean validateUserName(String name){
+        if(name.equals("")){
+            System.out.println("name is empty");
+            isUsernameValid = false;   
+        } else {
+            System.out.println("this is the name passed name is valid : "+ name);
+            isUsernameValid = true;
         }
-        return isValide;
+        
+        return isUsernameValid && checkDatabaseUsernames(name);
     }
     
+    
+    /*
+    * REGEX (regular expression) Email Validation
+    */
+    public static boolean validateEmail(String email){
+        
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
+                            "[a-zA-Z0-9_+&*-]+)*@" + 
+                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+                            "A-Z]{2,7}$"; 
+        Pattern pat = Pattern.compile(emailRegex); 
+        if (email == null) 
+            return false; 
+        System.out.println("email is : "+pat.matcher(email).matches());
+        return pat.matcher(email).matches();
+    }
+    
+    
+    /*
+    * Password check service
+    */
+    public boolean checkPassword(String password, String secondPassword){
+        
+        if(password.length()>8 && secondPassword.length()>8){
+                if(password.equals(secondPassword)){
+                    System.out.println("passwords are identical");
+                    return isPasswordValid = true;
+            }
+        }
+        return isPasswordValid;
+    }
+    
+    
+
+    
+     
+     /*
+     * Personal user input validation
+     */
+    public boolean validateUserInputFields(String username, String email, String password, String secondPassword){
+        
+        return (validateUserName(email) && validateEmail(email) && checkPassword(password, secondPassword));
+    }
+   
+    
+    /*
+    * Insert new user into database
+    */
+    public boolean insertNewUserIntoDatabase(String username, String email, String password, String secondPassword){
+        boolean isInserted = false;
+        String confirmation_token = generateString();
+        if(validateUserInputFields(username, email, password, secondPassword)){
+            String query = "INSERT INTO fos_user (id,username,email,password,enabled,confirmation_token,roles) VALUES (?,?,?,?,?,?,?)";
+            try {
+                preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setInt(1, 11123123);
+                preparedStatement.setString(2, username);
+                preparedStatement.setString(3, email);
+                preparedStatement.setString(4, password);
+                preparedStatement.setInt(5, 0);
+                preparedStatement.setString(6, confirmation_token);
+                preparedStatement.setString(7, "user");
+                preparedStatement.executeUpdate();
+                System.out.println("please check database new user is created");
+                isInserted= true;
+                        } catch (SQLException ex) {
+                Logger.getLogger(UserAuthenticationService.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return isInserted;
+    }
+    
+    
+    /*
+    * Database check for username existance
+    */
     public boolean checkDatabaseUsernames(String username){
         String query = "SELECT * FROM fos_user WHERE username ='"+username+"' ";
         boolean doesExist = false;
@@ -195,21 +265,46 @@ public class UserAuthenticationService {
                 System.out.println("we have found someone !");
             }
             if(count>0){
+                System.out.println("this is check database : "+ !doesExist);
                 return !doesExist;
             }   
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println("this is the result from database: "+ count );
         return doesExist;
     }
     
     
-    public boolean verifyAssociationSignedIn(String name, String password) {
-        boolean isVerifed = false;
+    /*
+     * This method generate random String used for confirmation Token
+    */
+    public static String generateString() {
+        String uuid = UUID.randomUUID().toString();
+        return uuid;
+    }
+
+   
+    
+    public String getConfirmationToken(String username){
+        String confirmation_token = "";
         
-        String query ="SELECT username FROM fos_user WHERE username = '"+name+"' " ; 
+        String query = "SELECT confirmation_token FROM fos_user WHERE username = '"+username+"'";
         
-        return isVerifed;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet result = statement.executeQuery(query);
+            while(result.next()){
+                confirmation_token= result.getString("confirmation_token");
+                return confirmation_token;
+            }
+        } catch (SQLException e) {
+            
+            e.printStackTrace();
+            return "errorFetchingCode";
+        }
+        
+        return "errorFetchingCode";
     }
     
 }

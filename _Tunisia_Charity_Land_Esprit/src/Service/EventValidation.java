@@ -117,16 +117,9 @@ public class EventValidation {
     //this is to send an event for approval
     public void sendEventForApproval(Evenement ev){
         int validation_status = 2;
-        try {
-            ServiceEvenement serviceEvenement = new ServiceEvenement();
-            serviceEvenement.add(ev, validation_status);
-            
-            System.out.println("Event is added succefully! Please wait for Admin approval!");
-            
-        } catch (SQLException e) {
-            System.out.println("Adding eventSerice didn't work! please check the stack!");
-            System.out.println(e.getMessage());
-        }
+        ServiceEvenement serviceEvenement = new ServiceEvenement();
+        serviceEvenement.add(ev, validation_status);
+        System.out.println("Event is added succefully! Please wait for Admin approval!");
         
         
     }

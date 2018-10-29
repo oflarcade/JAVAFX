@@ -69,9 +69,7 @@ public class Users extends FosUser {
         this.email = email;
     }
 
-    public int getEnabled() {
-        return enabled;
-    }
+   
 
     public void setEnabled(int enabled) {
         this.enabled = enabled;

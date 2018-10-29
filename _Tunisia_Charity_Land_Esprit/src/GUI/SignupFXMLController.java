@@ -5,13 +5,14 @@
  */
 package GUI;
 
+import Service.SendMailSSL;
 import Service.UserAuthenticationService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -90,21 +91,33 @@ public class SignupFXMLController implements Initializable {
         
         
         UserAuthenticationService service = new UserAuthenticationService();
+        SendMailSSL mailApi = new SendMailSSL();
         String username = personalUsername.getText();
         String email = personalEmail.getText();
         String password = personalPassword.getText();
-        String secondPassword = personalPassword.getText();
+        String secondPassword = personalSecondPassword.getText();
         boolean isCreated = false;
         
-        if(checkBoxUser.isSelected() && service.validateUserFields(username, email, password, secondPassword) ){
-                isCreated = service.signInUserWithUsernameAndEmailAndPassword(username, email, password, secondPassword);
-                System.out.println("Check database !"+isCreated);
-                
-                errorField.setAccessibleHelp("");
-        } else { // this means that the user has a problem with the fields
-            errorField.setText("You made an error please check your info or checkbox is not selected!");
-            System.out.println(service.validateUserFields(username, email, password, secondPassword));
+        //service.validateUserName(username); // this is working 
+        //service.checkUsernameInDatabase(username); // this is working
+        //System.out.println("Validate Email Service :" + UserAuthenticationService.validateEmail(email)); // this is working
+        //System.out.println("check password validation : " +service.checkPassword(password, secondPassword));
+        
+        
+        if(checkBoxUser.isSelected()){
+            if(service.insertNewUserIntoDatabase(username, email, password, secondPassword)){
+            //all data are good to go
+                System.out.println("we are good to go please send an email to complete sign up !");
+                //mailApi.sendEmail("omarlakhdhar@gmail.com","123312","oflcad");
+                Parent root = FXMLLoader.load(getClass().getResource("Gui/mailConfirmationTokenFXML.fxml"));
+                personalSignup.getScene().setRoot(root);
+               } else {
+                System.out.println("error mister piccolla ");
+             }
+        } else {
+            System.out.println("please check policies");
         }
+        
 
         //Signing User with username email and password
         
@@ -129,7 +142,7 @@ public class SignupFXMLController implements Initializable {
             UserAuthenticationService service = new UserAuthenticationService();
             //TODO Consume the service of signing for association
             isCreated = service.signInAssociationWithNameAndEmailAndPassword(name, email, password, secondPassword);
-            isVerfied = service.verifyAssociationSignedIn(name,password);
+            //isVerfied = service.verifyAssociationSignedIn(name,password);
             if(isVerfied) {
                 System.out.println("TODO Consume the service of signing for association");
             System.out.println("this is what happened !"+isCreated);
