@@ -32,5 +32,11 @@ This Project is for Esprit PIDEV 4INFOB2.
     -prefWidth:1080
     -prefHeight: 717
   
-
+  Color Pallete: https://color.adobe.com/%E3%82%B3%E3%83%94%E3%83%BC-SAP01-color-theme-11417775/?showPublished=true&fbclid=IwAR26lxJB0Fe-uRzE2B457pDDHtFEwMtCnuYZU_zPO8SYNiIroNFj7O8fMoc
+  
+  Background: #F1F0E2
+  Button Container : #3E4E59
+  Button Selected : #F25652
+  Bar Naviagtion: #C2E7F2
+  
 ##HAPPY HACKING 
