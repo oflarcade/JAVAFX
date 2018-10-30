@@ -5,9 +5,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
 
 <AnchorPane id="AnchorPane" prefHeight="717.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.RegistrationGuiFXMLController">
    <children>
+       <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="718.0" prefWidth="191.0" style="-fx-background-color: #C2E7F2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="889.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="homeButton" layoutX="75.0" layoutY="182.0" mnemonicParsing="false" onAction="#navigateToHome" style="-fx-background-color: transparent;" text="Home" />
+            <Button fx:id="blogButton" layoutX="81.0" layoutY="219.0" mnemonicParsing="false" onAction="#navigateToBlog" style="-fx-background-color: transparent;" text="Blog" />
+            <Button fx:id="eventButton" layoutX="76.0" layoutY="259.0" mnemonicParsing="false" onAction="#navigateToEvents" style="-fx-background-color: transparent;" text="Events" />
+            <Button fx:id="associationButton" layoutX="61.0" layoutY="309.0" mnemonicParsing="false" onAction="#navigateToAssociation" style="-fx-background-color: transparent;" text="Association" />
+            <Button fx:id="connectionButton" layoutX="52.0" layoutY="358.0" mnemonicParsing="false" onAction="#navigateToProfile" style="-fx-background-color: transparent;" text="Login/SignUp" />
+            <Button fx:id="storeButton" layoutX="73.0" layoutY="409.0" mnemonicParsing="false" onAction="#navigateToStore" style="-fx-background-color: transparent;" text="Store" />
+            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="22.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/Logo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
       <Text layoutX="499.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Registration" />
       <Text layoutX="315.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username / email" wrappingWidth="121.9466552734375" AnchorPane.bottomAnchor="484.0" AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="643.0533447265625" AnchorPane.topAnchor="216.0" />
       <Text layoutX="353.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" AnchorPane.bottomAnchor="446.2578125" AnchorPane.leftAnchor="352.72509765625" AnchorPane.rightAnchor="667.27490234375" AnchorPane.topAnchor="255.431640625" />

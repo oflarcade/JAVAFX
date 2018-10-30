@@ -30,20 +30,24 @@ import javafx.scene.layout.AnchorPane;
  */
 public class FXMLController implements Initializable {
 
-    @FXML
     private Button cnxBtn;
-    @FXML
-    private Button assoBtn;
-    @FXML
-    private Button eventBtn;
-    @FXML
     private Button blogBtn;
-    @FXML
-    private Button homrBtn;
     public Users loggedInUser;
     UserAuthenticationService service;
     @FXML
     private AnchorPane myPane;
+    @FXML
+    private Button homeButton;
+    @FXML
+    private Button blogButton;
+    @FXML
+    private Button eventButton;
+    @FXML
+    private Button associationButton;
+    @FXML
+    private Button connectionButton;
+    @FXML
+    private Button storeButton;
 
     public FXMLController() {
         try {
@@ -52,34 +56,22 @@ public class FXMLController implements Initializable {
             Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     
+    
+    
     
     /**
      * Login/Sign-up Button navigation
      * @param event
      * @throws IOException 
      */
-    @FXML
-    public void navigateConnexion(ActionEvent event) throws IOException, Exception{
-        
-        
-        Parent root = FXMLLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml"));
-        
-        cnxBtn.getScene().setRoot(root);
-        
-    }
-
+   
      @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        cnxBtn.setText("Profile"); 
+        //cnxBtn.setText("Profile"); 
     }   
     
-    @FXML
-    public void navigateBlog(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("BlogGuiFXML.fxml"));
-        blogBtn.getScene().setRoot(root);
-    }
+    
     
     
     // This is how you pass a user object from one class to another  === Same concept of persistancy
@@ -88,4 +80,41 @@ public class FXMLController implements Initializable {
     }
     
     
+    
+    @FXML 
+    public void navigateToHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/FXML.fxml"));
+        homeButton.getScene().setRoot(root);
+    }
+    
+    
+    @FXML 
+    public void navigateToEvents(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/EventsGuiFXML.fxml"));
+        eventButton.getScene().setRoot(root);
+    }
+    
+    @FXML
+    public void navigateToProfile(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/RegistrationGuiFXML.fxml"));
+        connectionButton.getScene().setRoot(root);
+    }
+    
+    @FXML
+    public void navigateToStore(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/StoreGuiFXML.fxml"));
+        storeButton.getScene().setRoot(root);
+    }
+    
+    @FXML
+    public void navigateToAssociation(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/AssociationGuiFXML.fxml"));
+        associationButton.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void navigateToBlog(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("Gui/BlogGuiFXML.fxml"));
+          blogButton.getScene().setRoot(root);
+    }
 }

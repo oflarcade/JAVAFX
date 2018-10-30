@@ -4,11 +4,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Gui.AdminDashBordFXMLController">
+<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: #F1F0E2;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Gui.AdminDashBordFXMLController">
     <children>
-      <Pane layoutX="3.0" layoutY="37.0" prefHeight="680.0" prefWidth="1076.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="37.0">
+      <Pane layoutX="299.0" layoutY="42.0" prefHeight="675.0" prefWidth="780.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="299.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="42.0">
          <children>
             <Text layoutX="25.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
             <Text layoutX="25.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="password" />
@@ -29,6 +30,16 @@
       <Button fx:id="blogButton" layoutX="925.0" mnemonicParsing="false" onAction="#navigateToBlog" text="Posts" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="0.0" />
       <Button fx:id="usersBtn" layoutX="862.0" mnemonicParsing="false" onAction="#navigateToUsers" text="User" AnchorPane.rightAnchor="164.0" AnchorPane.topAnchor="0.0" />
       <Button fx:id="ProfileBtn" layoutX="806.0" mnemonicParsing="false" text="Profile" AnchorPane.leftAnchor="806.0" AnchorPane.rightAnchor="218.0" AnchorPane.topAnchor="0.0" />
+      <Pane layoutX="2.0" layoutY="1.0" prefHeight="217.0" prefWidth="225.0" style="-fx-background-color: #C2E7F2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="855.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fill="#3e4e59" fontSmoothingType="LCD" layoutX="10.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin DashBoard">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button layoutX="64.0" layoutY="164.0" mnemonicParsing="false" text="Profile" />
+         </children>
+      </Pane>
       
       
    </children>
