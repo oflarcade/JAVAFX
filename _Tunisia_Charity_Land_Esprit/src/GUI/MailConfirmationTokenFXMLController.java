@@ -42,7 +42,7 @@ public class MailConfirmationTokenFXMLController implements Initializable {
      * @param confirmationToken
      */
     public void checkConfirmationToken(String username){
-        Service service = new Service();
+        //Service service = new Service();
         
     }
 }
