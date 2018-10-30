@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="135.0" prefWidth="272.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.DialogFXMLController">
+   <children>
+      <Label fx:id="labeldialog" layoutX="68.0" layoutY="42.0" prefHeight="26.0" prefWidth="140.0" text="Supprimé avec succées" />
+   </children>
+</AnchorPane>
+
