@@ -21,6 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -29,8 +30,6 @@ import javafx.scene.control.Button;
  */
 public class FXMLController implements Initializable {
 
-    @FXML
-    private Button mapBtn;
     @FXML
     private Button cnxBtn;
     @FXML
@@ -43,6 +42,8 @@ public class FXMLController implements Initializable {
     private Button homrBtn;
     public Users loggedInUser;
     UserAuthenticationService service;
+    @FXML
+    private AnchorPane myPane;
 
     public FXMLController() {
         try {
