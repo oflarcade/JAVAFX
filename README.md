@@ -27,6 +27,10 @@ This Project is for Esprit PIDEV 4INFOB2.
   - check urlString for the correct database name;
   - check username and password;
   
+
+### DESIGN CONVENTION
+    -prefWidth:1080
+    -prefHeight: 717
   
 
 ##HAPPY HACKING 
