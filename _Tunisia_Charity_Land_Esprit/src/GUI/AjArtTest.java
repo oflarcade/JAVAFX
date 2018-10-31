@@ -19,9 +19,9 @@ import javafx.stage.Stage;
 public class AjArtTest extends Application {
     
     @Override
-    public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Gui/AffichageArticle.fxml"));
-        
+    public void start(Stage primaryStage) throws IOException {  
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/GestionArticleFXML.fxml"));
+
         Scene scene = new Scene(root);
         primaryStage.setTitle("Gestion des articles");
         primaryStage.setScene(scene);

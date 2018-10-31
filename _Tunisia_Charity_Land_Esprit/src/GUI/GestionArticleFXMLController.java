@@ -6,8 +6,11 @@
 package GUI;
 
 import Entity.Article;
+import Service.CreatePdf;
 import Service.ServiceArticle;
 import static Utils.DataSource.getInstance;
+import com.itextpdf.text.DocumentException;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -55,6 +58,22 @@ public class GestionArticleFXMLController implements Initializable {
     private TableColumn<Article, String> tv_contenu;
     @FXML
     private TableColumn<Article, String> tv_image;
+    @FXML
+    private Button addArticleBT;
+    @FXML
+    private Button homeButton;
+    @FXML
+    private Button blogButton;
+    @FXML
+    private Button eventButton;
+    @FXML
+    private Button associationButton;
+    @FXML
+    private Button connectionButton;
+    @FXML
+    private Button storeButton;
+    @FXML
+    private Button pdfBtn;
 
     /**
      * Initializes the controller class.
@@ -107,9 +126,9 @@ public class GestionArticleFXMLController implements Initializable {
             tv_contenu.setCellValueFactory(new PropertyValueFactory<>("contenu"));
             tv_image.setCellValueFactory(new PropertyValueFactory<>("image_url"));
         }
-    @FXML
+     @FXML
     private void modifierTitre(TableColumn.CellEditEvent<Article, String> event) {
-        Article  articleSelectionne = ga_tv.getSelectionModel().getSelectedItem();
+          Article  articleSelectionne = ga_tv.getSelectionModel().getSelectedItem();
         articleSelectionne.setTitre(event.getNewValue());
         try {
             ServiceArticle serv =new ServiceArticle();
@@ -118,9 +137,7 @@ public class GestionArticleFXMLController implements Initializable {
             Logger.getLogger(GestionArticleFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    @FXML
-
+     @FXML
     private void modifierContenu(TableColumn.CellEditEvent<Article, String> event) {
         Article  articleSelectionne = ga_tv.getSelectionModel().getSelectedItem();
         articleSelectionne.setContenu(event.getNewValue());
@@ -131,8 +148,7 @@ public class GestionArticleFXMLController implements Initializable {
             Logger.getLogger(GestionArticleFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    @FXML
+     @FXML
     private void modifierImage(TableColumn.CellEditEvent<Article, String> event) {
         Article  articleSelectionne = ga_tv.getSelectionModel().getSelectedItem();
         articleSelectionne.setImage_url(event.getNewValue());
@@ -143,8 +159,47 @@ public class GestionArticleFXMLController implements Initializable {
             Logger.getLogger(GestionArticleFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        
+
+    @FXML
+    private void navigateToHome(ActionEvent event) {
     }
+
+    @FXML
+    private void navigateToBlog(ActionEvent event) {
+    }
+
+    @FXML
+    private void navigateToEvents(ActionEvent event) {
+    }
+
+    @FXML
+    private void navigateToAssociation(ActionEvent event) {
+    }
+
+    @FXML
+    private void navigateToProfile(ActionEvent event) {
+    }
+
+    @FXML
+    private void navigateToStore(ActionEvent event) {
+    }
+
+   
+   
+
+    @FXML
+    private void convertToPdf(ActionEvent event) throws FileNotFoundException {
+        try {
+            CreatePdf.convertToPdf();
+        } catch (SQLException | DocumentException ex) {
+            Logger.getLogger(CreatePdf.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    
+
+}
+   
     
 
         
