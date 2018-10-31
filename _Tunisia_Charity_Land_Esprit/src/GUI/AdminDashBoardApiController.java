@@ -101,7 +101,7 @@ public class AdminDashBoardApiController implements Initializable {
     private void navigateToPosts(ActionEvent event) throws IOException {
          FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/AdminDashBoardBlogFXML.fxml"));
          Parent root = (Parent) loader.load();
-        AdminDashBoardBlogFXMLController controller = loader.<AdminDashBoardBlogFXMLController>getController() ;
+        AdminDashBoardBlogFXMLController controller = loader.<AdminDashBoardBlogFXMLController>getController();
         controller.initData(this.user);
         blogButton.getScene().setRoot(root);
     }

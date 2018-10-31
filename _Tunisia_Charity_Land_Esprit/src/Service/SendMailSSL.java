@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Service;
+import java.sql.SQLException;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -21,8 +22,13 @@ public class SendMailSSL {
      }
      
      
-     public void sendEmail(String email, String confirmation_token, String username ){
-         Properties props = new Properties();
+     
+     public void sendEmail(String email, String username ) throws SQLException{
+         
+                UserAuthenticationService service = new UserAuthenticationService();
+                String confirmation_token = service.getConfirmationToken(email);
+                System.out.println("we are sending an email with this confirmation token" + confirmation_token);
+                Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.socketFactory.port", "465");
 		props.put("mail.smtp.socketFactory.class",
@@ -45,15 +51,16 @@ public class SendMailSSL {
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse("omarlakhdhar@gmail.com"));
 			message.setSubject("Verification for Tunisia Charity Land subscription");
-			message.setText("Dear Mail '"+username+"'," +
+			message.setText("Dear Mr/Mme '"+username+"'," +
                                         
-					"\n\n No spam to my email,"
+					"\n\n Welcome to Tunisia Charity Land,"
+                                +" Please verify your email with copying this <b>confirmation Token</b>"
                                 + " please Copy this confirmation token : <br>"
-                                + " <b>'"+confirmation_token+"'!");
+                                + " <b>'"+confirmation_token+"'</b>!");
 
 			Transport.send(message);
 
-			System.out.println("Done");
+			System.out.println("we have sent an email to " + email);
 
 		} catch (MessagingException e) {
 			throw new RuntimeException(e);

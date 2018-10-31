@@ -38,7 +38,7 @@ public class UserAuthenticationService {
     private boolean isUsernameValid =false;
     private boolean isEmailValid = false;
     private boolean isPasswordValid = false;
-    
+    public int count = 0;
     private String userValidateError;
     private String emailFieldError;
     private String passwordFieldError;
@@ -89,28 +89,10 @@ public class UserAuthenticationService {
     }
     
     
-    public void signInUserWithCredentials(Users user){
-        String query = "INSERT INTO users (user_id ,username, email, password,adresse,phone_nbr,image_url) VALUES (?,?,?,?,?,?,?)";
-        try {
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setInt(1,122);
-            preparedStatement.setString(2, "sqddsq");
-            preparedStatement.setString(3, "dsqdsq");
-            preparedStatement.setString(4,"213");
-            preparedStatement.setString(5, "cogite");
-            preparedStatement.setInt(6, 0312321);
-            preparedStatement.setString(7, "/dkjsqfdjhqsgkjh");
-            
-            boolean result = preparedStatement.execute();
-                if(result){
-                    System.out.println("new user created");
-                }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
     
-    
+    /*
+    * returns a user object populated with data from database
+    */
     public Users getAdminInfo(int id){
         String query = "SELECT * FROM fos_user WHERE id=? and roles='admin'";
         Users user = new Users();
@@ -135,49 +117,40 @@ public class UserAuthenticationService {
        return user;
     }
     
-    
-    
-   
-    
     /*
-    *  service for signin a association with name email and password
+    *return an new ID from database
     */
-    public boolean signInAssociationWithNameAndEmailAndPassword(String name, String email, String password, String secondPassword){
-          String query = "INSERT INTO fos_user (username,email,enabled,password,locked,expired,confirmation_token,roles,adresse) VALUES (?,?,?,?,?,?,?,?,?)";
-        boolean isCreated = false;
-        try {//inserting 11 field into database
-            preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, name);
-            preparedStatement.setString(2, email);
-            preparedStatement.setString(3, password);
-            preparedStatement.setInt(4, 0);
-            preparedStatement.setInt(5, 0);
-            preparedStatement.setString(6, "lvdbqhfbdshqjk");
-            preparedStatement.setString(7, "association");
-            preparedStatement.setString(8, "");
-            isCreated = true;
+    public int getNewIdFromDatabase(){
+        int id = 0;
+        String query = "SELECT * FROM fos_user ORDER BY id DESC LIMIT 1";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+                
+                while(result.next()){
+                    id = result.getInt("id");
+                    //System.out.println("this is our  new ID :"+ id +1);
+                }
         } catch (SQLException e) {
-            System.out.println("user didn't get created");
             e.printStackTrace();
         }
-        return isCreated;
+        return id + 1;
+    }
     
-    } 
     
     
     /*
-    * this method is used to validate the username field from SignupConroller 
+    * This method is used to validate the username field from SignupConroller 
     */
-    public boolean validateUserName(String name){
-        if(name.equals("")){
-            System.out.println("name is empty");
+    public boolean validateUserName(String username){
+        if(username.equals("")){
+            System.out.println("username is empty");
             isUsernameValid = false;   
         } else {
-            System.out.println("this is the name passed name is valid : "+ name);
+            System.out.println("username is valid : "+ username);
             isUsernameValid = true;
         }
-        
-        return isUsernameValid && checkDatabaseUsernames(name);
+        return isUsernameValid;
     }
     
     
@@ -191,28 +164,79 @@ public class UserAuthenticationService {
                             "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
                             "A-Z]{2,7}$"; 
         Pattern pat = Pattern.compile(emailRegex); 
-        if (email == null) 
-            return false; 
-        System.out.println("email is : "+pat.matcher(email).matches());
+        if (email == null){
+            System.out.println("error in email validation !: line 175");
+                return false; 
+        }
+            
+        System.out.println("Valid Email !  is : "+pat.matcher(email).matches());
         return pat.matcher(email).matches();
     }
     
     
     /*
-    * Password check service
+    * This method is used to validate the username field from SignupConroller
     */
     public boolean checkPassword(String password, String secondPassword){
         
         if(password.length()>8 && secondPassword.length()>8){
                 if(password.equals(secondPassword)){
-                    System.out.println("passwords are identical");
+                    System.out.println("passwords are identical: returning true");
                     return isPasswordValid = true;
             }
         }
+
         return isPasswordValid;
     }
     
+     /*
+    * Database check for username existance
+    */
+    public boolean checkDatabaseUsernames(String username){
+        String query = "SELECT username FROM fos_user WHERE username ='"+username+"' ";
+        boolean doesExist = false;
+        
+        try {
+            Statement ste = connection.createStatement();
+            ResultSet result = ste.executeQuery(query);
+            while(result.next()){
+                System.out.println("we came back from database with this value : line 304");
+                System.out.println(result.getString("username"));
+                count++;
+            }
+            
+            if(count == 0){
+                System.out.println("No match with database ! check database is true : ");
+                doesExist = true;
+            }    
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return doesExist;
+    }
     
+    /*
+    * retrieve from database confirmation token
+    */
+    public String getConfirmationToken(String email) {
+        String confirmation_token = "";
+        String query = "SELECT confirmation_token from fos_user WHERE email = '"+email+"'";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet result = preparedStatement.executeQuery();
+                
+                while(result.next()){
+                    confirmation_token = result.getString("confirmation_token");
+                    System.out.println("this is our confirmation_token retrived from database :"+ confirmation_token);
+                }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        
+        return confirmation_token;
+    }
 
     
      
@@ -220,22 +244,36 @@ public class UserAuthenticationService {
      * Personal user input validation
      */
     public boolean validateUserInputFields(String username, String email, String password, String secondPassword){
-        
-        return (validateUserName(email) && validateEmail(email) && checkPassword(password, secondPassword));
+            boolean isClear =false;
+            if(validateUserName(username)){
+                if(checkDatabaseUsernames(username)){
+                    if(validateEmail(email)) {
+                        if(checkPassword(password, secondPassword)){
+                            isClear = true;
+                        }
+                    }
+                }
+            }
+        return isClear;
     }
    
     
+    
+    
     /*
-    * Insert new user into database
+    * Insert new user with role set as user into database;
     */
     public boolean insertNewUserIntoDatabase(String username, String email, String password, String secondPassword){
         boolean isInserted = false;
-        String confirmation_token = generateString();
-        if(validateUserInputFields(username, email, password, secondPassword)){
+        String confirmation_token = genrateConfirmationToken();
+        int newID = getNewIdFromDatabase();
+        boolean isChecked = validateUserInputFields(username, email, password, secondPassword);
+        if(isChecked){
+            
             String query = "INSERT INTO fos_user (id,username,email,password,enabled,confirmation_token,roles) VALUES (?,?,?,?,?,?,?)";
             try {
                 preparedStatement = connection.prepareStatement(query);
-                preparedStatement.setInt(1, 11123123);
+                preparedStatement.setInt(1, newID);
                 preparedStatement.setString(2, username);
                 preparedStatement.setString(3, email);
                 preparedStatement.setString(4, password);
@@ -244,70 +282,56 @@ public class UserAuthenticationService {
                 preparedStatement.setString(7, "user");
                 preparedStatement.executeUpdate();
                 System.out.println("please check database new user is created");
-                isInserted= true;
-                        } catch (SQLException ex) {
+                isInserted = true;
+              } catch (SQLException ex) {
                 Logger.getLogger(UserAuthenticationService.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return isInserted;
     }
     
-    
+
     /*
-    * Database check for username existance
+    * Insert new user with role set as user into database;
     */
-    public boolean checkDatabaseUsernames(String username){
-        String query = "SELECT * FROM fos_user WHERE username ='"+username+"' ";
-        boolean doesExist = false;
-        int count = 0;
-        try {
-            Statement ste = connection.createStatement();
-            ResultSet result = ste.executeQuery(query);
-            while(result.next()){
-                count ++;
-                System.out.println("we have found someone !");
-            }
-            if(count>0){
-                System.out.println("this is check database : "+ !doesExist);
-                return !doesExist;
-            }   
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        System.out.println("this is the result from database: "+ count );
-        return doesExist;
+    public boolean inserNewAssociationIntoDatabase(String name,String email, String password, String secondPassword){
+            boolean isInserted = false;
+            String confirmation_token = genrateConfirmationToken();
+            int newId = getNewIdFromDatabase();
+                if(validateUserInputFields(name,email,password,secondPassword)){
+                    String query = "INSERT INTO fos_user (id,username,email,password,enabled,confirmation_token,roles) VALUES (?,?,?,?,?,?,?)";
+                    try {
+                        preparedStatement = connection.prepareStatement(query);
+                        preparedStatement.setInt(1, newId);
+                        preparedStatement.setString(2, name);
+                        preparedStatement.setString(3, email);
+                        preparedStatement.setString(4, password);
+                        preparedStatement.setInt(5, 0);
+                        preparedStatement.setString(6, confirmation_token);
+                        preparedStatement.setString(7, "association");
+                        preparedStatement.executeUpdate();
+                        System.out.println("please check database new user is created");
+                        isInserted= true;   
+                    } catch (SQLException e) {
+                        Logger.getLogger(UserAuthenticationService.class.getName()).log(Level.SEVERE, null, e);
+                        //TODO: handle exception
+                    }
+                }
+        return isInserted;       
     }
+    
+   
     
     
     /*
      * This method generate random String used for confirmation Token
     */
-    public static String generateString() {
+    public static String genrateConfirmationToken() {
         String uuid = UUID.randomUUID().toString();
         return uuid;
     }
 
    
-    
-    public String getConfirmationToken(String username){
-        String confirmation_token = "";
-        
-        String query = "SELECT confirmation_token FROM fos_user WHERE username = '"+username+"'";
-        
-        try {
-            Statement statement = connection.createStatement();
-            ResultSet result = statement.executeQuery(query);
-            while(result.next()){
-                confirmation_token= result.getString("confirmation_token");
-                return confirmation_token;
-            }
-        } catch (SQLException e) {
-            
-            e.printStackTrace();
-            return "errorFetchingCode";
-        }
-        
-        return "errorFetchingCode";
-    }
+
     
 }

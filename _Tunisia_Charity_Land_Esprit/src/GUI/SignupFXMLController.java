@@ -35,17 +35,6 @@ public class SignupFXMLController implements Initializable {
 
     @FXML
     private AnchorPane myPane;
-    @FXML
-    private Button mapBtn;
-    @FXML
-    private Button cnxBtn;
-    @FXML
-    private Button assoBtn;
-    @FXML
-    private Button eventBtn;
-    @FXML
-    private Button blogBtn;
-    @FXML
     private Button homrBtn;
     @FXML
     private TextField personalUsername;
@@ -66,21 +55,35 @@ public class SignupFXMLController implements Initializable {
     @FXML
     private PasswordField assSecondPassword;
     @FXML
-    private CheckBox checkBoxUser;
-    @FXML
-    private Text errorField;
-    @FXML
     private Button associationSignup;
-
+    @FXML
+    private Button blogButton;
+    @FXML
+    private Button eventButton;
+    @FXML
+    private Button homeButton;
+    @FXML
+    private Button associationButton;
+    @FXML
+    private Button connectionButton;
+    @FXML
+    private Button storeButton;
+    final  UserAuthenticationService service;
+    final  SendMailSSL mailApi;
+    
+    public SignupFXMLController() throws SQLException {
+        this.service = new UserAuthenticationService();
+        this.mailApi =  new SendMailSSL();
+    }
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
     
-    @FXML
     public void goHome() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("Gui/FXML.fxml"));
         homrBtn.getScene().setRoot(root);
@@ -90,68 +93,91 @@ public class SignupFXMLController implements Initializable {
     public void signInUserWithUsernameAndEmailAndPassword(ActionEvent event) throws SQLException, IOException {
         
         
-        UserAuthenticationService service = new UserAuthenticationService();
-        SendMailSSL mailApi = new SendMailSSL();
+       
         String username = personalUsername.getText();
         String email = personalEmail.getText();
         String password = personalPassword.getText();
         String secondPassword = personalSecondPassword.getText();
-        boolean isCreated = false;
-        
-        //service.validateUserName(username); // this is working 
-        //service.checkUsernameInDatabase(username); // this is working
-        //System.out.println("Validate Email Service :" + UserAuthenticationService.validateEmail(email)); // this is working
-        //System.out.println("check password validation : " +service.checkPassword(password, secondPassword));
-        
-        
-        if(checkBoxUser.isSelected()){
-            if(service.insertNewUserIntoDatabase(username, email, password, secondPassword)){
+        boolean isClear = false;
+            isClear = service.insertNewUserIntoDatabase(username, email, password, secondPassword);
+            //System.out.println("this is Signup FXML Controller line 97 :" +service.insertNewUserIntoDatabase(username, email, password, secondPassword));
+            if(isClear){
             //all data are good to go
                 System.out.println("we are good to go please send an email to complete sign up !");
-                //mailApi.sendEmail("omarlakhdhar@gmail.com","123312","oflcad");
-                Parent root = FXMLLoader.load(getClass().getResource("Gui/mailConfirmationTokenFXML.fxml"));
+                mailApi.sendEmail("omarlakhdhar@gmail.com","oflcad");
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/mailConfirmationTokenFXML.fxml"));
+                Parent root = (Parent) loader.load();
+                MailConfirmationTokenFXMLController controller = loader.<MailConfirmationTokenFXMLController>getController();
+                controller.initData(email);
                 personalSignup.getScene().setRoot(root);
                } else {
-                System.out.println("error mister piccolla ");
+                System.out.println(" error From signup user controller ! line 104 ");
              }
-        } else {
-            System.out.println("please check policies");
-        }
-        
-
-        //Signing User with username email and password
-        
-        
-        //TODO Consume the service of signing for normal user;
-        
         
     }
     
     
+    /*
+    * Signing association with name email and password
+    */
     @FXML
     public void signInAssociationWithNameAndEmailAndPassword(ActionEvent event) throws SQLException,IOException{
-        //Signing association with name email and password
-        Parent root  = FXMLLoader.load(getClass().getResource("Gui/FXML.fxml"));
+        
         String name = assoName.getText();
         String email = assoEmail.getText();
         String password = assPassword.getText();
         String secondPassword = assSecondPassword.getText();
-        boolean isCreated = false;
-        boolean isVerfied = false;
-        try {
-            UserAuthenticationService service = new UserAuthenticationService();
-            //TODO Consume the service of signing for association
-            isCreated = service.signInAssociationWithNameAndEmailAndPassword(name, email, password, secondPassword);
-            //isVerfied = service.verifyAssociationSignedIn(name,password);
-            if(isVerfied) {
-                System.out.println("TODO Consume the service of signing for association");
-            System.out.println("this is what happened !"+isCreated);
-            associationSignup.getScene().setRoot(root);
+        
+        
+            if(service.inserNewAssociationIntoDatabase(name,email,password,secondPassword)){
+                System.out.println("we are good to go! Please send an email to complete signup !");
+                mailApi.sendEmail(email,"oflcad");
+                Parent root = FXMLLoader.load(getClass().getResource("Gui/mailConfirmationToken.fxml"));
+                associationSignup.getScene().setRoot(root); 
+                System.out.println("We are going to profile now");
+            } else {
+                
+                System.out.println("error mister piccola");
             }
-            
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+        
+        
+    }
+
+    @FXML
+    public void navigateToProfile(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml"));
+        connectionButton.getScene().setRoot(root);
+    }
+
+
+    @FXML
+    public void navigateToEvents(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/EventsGuiFXML.fxml"));
+        eventButton.getScene().setRoot(root);
+    }
+
+    @FXML
+    public void navigateToHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/FXML.fxml"));
+        homeButton.getScene().setRoot(root);
+    }
+
+    @FXML
+    public void navigateToBlog(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/BlogGuiFXML.fxml"));
+        blogButton.getScene().setRoot(root);
+    }
+
+    @FXML
+    public void navigateToAssociation(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/AssociationGuiFXML.fxml"));
+        associationButton.getScene().setRoot(root);
+    }
+
+    @FXML
+    public void navigateToStore(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/StoreGuiFXML.fxml"));
+        storeButton.getScene().setRoot(root);
     }
     
 }
