@@ -64,6 +64,7 @@ public class UserAuthenticationService {
                 user.setUsername(rs.getString("username"));
                 user.setEmail(rs.getString("email"));
                 user.setEnabled(rs.getInt("enabled"));
+                
                 user.setPassword(rs.getString("password"));
                 user.setLast_login(rs.getDate("last_login"));
                 user.setLocked(rs.getInt("locked"));
@@ -72,6 +73,8 @@ public class UserAuthenticationService {
                 user.setConfirmation_token(rs.getString("confirmation_token"));
                 user.setRoles(rs.getString("roles"));
                 user.setAdresse(rs.getString("adresse"));
+                user.setLocked(rs.getInt("locked"));
+                user.setLast_login(rs.getDate("last_login"));
                 System.out.println("console log from auth Service : "+user.getId());
                 System.out.println(user.toString());
                 return user;
@@ -79,7 +82,7 @@ public class UserAuthenticationService {
 
         } catch (SQLException e) {
                 System.out.println(e.getMessage());
-                System.out.println("no we can't communicate with the database ");
+                System.out.println("Error! we can't communicate with the database ");
         }
         
         return user;

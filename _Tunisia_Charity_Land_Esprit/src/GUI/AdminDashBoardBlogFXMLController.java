@@ -5,9 +5,12 @@
  */
 package GUI;
 
+import Entity.Users;
+import GUI.Gui.AdminDashBordFXMLController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,48 +26,75 @@ import javafx.scene.layout.AnchorPane;
  */
 public class AdminDashBoardBlogFXMLController implements Initializable {
 
+    private Users user;
     @FXML
     private AnchorPane myPane;
     @FXML
-    private Button logouBtn;
-    @FXML
-    private Button eventBtn;
-    @FXML
     private Button blogButton;
-    @FXML
     private Button usersBtn;
     @FXML
+    private Button apiControllButton;
     private Button ProfileBtn;
     @FXML
     private TableView<?> BlogTable;
     @FXML
-    private Button validateButton;
+    private Button profileButton;
+    @FXML
+    private Button usersButton;
+    @FXML
+    private Button eventButton;
+    @FXML
+    private Button logoutButton;
 
     /**
      * Initializes the controller class.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+            profileButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
+            usersButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
+            blogButton.setStyle("-fx-text-fill: #F25652;-fx-background-color: transparent;");
+            eventButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
+            apiControllButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent; ");
+            logoutButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
     }    
+    
+     public void initData(Users user) {
+        this.user = user;
+    }
     
     
     @FXML
     public void navigateToProfile() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Gui/AdminDashBordFXML.fxml"));
-        ProfileBtn.getScene().setRoot(root);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/AdminDashBordFXML.fxml"));
+        Parent root = (Parent) loader.load();
+        AdminDashBordFXMLController controller = loader.<AdminDashBordFXMLController>getController() ;
+        controller.initData(this.user);
+        
+        profileButton.getScene().setRoot(root);
     }
     
     @FXML
     public void navigateToUsers() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("Gui/AdminDashBoardUserFXML.fxml"));
-        usersBtn.getScene().setRoot(root);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/AdminDashBoardUserFXML.fxml"));
+        Parent root =  (Parent) loader.load();
+        AdminDashBoardUserFXMLController controller = loader.<AdminDashBoardUserFXMLController>getController();
+        controller.initData(user);
+        
+        usersButton.getScene().setRoot(root);
     }
     
     @FXML
     public void navigateToEvents() throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("Gui/AdminDashBoardEventFXML.fxml"));
-        usersBtn.getScene().setRoot(root);
+       FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/AdminDashBoardEventFXML.fxml"));
+         Parent root = (Parent) loader.load();
+        AdminDashBoardEventFXMLController controller = loader.<AdminDashBoardEventFXMLController>getController() ;
+        controller.initData(this.user);
+        
+        
+        eventButton.getScene().setRoot(root);
     }
     
     @FXML
@@ -73,6 +103,28 @@ public class AdminDashBoardBlogFXMLController implements Initializable {
         usersBtn.getScene().setRoot(root);
     }
     
+   
+    
+   
+
+    @FXML
+    public void navigateToPosts(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/AdminDashBoardBlogFXML.fxml"));
+         Parent root = (Parent) loader.load();
+        AdminDashBoardBlogFXMLController controller = loader.<AdminDashBoardBlogFXMLController>getController() ;
+        controller.initData(this.user);
+        blogButton.getScene().setRoot(root);
+    }
+
+    @FXML
+    public void navigateToApiControll(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/AdminDashBoardApiController.fxml"));
+         Parent root = (Parent) loader.load();
+        AdminDashBoardApiController controller = loader.<AdminDashBoardApiController>getController() ;
+        controller.initData(user);
+        
+        apiControllButton.getScene().setRoot(root);
+    }
     
     
 }

@@ -3,16 +3,16 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminDashBoardUserFXMLController">
+<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: #F1F0E2;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminDashBoardUserFXMLController">
     <children>
-        <Button fx:id="logouBtn" layoutX="991.0" layoutY="3.0" mnemonicParsing="false" onAction="#navigateToExit" text="Exit" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="eventBtn" layoutX="980.0" mnemonicParsing="false" onAction="#navigateToEvents" text="Events" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="blogButton" layoutX="927.0" mnemonicParsing="false" onAction="#navigateToPosts" text="Posts" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="usersBtn" layoutX="883.0" mnemonicParsing="false" text="User" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="ProfileBtn" layoutX="825.0" mnemonicParsing="false" onAction="#navigateToProfile" text="Profile" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0" />
-      <TableView fx:id="userTable" layoutY="30.0" prefHeight="688.0" prefWidth="903.0">
+      <TableView fx:id="userTable" layoutX="222.0" prefHeight="637.0" prefWidth="914.0">
         <columns>
           <TableColumn prefWidth="31.197316765785217" text="ID" />
           <TableColumn prefWidth="80.1179084777832" text="USERNAME" />
@@ -24,12 +24,31 @@
             <TableColumn prefWidth="75.0" text="EXPIRED" />
             <TableColumn prefWidth="82.8218994140625" text="EXPIRES AT" />
             <TableColumn prefWidth="75.0" text="ROLES" />
-            <TableColumn prefWidth="81.257568359375" text="ADRESSE" />
+            <TableColumn prefWidth="122.611572265625" text="ADRESSE" />
         </columns>
       </TableView>
-      <Button layoutX="902.0" layoutY="498.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="181.0" text="SEND EMAIL" />
-      <Button layoutX="902.0" layoutY="462.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="181.0" text="DELETE" />
-      <Button fx:id="refreshButton" layoutX="902.0" layoutY="425.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="181.0" text="Refresh" />
-      
+      <Button fx:id="contactUser" layoutX="870.0" layoutY="645.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="181.0" style="-fx-background-color: #2980b9;" text="SEND EMAIL" textFill="WHITE" />
+      <Button fx:id="deleteSelectedUser" layoutX="592.0" layoutY="645.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="181.0" style="-fx-background-color: #c0392b;" text="DELETE" textFill="WHITE" />
+      <Button fx:id="refreshButton" layoutX="344.0" layoutY="645.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="181.0" style="-fx-background-color: #27ae60;" text="Refresh" textFill="WHITE" />
+      <Pane layoutX="2.0" layoutY="1.0" prefHeight="217.0" prefWidth="225.0" style="-fx-background-color: #C2E7F2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="855.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fill="#3e4e59" fontSmoothingType="LCD" layoutX="10.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin DashBoard">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="profileButton" layoutX="50.0" layoutY="259.0" mnemonicParsing="false" onAction="#navigateToProfile" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Profile" />
+            <Button fx:id="usersButton" layoutX="50.0" layoutY="296.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="User" />
+            <Button fx:id="blogButton" layoutX="50.0" layoutY="335.0" mnemonicParsing="false" onAction="#navigateToPosts" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Posts" />
+            <Button fx:id="eventButton" layoutX="50.0" layoutY="370.0" mnemonicParsing="false" onAction="#navigateToEvents" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Events" />
+            <Button fx:id="logoutButton" layoutX="50.0" layoutY="440.0" mnemonicParsing="false" onAction="#navigateToExit" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Logout" />
+            <Button fx:id="apiControllButton" layoutX="50.0" layoutY="403.0" mnemonicParsing="false" onAction="#navigateToApiControll" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Api Control" />
+            <ImageView fitHeight="99.0" fitWidth="142.0" layoutX="54.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/dashboardAdminLogo.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
     </children>
 </AnchorPane>

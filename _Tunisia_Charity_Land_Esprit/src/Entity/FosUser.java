@@ -13,7 +13,7 @@ public class FosUser {
     private int id;
     private String username;
     private String email;
-    private String enabled;
+    private int enabled;
     private String salt;
     private String password;
     private Date last_login;
@@ -76,11 +76,11 @@ public class FosUser {
         this.email = email;
     }
 
-    public String getEnabled() {
+    public int getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(String enabled) {
+    public void setEnabled(int enabled) {
         this.enabled = enabled;
     }
 

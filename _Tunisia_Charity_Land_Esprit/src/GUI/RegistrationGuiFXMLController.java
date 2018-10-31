@@ -19,6 +19,8 @@ import java.sql.SQLException;
 import javafx.scene.control.TextField;
 import GUI.Gui.AdminDashBordFXMLController;
 import javafx.event.ActionEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 /**
  * FXML Controller class
  *
@@ -53,6 +55,8 @@ public class RegistrationGuiFXMLController implements Initializable {
     private Button connectionButton;
     @FXML
     private Button storeButton;
+    @FXML
+    private Button forgotPassword;
     
     
     /**
@@ -159,6 +163,12 @@ public class RegistrationGuiFXMLController implements Initializable {
     private void navigateToStore(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Gui/StoreGuiFXML.fxml"));
         storeButton.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void navigateToForgotPassword(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/PasswordResetFXML.fxml"));
+        forgotPassword.getScene().setRoot(root);
     }
     
     
