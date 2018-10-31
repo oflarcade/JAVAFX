@@ -3,66 +3,46 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="701.0" prefWidth="1080.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MailConfirmationTokenFXMLController">
    <children>
-       <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="718.0" prefWidth="191.0" style="-fx-background-color: #C2E7F2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="889.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Button fx:id="homeButton" layoutX="75.0" layoutY="182.0" mnemonicParsing="false" onAction="#navigateToHome" style="-fx-background-color: transparent;" text="Home" />
-            <Button fx:id="blogButton" layoutX="81.0" layoutY="219.0" mnemonicParsing="false" onAction="#navigateToBlog" style="-fx-background-color: transparent;" text="Blog" />
-            <Button fx:id="eventButton" layoutX="76.0" layoutY="259.0" mnemonicParsing="false" onAction="#navigateToEvents" style="-fx-background-color: transparent;" text="Events" />
-            <Button fx:id="associationButton" layoutX="61.0" layoutY="309.0" mnemonicParsing="false" onAction="#navigateToAssociation" style="-fx-background-color: transparent;" text="Association" />
-            <Button fx:id="connectionButton" layoutX="52.0" layoutY="358.0" mnemonicParsing="false" onAction="#navigateToProfile" style="-fx-background-color: transparent;" text="Login/SignUp" />
-            <Button fx:id="storeButton" layoutX="73.0" layoutY="409.0" mnemonicParsing="false" onAction="#navigateToStore" style="-fx-background-color: transparent;" text="Store" />
-            <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="22.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Images/Logo.png" />
-               </image>
-            </ImageView>
-         </children>
-         <effect>
-            <DropShadow />
-         </effect>
-      </Pane>
-      <PasswordField fx:id="confirmationTokenField" alignment="CENTER" layoutX="469.0" layoutY="464.0" prefHeight="27.0" prefWidth="368.0" promptText="Confirmation Token" />
-      <ImageView fitHeight="230.0" fitWidth="230.0" layoutX="527.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="413.0" AnchorPane.leftAnchor="527.0" AnchorPane.rightAnchor="323.0" AnchorPane.topAnchor="58.0">
+      <PasswordField fx:id="confirmationTokenField" alignment="CENTER" layoutX="359.0" layoutY="464.0" prefHeight="27.0" prefWidth="368.0" promptText="Confirmation Token" />
+      <ImageView fitHeight="230.0" fitWidth="230.0" layoutX="437.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="413.0" AnchorPane.leftAnchor="437.0" AnchorPane.rightAnchor="413.0" AnchorPane.topAnchor="58.0">
          <image>
             <Image url="@../../Images/email-confirmation-logo.png" />
          </image>
       </ImageView>
-      <Text layoutX="472.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email Confirmation">
+      <Text layoutX="362.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email Confirmation !">
          <font>
             <Font size="42.0" />
          </font>
       </Text>
-      <Text layoutX="216.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We have sent email to ">
+      <Text layoutX="106.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We have sent email to ">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="emailField" alignment="CENTER" layoutX="472.0" layoutY="379.0" prefHeight="27.0" prefWidth="286.0" style="-fx-background-color: transparent;">
+      <TextField fx:id="emailField" alignment="CENTER" layoutX="362.0" layoutY="373.0" prefHeight="27.0" prefWidth="286.0" promptText="email" style="-fx-background-color: transparent;">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <Text layoutX="769.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="with a confirmation token. ">
+      <Text layoutX="659.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="with a confirmation token. ">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text layoutX="438.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kindly copy and past it in the filed below.">
+      <Text layoutX="328.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kindly copy and past it in the filed below.">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Button fx:id="activateAccount" layoutX="592.0" layoutY="534.0" mnemonicParsing="false" onAction="#checkConfirmationToken" style="-fx-background-color: #27ae60;" text="Activate Account" textFill="WHITE" />
+      <Button fx:id="activateAccount" layoutX="482.0" layoutY="534.0" mnemonicParsing="false" onAction="#checkConfirmationToken" style="-fx-background-color: #27ae60;" text="Activate Account" textFill="WHITE" />
       <Text fx:id="errorMessage" layoutX="645.0" layoutY="519.0" strokeType="OUTSIDE" strokeWidth="0.0" />
       <TextField alignment="CENTER" layoutX="469.0" layoutY="494.0" prefHeight="27.0" prefWidth="368.0" style="-fx-background-color: transparent;" />
    </children>

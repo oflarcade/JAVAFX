@@ -7,16 +7,27 @@ package GUI;
 
 import Entity.Users;
 import GUI.Gui.AdminDashBordFXMLController;
+import Service.AdminDashBoardService;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Observable;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -34,7 +45,7 @@ public class AdminDashBoardUserFXMLController implements Initializable {
    
     private Users user;
     @FXML
-    private TableView<?> userTable;
+    private TableView<Users> userTable;
     @FXML
     private Button contactUser;
     @FXML
@@ -51,6 +62,20 @@ public class AdminDashBoardUserFXMLController implements Initializable {
     private Button logoutButton;
     @FXML
     private Button apiControllButton;
+    @FXML
+    private TableColumn<Users, Integer> idColumn;
+    @FXML
+    private TableColumn<Users, String> usernameColumn;
+    @FXML
+    private TableColumn<Users, String> emailColumn;
+    @FXML
+    private TableColumn<Users, Integer> enabledColumn;
+    @FXML
+    private TableColumn<Users, Date> lastLoginColumn;
+    @FXML
+    private TableColumn<Users, Integer> lockedColumn;
+    @FXML
+    private TableColumn<Users, Date> expiredColumn;
 
     /**
      * Initializes the controller class.
@@ -64,6 +89,26 @@ public class AdminDashBoardUserFXMLController implements Initializable {
             eventButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
             apiControllButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent; ");
             logoutButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
+            
+            ArrayList<Users> usersList;
+        try {
+            AdminDashBoardService service = new AdminDashBoardService();
+            usersList = service.getAllUsersFromDatabase();
+            ObservableList observableList = FXCollections.observableList(usersList);
+            userTable.setItems(observableList);
+            idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+            usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+            emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+            enabledColumn.setCellValueFactory(new PropertyValueFactory<>("enabled"));
+            lastLoginColumn.setCellValueFactory(new PropertyValueFactory<>("last_login"));
+            //lockedColumn.setCellFactory(new PropertyValueFactory<>("locked"));
+            expiredColumn.setCellValueFactory(new PropertyValueFactory<>("credentials_expires_at"));
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminDashBoardUserFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            
     }    
     
     public void initData(Users user){
@@ -116,6 +161,29 @@ public class AdminDashBoardUserFXMLController implements Initializable {
         controller.initData(user);
         
         apiControllButton.getScene().setRoot(root);
+    }
+    
+    @FXML
+    public void refreshData(ActionEvent event) throws IOException {
+          System.out.println("hello from refresh");
+            ArrayList<Users> usersList;
+        try {
+            AdminDashBoardService service = new AdminDashBoardService();
+            usersList = service.getAllUsersFromDatabase();
+            ObservableList observableList = FXCollections.observableList(usersList);
+            userTable.setItems(observableList);
+            idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+            usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+            emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+            enabledColumn.setCellValueFactory(new PropertyValueFactory<>("enabled"));
+            lastLoginColumn.setCellValueFactory(new PropertyValueFactory<>("last_login"));
+            //lockedColumn.setCellFactory(new PropertyValueFactory<>("locked"));
+            expiredColumn.setCellValueFactory(new PropertyValueFactory<>("credentials_expires_at"));
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminDashBoardUserFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
     }
 
    

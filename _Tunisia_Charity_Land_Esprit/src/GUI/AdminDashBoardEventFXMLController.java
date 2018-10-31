@@ -5,19 +5,32 @@
  */
 package GUI;
 
+import Entity.Evenement;
 import Entity.Users;
 import GUI.Gui.AdminDashBordFXMLController;
+import Service.AdminDashBoardService;
+import Service.ServiceEvenement;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
@@ -34,7 +47,7 @@ public class AdminDashBoardEventFXMLController implements Initializable {
     private Button blogButton;
     private Button ProfileBtn;
     @FXML
-    private TableView<?> eventsTable;
+    private TableView<Evenement> eventsTable;
     @FXML
     private Button validateButton;
     @FXML
@@ -53,6 +66,22 @@ public class AdminDashBoardEventFXMLController implements Initializable {
     private Button logoutButton;
     @FXML
     private Button apiControllButton;
+    @FXML
+    private TableColumn<Evenement, Integer> idColumn;
+    @FXML
+    private TableColumn<Evenement, String> titleColumn;
+    @FXML
+    private TableColumn<Evenement, String> byColumn;
+    @FXML
+    private TableColumn<Evenement, String> descriptionColumn;
+    @FXML
+    private TableColumn<Evenement, Date> createdAt;
+    @FXML
+    private TableColumn<Evenement, String> typeColumn;
+    @FXML
+    private TableColumn<Evenement, Integer> statusColumn;
+    @FXML
+    private Pane buttonPane;
 
     /**
      * Initializes the controller class.
@@ -66,7 +95,28 @@ public class AdminDashBoardEventFXMLController implements Initializable {
             eventButton.setStyle("-fx-text-fill: #F25652;-fx-background-color: transparent;");
             apiControllButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent; ");
             logoutButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
+            
+            
     }    
+    
+    @FXML
+    public void refreshData(ActionEvent event) throws IOException {
+          System.out.println("hello from refresh");
+            ArrayList<Evenement> eventsList;
+            ServiceEvenement service = new ServiceEvenement();
+            eventsList = service.read();
+            ObservableList observableList = FXCollections.observableList(eventsList);
+            eventsTable.setItems(observableList);
+            idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+            titleColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+            byColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+            descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("enabled"));
+            createdAt.setCellValueFactory(new PropertyValueFactory<>("last_login"));
+            typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+            //lockedColumn.setCellFactory(new PropertyValueFactory<>("locked"));
+            statusColumn.setCellValueFactory(new PropertyValueFactory<>("statusColumn"));
+            
+    }
     
     
     

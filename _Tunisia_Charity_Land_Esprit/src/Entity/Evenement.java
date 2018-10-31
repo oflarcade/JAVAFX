@@ -46,6 +46,16 @@ public class Evenement {
         this.type = type;
         this.date= date; 
     }
+    
+    public Evenement(int id, String shorDescription, int delegue_id,String longDescription, Date date, Type type,int validation_status){
+        this.id=id;
+        this.shortDescription=shorDescription;
+        this.delegue_id=delegue_id;
+        this.longDescription=longDescription;
+        this.date= date;
+        this.type = type;
+        this.validation_status = validation_status;
+    }
    
     public int getId() {
         return id;

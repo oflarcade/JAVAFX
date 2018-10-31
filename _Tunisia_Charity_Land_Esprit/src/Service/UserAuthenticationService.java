@@ -12,15 +12,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.mail.internet.InternetAddress;
+
 import java.util.UUID;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.mail.internet.AddressException;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
@@ -36,7 +34,7 @@ public class UserAuthenticationService {
     PreparedStatement preparedStatement;
     public Users user;
     private boolean isUsernameValid =false;
-    private boolean isEmailValid = false;
+    
     private boolean isPasswordValid = false;
     public int count = 0;
     private String userValidateError;

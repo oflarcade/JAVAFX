@@ -44,6 +44,17 @@ public class Users extends FosUser {
         this.roles = roles;
         this.adresse = adresse;
     }
+    
+    
+    public Users(int id, String username, String email, int enabled, Date last_login, int locked, Date expires_at){
+        this.id = id;
+        this.username= username;
+        this.email = email;
+        this.enabled = enabled;
+        this.last_login = last_login;
+        this.locked = locked;
+        this.expires_at = expires_at;
+    }
 
     public int getId() {
         return id;

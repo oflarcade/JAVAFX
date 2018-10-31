@@ -7,8 +7,10 @@ package GUI;
 
 import Entity.Users;
 import GUI.Gui.AdminDashBordFXMLController;
+import Service.SendMailSSL;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.shape.Circle;
 
 /**
  * FXML Controller class
@@ -38,6 +41,10 @@ public class AdminDashBoardApiController implements Initializable {
     private Button logoutButton;
     @FXML
     private Button apiControllButton;
+    @FXML
+    private Circle mailingSignal;
+    @FXML
+    private Button mailApiTestButton;
 
     /**
      * Initializes the controller class.
@@ -53,6 +60,15 @@ public class AdminDashBoardApiController implements Initializable {
         // TODO
     }    
     
+    
+    @FXML 
+    public void testMailingAPi() throws SQLException {
+        SendMailSSL mailingService = new SendMailSSL();
+        boolean feedback = mailingService.adminApiTest();
+        if(feedback){
+            mailingSignal.setStyle("-fx-fill: #27ae60");
+        }
+    }
     
     @FXML
     public void navigateToProfile(ActionEvent event) throws IOException{

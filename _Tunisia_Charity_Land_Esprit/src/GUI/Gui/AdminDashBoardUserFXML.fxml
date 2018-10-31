@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,43 +11,45 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: #F1F0E2;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminDashBoardUserFXMLController">
+<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.AdminDashBoardUserFXMLController">
     <children>
-      <TableView fx:id="userTable" layoutX="222.0" prefHeight="637.0" prefWidth="914.0">
+      <TableView fx:id="userTable" layoutX="292.0" layoutY="40.0" maxHeight="590.0" maxWidth="800.0" prefHeight="590.0" prefWidth="703.0" AnchorPane.bottomAnchor="87.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="40.0">
         <columns>
-          <TableColumn prefWidth="31.197316765785217" text="ID" />
-          <TableColumn prefWidth="80.1179084777832" text="USERNAME" />
-            <TableColumn prefWidth="102.66305541992188" text="EMAIL" />
-            <TableColumn prefWidth="68.89045715332031" text="ENABLED" />
-            <TableColumn prefWidth="129.10958862304688" text="PASSWORD" />
-            <TableColumn prefWidth="95.8712158203125" text="LAST LOGIN" />
-            <TableColumn prefWidth="78.12875366210938" text="LOCKED" />
-            <TableColumn prefWidth="75.0" text="EXPIRED" />
-            <TableColumn prefWidth="82.8218994140625" text="EXPIRES AT" />
-            <TableColumn prefWidth="75.0" text="ROLES" />
-            <TableColumn prefWidth="122.611572265625" text="ADRESSE" />
+          <TableColumn fx:id="idColumn" prefWidth="66.32186889648438" text="ID" />
+          <TableColumn fx:id="usernameColumn" maxWidth="300.0" prefWidth="90.0" resizable="false" text="USERNAME" />
+            <TableColumn fx:id="emailColumn" prefWidth="177.79574584960938" text="EMAIL" />
+            <TableColumn fx:id="enabledColumn" prefWidth="91.4735107421875" text="ENABLED" />
+            <TableColumn fx:id="lastLoginColumn" prefWidth="97.60595703125" text="LAST LOGIN" />
+            <TableColumn fx:id="lockedColumn" prefWidth="79.37872314453125" text="LOCKED" />
+            <TableColumn fx:id="expiredColumn" prefWidth="96.60595703125" text="EXPIRED" />
         </columns>
       </TableView>
-      <Button fx:id="contactUser" layoutX="870.0" layoutY="645.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="181.0" style="-fx-background-color: #2980b9;" text="SEND EMAIL" textFill="WHITE" />
-      <Button fx:id="deleteSelectedUser" layoutX="592.0" layoutY="645.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="181.0" style="-fx-background-color: #c0392b;" text="DELETE" textFill="WHITE" />
-      <Button fx:id="refreshButton" layoutX="344.0" layoutY="645.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="181.0" style="-fx-background-color: #27ae60;" text="Refresh" textFill="WHITE" />
-      <Pane layoutX="2.0" layoutY="1.0" prefHeight="217.0" prefWidth="225.0" style="-fx-background-color: #C2E7F2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="855.0" AnchorPane.topAnchor="0.0">
+      <Button fx:id="contactUser" layoutX="870.0" layoutY="661.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="181.0" style="-fx-background-color: #2980b9;" text="SEND EMAIL" textFill="WHITE" />
+      <Button fx:id="deleteSelectedUser" layoutX="592.0" layoutY="661.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="181.0" style="-fx-background-color: #c0392b;" text="DELETE" textFill="WHITE" />
+      <Button fx:id="refreshButton" layoutX="344.0" layoutY="661.0" mnemonicParsing="false" onAction="#refreshData" prefHeight="27.0" prefWidth="181.0" style="-fx-background-color: #27ae60;" text="Refresh" textFill="WHITE" />
+      <Pane layoutX="2.0" layoutY="1.0" prefHeight="217.0" prefWidth="225.0" style="-fx-background-color: #34495e;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="855.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text fill="#3e4e59" fontSmoothingType="LCD" layoutX="10.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin DashBoard">
+            <Text fill="WHITE" fontSmoothingType="LCD" layoutX="10.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin DashBoard">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Text>
-            <Button fx:id="profileButton" layoutX="50.0" layoutY="259.0" mnemonicParsing="false" onAction="#navigateToProfile" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Profile" />
-            <Button fx:id="usersButton" layoutX="50.0" layoutY="296.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="User" />
-            <Button fx:id="blogButton" layoutX="50.0" layoutY="335.0" mnemonicParsing="false" onAction="#navigateToPosts" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Posts" />
-            <Button fx:id="eventButton" layoutX="50.0" layoutY="370.0" mnemonicParsing="false" onAction="#navigateToEvents" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Events" />
-            <Button fx:id="logoutButton" layoutX="50.0" layoutY="440.0" mnemonicParsing="false" onAction="#navigateToExit" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Logout" />
-            <Button fx:id="apiControllButton" layoutX="50.0" layoutY="403.0" mnemonicParsing="false" onAction="#navigateToApiControll" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Api Control" />
+            <Button fx:id="profileButton" layoutX="50.0" layoutY="259.0" mnemonicParsing="false" onAction="#navigateToProfile" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Profile" textFill="WHITE" />
+            <Button fx:id="usersButton" layoutX="50.0" layoutY="296.0" mnemonicParsing="false" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="User" textFill="WHITE" />
+            <Button fx:id="blogButton" layoutX="50.0" layoutY="335.0" mnemonicParsing="false" onAction="#navigateToPosts" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Posts" textFill="WHITE" />
+            <Button fx:id="eventButton" layoutX="50.0" layoutY="370.0" mnemonicParsing="false" onAction="#navigateToEvents" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Events" textFill="WHITE" />
+            <Button fx:id="logoutButton" layoutX="50.0" layoutY="440.0" mnemonicParsing="false" onAction="#navigateToExit" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Logout" textFill="WHITE" />
+            <Button fx:id="apiControllButton" layoutX="50.0" layoutY="403.0" mnemonicParsing="false" onAction="#navigateToApiControll" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="Api Control" textFill="WHITE" />
             <ImageView fitHeight="99.0" fitWidth="142.0" layoutX="54.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Images/dashboardAdminLogo.png" />
                </image>
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" color="WHITE" height="18.0" offsetX="-6.0" offsetY="-3.0" radius="10.67" width="26.68" />
+               </effect>
             </ImageView>
          </children>
       </Pane>

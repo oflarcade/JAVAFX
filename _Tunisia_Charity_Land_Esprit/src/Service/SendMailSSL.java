@@ -66,5 +66,55 @@ public class SendMailSSL {
 			throw new RuntimeException(e);
 		}
 	}
+     
+     
+     public boolean adminApiTest() throws SQLException{
+         boolean isWorking = false;
+         
+         
+                
+                
+                Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.socketFactory.port", "465");
+		props.put("mail.smtp.socketFactory.class",
+				"javax.net.ssl.SSLSocketFactory");
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.port", "465");
+
+		Session session = Session.getDefaultInstance(props,
+			new javax.mail.Authenticator() {
+                                @Override
+				protected PasswordAuthentication getPasswordAuthentication() {
+					return new PasswordAuthentication("omarlakhdhar@gmail.com","mabroukhabiba91*/");
+				}
+			});
+
+		try {
+
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("omarlakhdhar@gmail.com"));
+			message.setRecipients(Message.RecipientType.TO,
+					InternetAddress.parse("omarlakhdhar@gmail.com"));
+			message.setSubject("Admin MAILING API TEST");
+			message.setText("Admin, " +
+                                        
+					"\n\n Welcome to Tunisia Charity Land,"
+                                +" This is a simple mail api test, please refer from replying to this email"
+                                + "Best Regards,"
+                                + "You code! :)");
+
+			Transport.send(message);
+
+			isWorking = true;
+
+		} catch (MessagingException e) {
+			throw new RuntimeException(e);
+		}
+            return isWorking;
+	}
+     
+     }
     
-}
+
+

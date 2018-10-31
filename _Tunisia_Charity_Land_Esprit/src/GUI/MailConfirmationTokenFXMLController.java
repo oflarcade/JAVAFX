@@ -30,18 +30,6 @@ public class MailConfirmationTokenFXMLController implements Initializable {
     private PasswordField confirmationTokenField;
     private String email ;
     @FXML
-    private Button homeButton;
-    @FXML
-    private Button blogButton;
-    @FXML
-    private Button eventButton;
-    @FXML
-    private Button associationButton;
-    @FXML
-    private Button connectionButton;
-    @FXML
-    private Button storeButton;
-    @FXML
     private TextField emailField;
     @FXML
     private Button activateAccount;
@@ -54,13 +42,16 @@ public class MailConfirmationTokenFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        emailField.setText(email);
+        
+        
         
     }   
     
     public void initData(String email) {
         this.email  = email;
-        
+        emailField.setText(email);
+        emailField.setStyle("-fx-text-fill: greeen; -fx-background-color: transparent;");
+        System.out.println("this is the email:"+ emailField.getText());
     }
     
     /**
@@ -71,7 +62,7 @@ public class MailConfirmationTokenFXMLController implements Initializable {
     public void checkConfirmationToken(ActionEvent event) throws IOException, SQLException{
         UserAuthenticationService service  = new UserAuthenticationService();
         String userConfirmatiomToken = service.getConfirmationToken(email);
-        
+           
         if(confirmationTokenField.getText().equals(userConfirmatiomToken)){
             System.out.println("mail is confirmed !");
             System.out.println("redirect the shit to Raed profile");
@@ -85,27 +76,4 @@ public class MailConfirmationTokenFXMLController implements Initializable {
         
     }
 
-    @FXML
-    private void navigateToHome(ActionEvent event) {
-    }
-
-    @FXML
-    private void navigateToBlog(ActionEvent event) {
-    }
-
-    @FXML
-    private void navigateToEvents(ActionEvent event) {
-    }
-
-    @FXML
-    private void navigateToAssociation(ActionEvent event) {
-    }
-
-    @FXML
-    private void navigateToProfile(ActionEvent event) {
-    }
-
-    @FXML
-    private void navigateToStore(ActionEvent event) {
-    }
 }
