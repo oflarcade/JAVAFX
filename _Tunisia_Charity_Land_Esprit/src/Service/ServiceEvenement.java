@@ -187,6 +187,37 @@ public class ServiceEvenement {
         } finally{
             return tab;
         }
+        
+    }
+    public ArrayList<Evenement> read(int d) {
+        ArrayList<Evenement> tab = new ArrayList<>();
+        String req = "SELECT * FROM `evenement` where evenement.delegue_id="+d+"";
+        try {   
+            Statement ste = connection.createStatement();
+            ResultSet result = ste.executeQuery(req);
+            while (result.next()) {
+                int id = result.getInt(1);
+                int delegue_id = result.getInt(2) ;
+                String img_url = result.getString(3);
+                String localisation = result.getString(4);
+                Date date = result.getDate(5);
+                String type = result.getString(6);
+                String shortDescription = result.getString(7);
+                String longDescription = result.getString(8);
+                Date created_at = result.getDate(9);
+                Date modified_at = result.getDate(10);
+                int validation_status = result.getInt(11);
+                //in every etiration we create a new instance 
+                Evenement ev = new Evenement(id,delegue_id,img_url,localisation,date,Evenement.Type.valueOf(type),shortDescription,longDescription,validation_status);
+                ev.setCreated_at(created_at);
+                ev.setModified_at(modified_at);
+                tab.add(ev);  
+            }
+        } catch (SQLException e) {
+        } finally{
+            return tab;
+        }
+        
     }
 
     }

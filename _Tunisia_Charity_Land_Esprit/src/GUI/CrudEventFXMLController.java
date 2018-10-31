@@ -6,6 +6,7 @@
 package GUI;
  
 import Entity.Evenement;
+import Entity.Users;
 import Service.EventValidation;
 import Service.ServiceEvenement;
 import java.net.URL;
@@ -13,7 +14,10 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -24,10 +28,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-//import javafx.scene.control.ButtonType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-//import javafx.scene.control.Dialog;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.SelectionMode;
@@ -40,8 +44,10 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+
 
 /**
  * FXML Controller class
@@ -50,12 +56,7 @@ import javafx.stage.Stage;
  */
 public class CrudEventFXMLController implements Initializable {
 
-    @FXML
-    private RadioButton mineOnly;
-    @FXML
-    private ToggleGroup mineOrAll;
-    @FXML
-    private RadioButton showAll;
+    
     @FXML
     private TableView<Evenement> evnentsVIew;
     @FXML
@@ -97,18 +98,30 @@ public class CrudEventFXMLController implements Initializable {
     private TableColumn<Evenement, String> Cimage;
     @FXML
     private TableColumn<Evenement, Integer> Cvalidation;
+    @FXML
+    private Label noResult;
+    ServiceEvenement ser = new ServiceEvenement();
+    ArrayList<Evenement> Table = ser.read();
+    ArrayList<String> listOfShortDescriptions = new ArrayList();
+    String[] possibleWords={};
+    Set<String> hashSet = new HashSet();
+    RegistrationGuiFXMLController C = new RegistrationGuiFXMLController();
+    Users user = C.user;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        //
+        
+        
         //initialisation de combobox types
         type.setPromptText("choisir un type");
         type.setItems(listType);
 
         //initialisation des radio buttons
-        showAll.setSelected(true);
+        
 
         try {
             //initialisation du tableau
@@ -140,19 +153,12 @@ public class CrudEventFXMLController implements Initializable {
         
     }
 
-    @FXML
-    private void afficherMes(ActionEvent event) {
-    }
-
-    @FXML
-    private void afficherTous(ActionEvent event) {
-    }
 
     @FXML
     private void ajouterEvenement(ActionEvent event) throws SQLException {
-        if (delegue.getText() != null && img.getText() != "" && localisation.getText() != ""
+        if ( img.getText() != "" && localisation.getText() != ""
                 && Longe.getText() != "" && Short.getText() != "" && date.getValue() != null) {
-            int dId = Integer.parseInt(delegue.getText());
+            int dId = user.getId();
             String image = img.getText();
             String loc = localisation.getText();
             String longe = Longe.getText();
@@ -198,22 +204,32 @@ public class CrudEventFXMLController implements Initializable {
     @FXML
     private void UpdatImage(MouseEvent event) {
         Evenement selectedEvent = evnentsVIew.getSelectionModel().getSelectedItem();
-        Image image = new Image(selectedEvent.getImg_url());
+        if(selectedEvent != null){
+          Image image = new Image(selectedEvent.getImg_url());
 
         eventImage.setImage(image);
 
         createdAt.setText("Créé à: " + selectedEvent.getCreated_at().toString());
         modifiedAt.setText("Dernière modification à: " + selectedEvent.getModified_at().toString());
+        }
+        
 
     }
 
     public void loadTable() throws SQLException {
         ArrayList<Evenement> list = new ArrayList<>();
-
-       
-            ServiceEvenement serE = new ServiceEvenement();
+        ServiceEvenement serE = new ServiceEvenement();
             serE = new ServiceEvenement();
-            list = serE.read();
+        
+         if(user != null){
+           if(user.getRoles().equals("delegue")) {
+               list = serE.read(user.getId());
+               System.out.println(user.toString()+"===========");
+           } else {
+               list = serE.read();
+           }
+         }
+           
 //            System.out.println(list.toString());     
             ObservableList Ol = FXCollections.observableArrayList(list);
             evnentsVIew.setItems(Ol);
@@ -221,7 +237,7 @@ public class CrudEventFXMLController implements Initializable {
             brieveDescription.setCellValueFactory(new PropertyValueFactory<>("shortDescription"));
             eventLocation.setCellValueFactory(new PropertyValueFactory<>("localisation"));
             eventDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-            Cvalidation.setCellValueFactory(new PropertyValueFactory<>("validation_status"));
+            //Cvalidation.setCellValueFactory(new PropertyValueFactory<>("validation_status"));
             Cimage.setCellValueFactory(new PropertyValueFactory<>("img_url"));
       
 
@@ -292,9 +308,9 @@ public class CrudEventFXMLController implements Initializable {
                     score = score * 100 + score2;
 //                System.out.println("score :" + score);
 //                tabScore.add(score);
-                    System.out.println("score :" + score);
+//                    System.out.println("score :" + score);
                     tabScore.add(score);
-                    System.out.println(ev.toString());
+//                    System.out.println(ev.toString());
                     tamponTab.add(ev);
 //                 System.out.println(" size Tompon"+tamponTab.size());
                 }
@@ -330,15 +346,26 @@ public class CrudEventFXMLController implements Initializable {
         ArrayList<Evenement> topResults = new ArrayList<>();
         ServiceEvenement serE;
         try {
+           
             serE = new ServiceEvenement();
-            list = serE.read();
+            if(user != null){
+           if(user.getRoles().equals("delegue")) {
+               list = serE.read(user.getId());
+               System.out.println(user.toString()+"===========");
+           } else {
+               list = serE.read();
+           }
+         }
+            
             topResults = search(list, smartSearch.getText());
-            System.out.println("-----");
-            System.out.println(topResults);
+//            System.out.println("-----");
+//            System.out.println(topResults);
             //loading the table
 
-//            System.out.println(list.toString());     
-            ObservableList Ol = FXCollections.observableArrayList(topResults);
+//            System.out.println(list.toString());  
+            if(topResults.size() !=0){
+                 noResult.setText("");
+                ObservableList Ol = FXCollections.observableArrayList(topResults);
             evnentsVIew.setItems(Ol);
             eventId.setCellValueFactory(new PropertyValueFactory<>("id"));
             brieveDescription.setCellValueFactory(new PropertyValueFactory<>("shortDescription"));
@@ -346,7 +373,11 @@ public class CrudEventFXMLController implements Initializable {
             eventDate.setCellValueFactory(new PropertyValueFactory<>("date"));
             Cvalidation.setCellValueFactory(new PropertyValueFactory<>("validation_status"));
             Cimage.setCellValueFactory(new PropertyValueFactory<>("img_url"));
-
+             evnentsVIew.getSelectionModel().selectFirst();
+            }else{
+                noResult.setText("No result maches your search");
+            }
+            
         } catch (Exception e) {
 
         }
@@ -362,33 +393,6 @@ public class CrudEventFXMLController implements Initializable {
        
 
     }
-//    @FXML
-//    private void editImage(TableColumn.CellEditEvent<Evenement, String> event) {
-//        Evenement selectedEvent =  evnentsVIew.getSelectionModel().getSelectedItem();
-//         selectedEvent.setImg_url(event.getNewValue());
-//        try {
-//            ServiceEvenement s = new ServiceEvenement();
-//      
-//            s.updateImage(selectedEvent, selectedEvent.getImg_url()); //(selectedEvent,selectedEvent.getShortDescription());
-//        } catch (SQLException ex) {
-//           
-//        }
-//    }
-//  
-//  
-//    @FXML
-//    private void editValidation(TableColumn.CellEditEvent<Evenement, Integer> event) {
-//        Evenement selectedEvent =  evnentsVIew.getSelectionModel().getSelectedItem();
-//         selectedEvent.setValidation_status(event.getNewValue());  
-//        try {
-//             ServiceEvenement s = new ServiceEvenement();
-//             s.updateValidation(selectedEvent, selectedEvent.getValidation_status());
-//            
-//            
-//        } catch (SQLException ex) {
-//           
-//        }  
-//    }
     @FXML
     private void editImage(TableColumn.CellEditEvent<Evenement, String> event) throws SQLException {
 
@@ -404,8 +408,14 @@ public class CrudEventFXMLController implements Initializable {
        
     }
 
+    @FXML
+    private void SearchIsEmpty(KeyEvent event) {
+        try {
+            if(smartSearch.getText().equals("")) loadTable();
+        } catch (SQLException ex) {        
+        }
+    }
+   
     
-
-    
-
 }
+

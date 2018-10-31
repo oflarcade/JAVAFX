@@ -40,7 +40,7 @@ import javafx.stage.Stage;
 import Service.ArticleService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import service.ParticipantService;
+import Service.ParticipantService;
 
 /**
  * FXML Controller class

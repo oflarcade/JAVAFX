@@ -32,7 +32,7 @@ public class RegistrationGuiFXMLController implements Initializable {
     @FXML
     private Button loginBtn;
     private Button SignUpBtn;
-    private Users user;
+    public static Users user;
     private boolean  isSignedIn = false;
     private TextField username;
     private TextField email;

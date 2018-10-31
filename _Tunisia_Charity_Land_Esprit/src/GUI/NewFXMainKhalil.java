@@ -24,9 +24,9 @@ public class NewFXMainKhalil extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("CrudEventFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("browseEvents.fxml"));
         
-        Scene scene = new Scene(root,950,950);
+        Scene scene = new Scene(root);
         
         primaryStage.setScene(scene);
         primaryStage.setTitle("Gestion des evenement");

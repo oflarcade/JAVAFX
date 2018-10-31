@@ -1,11 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
-    
+<AnchorPane id="AnchorPane" prefHeight="717.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CrudEventFXMLController">
+   <children>
+      <HBox layoutX="212.0" prefHeight="742.0" prefWidth="868.0">
+         <children>
+            <VBox prefHeight="702.0" prefWidth="308.0">
+               <children>
+                  <Label prefHeight="90.0" prefWidth="168.0" />
+                  <Label prefHeight="106.0" prefWidth="168.0" text="     Nouveau evenemt" textFill="#21c626">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Label>
+                  <TextField fx:id="delegue" promptText="Delgue Id ">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="img" promptText="Image URL">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="localisation" promptText="Location">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="Short" promptText="breve description">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <TextField fx:id="Longe" promptText="Longe description">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </TextField>
+                  <ComboBox fx:id="type" prefWidth="150.0">
+                           
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                   
+                  </ComboBox>
+                  <DatePicker fx:id="date" prefHeight="27.0" prefWidth="211.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </DatePicker>
+                  <Button fx:id="addEvent" mnemonicParsing="false" onAction="#ajouterEvenement" prefHeight="170.0" prefWidth="265.0" text="ajouter" />
+                     
+         
+               </children>
+               <HBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox prefHeight="684.0" prefWidth="631.0">
+               <children>
+                  <HBox prefHeight="166.0" prefWidth="557.0">
+                     <children>
+                        <TextField fx:id="smartSearch" onKeyPressed="#SearchIsEmpty" prefHeight="28.0" prefWidth="615.0" promptText="Search">
+                           <HBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="130.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button fx:id="SearchButton" mnemonicParsing="false" onAction="#SearchEvents" prefHeight="27.0" prefWidth="217.0" text="Search">
+                           <HBox.margin>
+                              <Insets bottom="2.0" left="2.0" right="2.0" top="130.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Label fx:id="noResult" prefHeight="17.0" prefWidth="324.0" textFill="#ee0606">
+                     <VBox.margin>
+                        <Insets left="120.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TableView fx:id="evnentsVIew" onMouseClicked="#UpdatImage" prefHeight="522.0" prefWidth="375.0">
+                    <columns>
+                      <TableColumn fx:id="eventId" prefWidth="25.0" text="id" />
+                      <TableColumn fx:id="brieveDescription" onEditCommit="#editShortDescription" prefWidth="248.0" text="brève description" />
+                        <TableColumn fx:id="eventLocation" prefWidth="79.0" text="location" />
+                        <TableColumn fx:id="eventDate" prefWidth="87.0" text="date" />
+                        <TableColumn fx:id="Cimage" onEditCommit="#editImage" prefWidth="104.0" text="image" />
+                        <TableColumn fx:id="Cvalidation" prefWidth="69.5" text="validation" />
+                    </columns>
+                     <VBox.margin>
+                        <Insets left="8.0" right="2.0" top="20.0" />
+                     </VBox.margin>
+                     <contextMenu>
+                        <ContextMenu>
+                          <items>
+                            <MenuItem mnemonicParsing="false" onAction="#supprimerEvenement" text="SUpprimer" />
+                          </items>
+                        </ContextMenu>
+                     </contextMenu>
+                  </TableView>
+               </children>
+            </VBox>
+            <VBox prefHeight="557.0" prefWidth="201.0">
+               <children>
+                  <ImageView fx:id="eventImage" fitHeight="344.0" fitWidth="168.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets bottom="8.0" left="5.0" right="5.0" top="180.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label fx:id="createdAt" prefHeight="111.0" prefWidth="198.0" text="      Date de creation" />
+                  <Label fx:id="modifiedAt" prefHeight="123.0" prefWidth="198.0" text="    Dernière modification" />
+               </children>
+               <HBox.margin>
+                  <Insets bottom="30.0" left="5.0" right="5.0" top="30.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
 </AnchorPane>

@@ -3,18 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service;
+package Service;
 
+import Entity.Evenement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import Entity.Participant;
+import Entity.Users;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.Statement;
 import Utils.DataSource;
+import javax.xml.registry.infomodel.User;
 
 /**
  *
@@ -107,5 +110,23 @@ public class ParticipantService {
          }
          //System.out.println("False");
          return false ;
+       }
+       public void add(int id_user,int id_ev) throws SQLException{
+           
+
+        String query = "INSERT INTO `esprit`.`participant` (`event_id`, `user_id`, `due_date`)"
+                   + " VALUES (?, ?, CURRENT_TIME());";
+        PreparedStatement preStatement;
+        try {
+            preStatement = connection.prepareStatement(query);
+
+            preStatement.setInt(1, id_ev);
+            preStatement.setInt(2,id_user);
+            
+            preStatement.executeUpdate();
+            System.out.println("add method was called successfully");
+        } catch (SQLException e) {
+            System.out.println(e);
+       }
        }
 }

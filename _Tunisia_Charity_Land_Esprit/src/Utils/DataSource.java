@@ -18,7 +18,7 @@ public class DataSource {
     private Connection connection;
     private String urlString = "jdbc:mysql://localhost:3306/esprit";
     private String username = "root";
-    private String password = "";
+    private String password = "mysql";
 
     private DataSource() throws SQLException {
         try {
