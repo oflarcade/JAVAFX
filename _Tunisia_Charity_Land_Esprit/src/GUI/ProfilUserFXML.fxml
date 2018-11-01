@@ -53,7 +53,6 @@
          </children>
       </AnchorPane>
       <AnchorPane layoutY="80.0" prefHeight="382.0" prefWidth="609.0" visible="false" />
-      <AnchorPane layoutY="80.0" prefHeight="382.0" prefWidth="609.0" visible="false" />
       <AnchorPane fx:id="profil" layoutY="80.0" prefHeight="382.0" prefWidth="609.0" style="-fx-background-color: #3E4E59;">
          <children>
             <Label layoutX="53.0" layoutY="30.0" text="A propos de vous :" textFill="WHITE">
@@ -121,6 +120,33 @@
                   <TableColumn fx:id="ctitle" prefWidth="112.0" text="Title" />
                   <TableColumn fx:id="ccontent" prefWidth="87.0" text="Content" />
                   <TableColumn fx:id="cimage" prefWidth="133.0" text="Imgurl" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+      <AnchorPane fx:id="order" layoutY="80.0" prefHeight="382.0" prefWidth="609.0" style="-fx-background-color: #3D4956;" visible="false">
+         <children>
+            <Button fx:id="buttsupporder" layoutX="528.0" layoutY="274.0" mnemonicParsing="false" onAction="#supporder" text="Supprimer" />
+            <TextField layoutX="360.0" layoutY="274.0" />
+            <Label layoutX="39.0" layoutY="278.0" text="Quantité" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textmodorder" layoutX="133.0" layoutY="274.0" />
+            <Button fx:id="modorder" layoutX="182.0" layoutY="317.0" mnemonicParsing="false" onAction="#modifierorder" text="Modifier" />
+            <Label layoutX="514.0" layoutY="321.0" text="Rechercher" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textrechorder" layoutX="360.0" layoutY="320.0" onKeyReleased="#rechercheorder" />
+            <TableView fx:id="tableorder" layoutX="16.0" layoutY="11.0" prefHeight="244.0" prefWidth="574.0">
+              <columns>
+                <TableColumn fx:id="cprodi" prefWidth="121.0" text="Prod ID" />
+                <TableColumn fx:id="cuseridorder" prefWidth="98.0" text="ID" />
+                  <TableColumn fx:id="cquantite" prefWidth="118.0" text="Quantité" />
+                  <TableColumn fx:id="cprix" prefWidth="112.0" text="Prix" />
+                  <TableColumn fx:id="cproductowner" prefWidth="124.0" text="Product Owner" />
               </columns>
             </TableView>
          </children></AnchorPane>

@@ -6,6 +6,7 @@
 package GUI;
 
 import Entity.Article;
+import Entity.Order;
 import Entity.Participant;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,6 +41,7 @@ import javafx.stage.Stage;
 import Service.ArticleService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import service.OrderService;
 import Service.ParticipantService;
 
 /**
@@ -53,18 +55,11 @@ public class ProfilUserFXMLController implements Initializable {
     private TextField textusernameuser;
     @FXML
     private TextField textemailuser;
-    @FXML
     private TextField textnomuser;
-    @FXML
     private TextField textprenomuser;
     @FXML
     private Button enregistreruser;        
-    //ProfileService profileService = new ProfileService();
-//    Profile profil = profileService.getByUserId(ServiceUser.userStatic.getId());
-    
-    
-    //User a = serv.getUserById(ServiceUser.userStatic.getId());
-    //User b = new User (555,"pipo","sarko",1,"raed","djdjd","jbhjbd","admin",null,"999","550cc");
+  
     String lienFacebook;
     String telephone;
     String description;
@@ -74,8 +69,6 @@ public class ProfilUserFXMLController implements Initializable {
     private ImageView buttuser;
     @FXML
     private ImageView buttuser1;
-    @FXML
-    private ImageView buttuser2;
     @FXML
     private ImageView buttevents;
     @FXML
@@ -120,19 +113,65 @@ public class ProfilUserFXMLController implements Initializable {
     private Button supprimerart;
       @FXML
     private TextField textsuppart; 
+    @FXML
+    private TextField textpassuser;
+    @FXML
+    private TextField textadresseuserr;
+    @FXML
+    private TextField textmod;
+    @FXML
+    private Button modbutton;
+    @FXML
+    private TextField rechart;
+    @FXML
+    private ImageView buttorder;
+    @FXML
+    private AnchorPane order;
+    @FXML
+    private TextField textmodorder;
+    @FXML
+    private TextField textsupporder;
+    @FXML
+    private Button buttsupporder;
+    @FXML
+    private Button modorder;
+    @FXML
+    private TextField textrechorder;
+    @FXML
+    private TableView<Order> tableorder;
+    @FXML
+    private TableColumn<Order, Integer> cprodi;
+    @FXML
+    private TableColumn<Order, Integer> cquantite;
+    @FXML
+    private TableColumn<Order, Integer> cprix;
+    @FXML
+    private TableColumn<Order, Integer> cproductowner;
+    @FXML
+    private TableColumn<Order, Integer> cuseridorder;
+    @FXML
+    private Label laberr;
  
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       // textusernameuser.setText(capitalizeFirstLetter(ServiceUser.userStatic.getUsername()) );
-       // textnomuser.setText(capitalizeFirstLetter(ServiceUser.userStatic.getNom()));
-       // textprenomuser.setText(capitalizeFirstLetter(ServiceUser.userStatic.getPrenom()));
-       // textemailuser.setText(ServiceUser.userStatic.getEmail());
+/*          FXMLLoader fxmlLoader = new FXMLLoader();
+try {
+    fxmlLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml").openStream());
+    RegistrationGuiFXMLController controller = fxmlLoader.getController();
+    // Or use this to find your label
+    TextField mytextfield = (TextField) fxmlLoader.getNamespace().get("login_username");
+     TextField mytextfield1 = (TextField) fxmlLoader.getNamespace().get("login_pass");
+     String a = mytextfield.getText();
+     String b = mytextfield1.getText();
+} catch (IOException e) {
+    e.printStackTrace();
+}*/
          textusernameuser.setText("bb" );
-        textnomuser.setText("aa");
-        textprenomuser.setText("sss");
+        textpassuser.setText("aa");
+        textadresseuserr.setText("sss");
         textemailuser.setText("ddd");
          ParticipantService pa = null;
         try {
@@ -207,7 +246,7 @@ public class ProfilUserFXMLController implements Initializable {
        // b.setPrenom(textprenomuser.getText());
        // b.setEmail(textemailuser.getText());
         //serv.modifierUser(b);
-        System.out.println("Modifié");
+        System.out.println("ModifiÈ");
     }catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -227,25 +266,22 @@ public class ProfilUserFXMLController implements Initializable {
             profil.setVisible(true);
             events.setVisible(false);
            blog.setVisible(false);
+           order.setVisible(false);
             
       
         }else if (event.getTarget()== buttevents){
            profil.setVisible(false);
             events.setVisible(true);
             blog.setVisible(false);
+            order.setVisible(false);
         }else if(event.getTarget()== buttblog){
            profil.setVisible(false);
             events.setVisible(false);
             blog.setVisible(true);
+            order.setVisible(false);
              ArticleService as = new ArticleService();
         ArrayList<Article> asl = new ArrayList();
-        // User b = new User (555,"pipo","sarko",1,"raed","djdjd","jbhjbd","admin",null,"999","550cc");
-      //  try {
-          //  part = (ArrayList<Participant>) pa.getByUserID(ServiceUser.userStatic.getId());
-           asl = (ArrayList <Article>) as.getByUserID(1);
-      // } catch (SQLException ex) {
-        //    Logger.getLogger(MyeventsUserFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-     //  }
+           asl = (ArrayList <Article>) as.getByUserID(12);
          ObservableList obs = FXCollections.observableArrayList(asl);
             tableviewart.setItems(obs);
             cid.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -255,15 +291,32 @@ public class ProfilUserFXMLController implements Initializable {
             ccontent.setCellValueFactory(new PropertyValueFactory<>("contenu"));
             cimage.setCellValueFactory(new PropertyValueFactory<>("image_url"));
         }
+        else if (event.getTarget() ==buttorder){
+             profil.setVisible(false);
+            events.setVisible(false);
+            blog.setVisible(false);
+            order.setVisible(true);
+             OrderService as = new OrderService();
+        ArrayList<Order> asl = new ArrayList();
+           asl = (ArrayList <Order>) as.getByUserID(1);
+         ObservableList obs = FXCollections.observableArrayList(asl);
+            tableorder.setItems(obs);
+            cprodi.setCellValueFactory(new PropertyValueFactory<>("productid"));
+            cuseridorder.setCellValueFactory(new PropertyValueFactory<>("userid"));
+            cquantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
+            cprix.setCellValueFactory(new PropertyValueFactory<>("prix"));
+            cproductowner.setCellValueFactory(new PropertyValueFactory<>("productowner"));
+            
+        }
     }
     @FXML
      private void supprimerPart(ActionEvent event) throws SQLException, IOException{
             ParticipantService or = new ParticipantService();
             int a = Integer.parseInt(textsupp.getText());
      
-       boolean b=or.rech(a);
+       boolean b=or.rech(a,1);
        if (b==true){
-           or.suppPart(a);
+           or.suppPart(a,1);
              try{
         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("DialogFXML.fxml"));
        Parent root = (Parent) fxmlloader.load();
@@ -276,16 +329,10 @@ public class ProfilUserFXMLController implements Initializable {
 
                }}
        else 
-           warning.setText("ID erroné");
+           warning.setText("ID erronÈ");
         ParticipantService pa = new ParticipantService();
         ArrayList<Participant> part = new ArrayList();
-     //   User c = new User (555,"pipo","sarko",1,"raed","djdjd","jbhjbd","admin",null,"999","550cc");
-      //  try {
-          //  part = (ArrayList<Participant>) pa.getByUserID(ServiceUser.userStatic.getId());
            part =  (ArrayList<Participant>) pa.getByUserID(1);
-      // } catch (SQLException ex) {
-        //    Logger.getLogger(MyeventsUserFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-     //  }
          ObservableList obs = FXCollections.observableArrayList(part);
             tableviewuser.setItems(obs);
             cdate.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -301,17 +348,13 @@ public class ProfilUserFXMLController implements Initializable {
        private void rechercheavancee(KeyEvent event) throws SQLException {
             
         String x=textrech.getText();
-        String y="'%"+x+"%'";
-        System.out.println(y);
+       // String y="'%"+x+"%'";
+        int a = Integer.parseInt(x);
+        //System.out.println(y);
         ParticipantService pa = new ParticipantService();
         ArrayList<Participant> part = new ArrayList();
-         //User b = new User (555,"pipo","sarko",1,"raed","djdjd","jbhjbd","admin",null,"999","550cc");
-      //  try {
-          //  part = (ArrayList<Participant>) pa.getByUserID(ServiceUser.userStatic.getId());
-           part = pa.rechercherPart(555);
-      // } catch (SQLException ex) {
-        //    Logger.getLogger(MyeventsUserFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-     //  }
+        part =  (ArrayList<Participant>) pa.getByUserID(1);
+           part = pa.rechercherPart(a,1);
          ObservableList obs = FXCollections.observableArrayList(part);
             tableviewuser.setItems(obs);
             cdate.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -324,7 +367,119 @@ public class ProfilUserFXMLController implements Initializable {
     private void supprimerArt(ActionEvent event) throws SQLException, IOException{
             ArticleService or = new ArticleService();
             int a = Integer.parseInt(textsuppart.getText());
-       or.suppArticle(a);
+       or.suppArticle(12,a);
+        ArticleService as = new ArticleService();
+        ArrayList<Article> asl = new ArrayList();
+           asl = (ArrayList <Article>) as.getByUserID(12);
+         ObservableList obs = FXCollections.observableArrayList(asl);
+            tableviewart.setItems(obs);
+            cid.setCellValueFactory(new PropertyValueFactory<>("id"));
+            cauthorid.setCellValueFactory(new PropertyValueFactory<>("id_auteur"));
+            cdateart.setCellValueFactory(new PropertyValueFactory<>("date_creation"));
+            ctitle.setCellValueFactory(new PropertyValueFactory<>("titre"));
+            ccontent.setCellValueFactory(new PropertyValueFactory<>("contenu"));
+            cimage.setCellValueFactory(new PropertyValueFactory<>("image_url"));
     }    
+
+    @FXML
+    private void modtitre(ActionEvent event) throws SQLException, IOException {
+        ArticleService or = new ArticleService ();
+        String b = textmod.getText();
+        int a = Integer.parseInt(textsuppart.getText());
+        or.modArticle(b, a);
+         ArticleService as = new ArticleService();
+        ArrayList<Article> asl = new ArrayList();
+           asl = (ArrayList <Article>) as.getByUserID(12);
+         ObservableList obs = FXCollections.observableArrayList(asl);
+            tableviewart.setItems(obs);
+            cid.setCellValueFactory(new PropertyValueFactory<>("id"));
+            cauthorid.setCellValueFactory(new PropertyValueFactory<>("id_auteur"));
+            cdateart.setCellValueFactory(new PropertyValueFactory<>("date_creation"));
+            ctitle.setCellValueFactory(new PropertyValueFactory<>("titre"));
+            ccontent.setCellValueFactory(new PropertyValueFactory<>("contenu"));
+            cimage.setCellValueFactory(new PropertyValueFactory<>("image_url"));
+        
+    }
+
+    @FXML
+    private void rechercheart(KeyEvent event) throws SQLException {
+          String x=rechart.getText();
+        String y="'%"+x+"%'";
+        //System.out.println(y);
+        ArticleService as = new ArticleService();
+        ArrayList<Article> part = new ArrayList();
+        part =  (ArrayList<Article>) as.getByUserID(12);
+           part = as.rechercherArt(y,12);
+         ObservableList obs = FXCollections.observableArrayList(part);
+            tableviewart.setItems(obs);
+            cid.setCellValueFactory(new PropertyValueFactory<>("id"));
+            cauthorid.setCellValueFactory(new PropertyValueFactory<>("id_auteur"));
+            cdateart.setCellValueFactory(new PropertyValueFactory<>("date_creation"));
+            ctitle.setCellValueFactory(new PropertyValueFactory<>("titre"));
+            ccontent.setCellValueFactory(new PropertyValueFactory<>("contenu"));
+            cimage.setCellValueFactory(new PropertyValueFactory<>("image_url"));
+    }
+
+    @FXML
+    private void supporder(ActionEvent event) throws SQLException {
+         OrderService or = new OrderService();
+            int a = Integer.parseInt(textsupporder.getText());
+       or.suppOrder(a,1);
+        OrderService as = new OrderService();
+        ArrayList<Order> asl = new ArrayList();
+           asl = (ArrayList <Order>) as.getByUserID(1);
+         ObservableList obs = FXCollections.observableArrayList(asl);
+            tableorder.setItems(obs);
+            cprodi.setCellValueFactory(new PropertyValueFactory<>("productid"));
+            cuseridorder.setCellValueFactory(new PropertyValueFactory<>("userid"));
+            cquantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
+            cprix.setCellValueFactory(new PropertyValueFactory<>("prix"));
+            cproductowner.setCellValueFactory(new PropertyValueFactory<>("productowner"));
+           
+    }
+
+    @FXML
+    private void modifierorder(ActionEvent event) throws SQLException {
+         OrderService or = new OrderService ();
+        int b = Integer.parseInt (textmodorder.getText());
+        int a = Integer.parseInt(textsupporder.getText());
+        or.modOrder(b, a,1);
+         OrderService as = new OrderService();
+        ArrayList<Order> asl = new ArrayList();
+           asl = (ArrayList <Order>) as.getByUserID(1);
+         ObservableList obs = FXCollections.observableArrayList(asl);
+            tableorder.setItems(obs);
+            cprodi.setCellValueFactory(new PropertyValueFactory<>("productid"));
+            cuseridorder.setCellValueFactory(new PropertyValueFactory<>("userid"));
+            cquantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
+            cprix.setCellValueFactory(new PropertyValueFactory<>("prix"));
+            cproductowner.setCellValueFactory(new PropertyValueFactory<>("productowner"));
+        
+    }
+
+    @FXML
+    private void rechercheorder(KeyEvent event) throws SQLException ,IOException {
+     String x=textrechorder.getText();
+     
+     if (x !=""){
+     int a = Integer.parseInt(x);
+      
+        OrderService as = new OrderService();
+        ArrayList<Order> part = new ArrayList();
+        part =  (ArrayList<Order>) as.getByUserID(1);
+           part = as.rechercherOrder(1,a);   
+       
+        
+         ObservableList obs = FXCollections.observableArrayList(part);
+            tableorder.setItems(obs);
+            cprodi.setCellValueFactory(new PropertyValueFactory<>("productid"));
+            cuseridorder.setCellValueFactory(new PropertyValueFactory<>("userid"));
+            cquantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
+            cprix.setCellValueFactory(new PropertyValueFactory<>("prix"));
+            cproductowner.setCellValueFactory(new PropertyValueFactory<>("productowner"));
+     }else if (x == ""){
+         laberr.setText("Inserer Prod ID !!");
+     }
+    }
     
 }
