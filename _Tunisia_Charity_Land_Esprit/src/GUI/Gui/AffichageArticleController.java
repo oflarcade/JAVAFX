@@ -7,6 +7,7 @@ package GUI.Gui;
 
 import Entity.Article;
 import Service.ServiceArticle;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,7 +16,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -271,12 +274,16 @@ public class AffichageArticleController implements Initializable {
     }
 
     @FXML
-    private void navigateToEvents(ActionEvent event) {
+    private void navigateToEvents(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("browseEvents.fxml"));
+        
+        //Scene scene = new Scene(root);
+        blogButton1.getScene().setRoot(root);
     }
 
-    @FXML
+   /* @FXML
     private void navigateToAssociation(ActionEvent event) {
-    }
+    }*/
 
     @FXML
     private void navigateToProfile(ActionEvent event) {
@@ -391,6 +398,10 @@ public class AffichageArticleController implements Initializable {
             return tamponTab;
         }
         return new ArrayList<Article>();
+    }
+
+    @FXML
+    private void navigateToAssociation(ActionEvent event) {
     }
    
 }

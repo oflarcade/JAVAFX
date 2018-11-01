@@ -124,12 +124,30 @@
                   <Image url="@../../../../../../../Users/Asus/Downloads/a13df6e4-88a2-4c6f-9d26-d1553bf66034.png" />
                </image>
             </ImageView>
-            <Button fx:id="homeButton1" mnemonicParsing="false" onAction="#navigateToHome" prefHeight="77.0" prefWidth="228.0" style="-fx-background-color: transparent;" text="Home" textFill="#3e4e59" />
-            <Button fx:id="blogButton1" mnemonicParsing="false" onAction="#navigateToBlog" prefHeight="77.0" prefWidth="234.0" style="-fx-background-color: transparent;" text="Blog" textFill="#3e4e59" />
-            <Button fx:id="eventButton1" mnemonicParsing="false" onAction="#navigateToEvents" prefHeight="77.0" prefWidth="233.0" style="-fx-background-color: transparent;" text="Events" textFill="#3e4e59" />
-            <Button fx:id="associationButton1" mnemonicParsing="false" onAction="#navigateToAssociation" prefHeight="77.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Association" textFill="#3e4e59" />
-            <Button fx:id="connectionButton1" mnemonicParsing="false" onAction="#navigateToProfile" prefHeight="77.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Login/SignUp" textFill="#3e4e59" />
-            <Button fx:id="storeButton1" mnemonicParsing="false" onAction="#navigateToStore" prefHeight="77.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Store" textFill="#3e4e59" />
+            <Button fx:id="homeButton1" mnemonicParsing="false" onAction="#navigateToHome" prefHeight="77.0" prefWidth="228.0" style="-fx-background-color: transparent;" text="Home" textFill="#3e4e59">
+               <font>
+                  <Font name="Arial Narrow Bold" size="26.0" />
+               </font></Button>
+            <Button fx:id="blogButton1" mnemonicParsing="false" onAction="#navigateToBlog" prefHeight="77.0" prefWidth="234.0" style="-fx-background-color: transparent;" text="Blog" textFill="#3e4e59">
+               <font>
+                  <Font name="Arial Narrow Bold" size="26.0" />
+               </font></Button>
+            <Button fx:id="eventButton1" mnemonicParsing="false" onAction="#navigateToEvents" prefHeight="77.0" prefWidth="233.0" style="-fx-background-color: transparent;" text="Events" textFill="#3e4e59">
+               <font>
+                  <Font name="Arial Narrow Bold" size="26.0" />
+               </font></Button>
+            <Button fx:id="associationButton1" mnemonicParsing="false" onAction="#navigateToAssociation" prefHeight="77.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Association" textFill="#3e4e59">
+               <font>
+                  <Font name="Arial Narrow Bold" size="26.0" />
+               </font></Button>
+            <Button fx:id="connectionButton1" mnemonicParsing="false" onAction="#navigateToProfile" prefHeight="77.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Login/SignUp" textFill="#3e4e59">
+               <font>
+                  <Font name="Arial Narrow Bold" size="26.0" />
+               </font></Button>
+            <Button fx:id="storeButton1" mnemonicParsing="false" onAction="#navigateToStore" prefHeight="77.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Store" textFill="#3e4e59">
+               <font>
+                  <Font name="Arial Narrow Bold" size="26.0" />
+               </font></Button>
          </children>
       </VBox>
    </children>

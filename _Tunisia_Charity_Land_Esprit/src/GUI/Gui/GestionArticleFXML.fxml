@@ -103,7 +103,7 @@
                               <Insets top="15.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="addArticleBT" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="200.0" style="-fx-background-color: #3e4e59;" text="ajouter article" textAlignment="CENTER" textFill="#d9bb93">
+                        <Button fx:id="addArticleBT" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#navArticleAdd" prefHeight="34.0" prefWidth="200.0" style="-fx-background-color: #3e4e59;" text="ajouter article" textAlignment="CENTER" textFill="#d9bb93">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>

@@ -131,7 +131,8 @@ public class GestionArticleFXMLController implements Initializable {
             tv_contenu.setCellValueFactory(new PropertyValueFactory<>("contenu"));
             tv_image.setCellValueFactory(new PropertyValueFactory<>("image_url"));
         }
-    @FXML
+    
+     @FXML
     private void modifierTitre(TableColumn.CellEditEvent<Article, String> event) {
           Article  articleSelectionne = ga_tv.getSelectionModel().getSelectedItem();
         articleSelectionne.setTitre(event.getNewValue());
@@ -142,7 +143,8 @@ public class GestionArticleFXMLController implements Initializable {
             Logger.getLogger(GestionArticleFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    @FXML
+    
+     @FXML
     private void modifierContenu(TableColumn.CellEditEvent<Article, String> event) {
         Article  articleSelectionne = ga_tv.getSelectionModel().getSelectedItem();
         articleSelectionne.setContenu(event.getNewValue());
@@ -153,7 +155,8 @@ public class GestionArticleFXMLController implements Initializable {
             Logger.getLogger(GestionArticleFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    @FXML
+    
+     @FXML
     private void modifierImage(TableColumn.CellEditEvent<Article, String> event) {
         Article  articleSelectionne = ga_tv.getSelectionModel().getSelectedItem();
         articleSelectionne.setImage_url(event.getNewValue());
@@ -170,11 +173,20 @@ public class GestionArticleFXMLController implements Initializable {
     }
 
     @FXML
-    private void navigateToBlog(ActionEvent event) {
+    private void navigateToBlog(ActionEvent event) throws IOException {
+        
+                   Parent root = FXMLLoader.load(getClass().getResource("Gui/AfficherArticle.fxml"));
+        
+        //Scene scene = new Scene(root);
+        blogButton.getScene().setRoot(root);
     }
 
     @FXML
-    private void navigateToEvents(ActionEvent event) {
+    private void navigateToEvents(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("Gui/browseEvents.fxml"));
+        
+        //Scene scene = new Scene(root);
+        blogButton.getScene().setRoot(root);
     }
 
     @FXML
@@ -318,6 +330,17 @@ public class GestionArticleFXMLController implements Initializable {
             return tamponTab;
         }
         return new ArrayList<Article>();
+    }
+
+   
+   
+
+    @FXML
+    private void navArticleAdd(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("Gui/ArticleAddFXML.fxml"));
+        
+        //Scene scene = new Scene(root);
+        addArticleBT.getScene().setRoot(root);
     }
     
     
