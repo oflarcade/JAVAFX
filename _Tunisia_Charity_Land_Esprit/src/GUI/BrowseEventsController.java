@@ -46,6 +46,9 @@ import javafx.scene.layout.AnchorPane;
 import service.ParticipantService;
 import com.lynden.gmapsfx.javascript.object.InfoWindow;
 import com.lynden.gmapsfx.javascript.object.InfoWindowOptions;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
 
 /**
@@ -144,13 +147,13 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
     @FXML
     private Button eventBtn;
     @FXML
-    private Button assoBtn;
-    @FXML
     private Button cnxBtn;
     RegistrationGuiFXMLController C = new RegistrationGuiFXMLController();
     Users user = C.user;
     //tableau des localisation
     public ArrayList<LatLong> tabLatLong = new ArrayList();
+    @FXML
+    private Button storBttn;
 
     /**
      * Initializes the controller class.
@@ -159,12 +162,14 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
     public void initialize(URL url, ResourceBundle rb) {
         // Init images
         initImages(lisOfEvent);
-
+        System.out.println(lisOfEvent);
         mapView.addMapInializedListener(this);
         address.bind(addressTextField.textProperty());
 
         if (user == null) {
-            isInternaute();
+            isInternaute();            
+        }else {
+            cnxBtn.setText("Profil");
         }
 
     }
@@ -941,13 +946,7 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
         }
     }
 
-    @FXML
-    private void navigateBlog(ActionEvent event) {
-    }
-
-    @FXML
-    private void navigateConnexion(ActionEvent event) {
-    }
+   
 
     @FXML
     private void centerMap1(MouseEvent event) {
@@ -1129,6 +1128,37 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
                 fredWilkeInfoWindow.open(map, joeSmithMarker);
             }
         });
+    }
+     @FXML
+    private void navigateBlog(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/AffichageArticle.fxml"));
+            blogBtn.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void navigateConnexion(ActionEvent event) throws IOException {
+        if(user == null){
+            Parent root = FXMLLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml"));
+            cnxBtn.getScene().setRoot(root);
+        }else{
+            Parent root = FXMLLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml"));
+            cnxBtn.getScene().setRoot(root);
+            cnxBtn.setText("Profil");
+        }
+        
+    }
+    @FXML
+    private void navigatHome(ActionEvent event) throws IOException {
+           Parent root = FXMLLoader.load(getClass().getResource("Gui/FXML.fxml"));
+            homrBtn.getScene().setRoot(root);
+    }
+
+   
+
+    @FXML
+    private void navigatsStore(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("Gui/store.fxml"));
+            storBttn.getScene().setRoot(root);
     }
 
 }

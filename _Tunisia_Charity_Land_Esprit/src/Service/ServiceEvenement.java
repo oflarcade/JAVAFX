@@ -184,6 +184,7 @@ public class ServiceEvenement {
                 tab.add(ev);  
             }
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
         } finally{
             return tab;
         }

@@ -16,12 +16,11 @@
    <children>
       <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="718.0" prefWidth="191.0" style="-fx-background-color: #C2E7F2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="889.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="homrBtn" layoutX="75.0" layoutY="182.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Home" />
+            <Button fx:id="homrBtn" layoutX="75.0" layoutY="182.0" mnemonicParsing="false" onAction="#navigatHome" style="-fx-background-color: transparent;" text="Home" />
             <Button fx:id="blogBtn" layoutX="81.0" layoutY="219.0" mnemonicParsing="false" onAction="#navigateBlog" style="-fx-background-color: transparent;" text="Blog" />
-            <Button fx:id="eventBtn" layoutX="76.0" layoutY="259.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Events" />
-            <Button fx:id="assoBtn" layoutX="61.0" layoutY="309.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Association" />
-            <Button fx:id="cnxBtn" layoutX="52.0" layoutY="358.0" mnemonicParsing="false" onAction="#navigateConnexion" style="-fx-background-color: transparent;" text="authentication" />
-            <Button layoutX="73.0" layoutY="409.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Store" />
+            <Button fx:id="eventBtn" layoutX="76.0" layoutY="259.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Events" textFill="#eb0505" />
+            <Button fx:id="cnxBtn" layoutX="56.0" layoutY="304.0" mnemonicParsing="false" onAction="#navigateConnexion" style="-fx-background-color: transparent;" text="Login/Signup" />
+            <Button fx:id="storBttn" layoutX="80.0" layoutY="345.0" mnemonicParsing="false" onAction="#navigatsStore" style="-fx-background-color: transparent;" text="Store" />
          </children>
       </Pane>
       <Button fx:id="next" layoutX="600.0" layoutY="465.0" mnemonicParsing="false" onAction="#goToNext" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: #3E4E59;" text="Next" textFill="WHITE" />
