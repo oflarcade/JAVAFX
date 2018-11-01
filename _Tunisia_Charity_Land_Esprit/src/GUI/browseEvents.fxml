@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: #F1F0E2;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BrowseEventsController">
    <children>
@@ -49,7 +50,10 @@
                   <Label fx:id="short1" prefHeight="24.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                   <Label fx:id="date1" prefHeight="24.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -66,7 +70,10 @@
                   <Label fx:id="short4" prefHeight="17.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                   <Label fx:id="date4" prefHeight="17.0" prefWidth="254.0">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -90,7 +97,10 @@
                   <Label fx:id="short2" prefHeight="24.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                   <Label fx:id="date2" prefHeight="24.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -107,7 +117,10 @@
                   <Label fx:id="short5" prefHeight="17.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                   <Label fx:id="date5" prefHeight="17.0" prefWidth="254.0">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -131,7 +144,10 @@
                   <Label fx:id="short3" prefHeight="24.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                   <Label fx:id="date3" prefHeight="24.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
@@ -148,7 +164,10 @@
                   <Label fx:id="short6" prefHeight="17.0" prefWidth="250.0">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-                     </VBox.margin></Label>
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font></Label>
                   <Label fx:id="date6" prefHeight="17.0" prefWidth="254.0">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />

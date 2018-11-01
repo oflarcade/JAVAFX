@@ -38,7 +38,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -183,12 +183,10 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
             LatLong latLong = null;
 
             if (status == GeocoderStatus.ZERO_RESULTS) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
-                alert.show();
+                
                 return;
             } else if (results.length > 1) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
-                alert.show();
+               
                 latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
             } else {
                 latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
@@ -226,12 +224,10 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
         geocodingService.geocode(address, (GeocodingResult[] results, GeocoderStatus status) -> {
             LatLong latLong = null;
             if (status == GeocoderStatus.ZERO_RESULTS) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
-                alert.show();
+                
                 return;
             } else if (results.length > 1) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
-                alert.show();
+               
                 latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
                 MarkerOptions markerOptions1 = new MarkerOptions();
                 markerOptions1.position(latLong);
@@ -967,12 +963,10 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
         geocodingService.geocode(e.getLocalisation(), (GeocodingResult[] results, GeocoderStatus status) -> {
             LatLong latLong = null;
             if (status == GeocoderStatus.ZERO_RESULTS) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
-                alert.show();
+                
                 return;
             } else if (results.length > 1) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
-                alert.show();
+                
                 latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
             
             } else {
@@ -1000,12 +994,10 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
         geocodingService.geocode(e.getLocalisation(), (GeocodingResult[] results, GeocoderStatus status) -> {
             LatLong latLong = null;
             if (status == GeocoderStatus.ZERO_RESULTS) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
-                alert.show();
+                
                 return;
             } else if (results.length > 1) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
-                alert.show();
+               
                 latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
             
             } else {
@@ -1032,12 +1024,10 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
         geocodingService.geocode(e.getLocalisation(), (GeocodingResult[] results, GeocoderStatus status) -> {
             LatLong latLong = null;
             if (status == GeocoderStatus.ZERO_RESULTS) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
-                alert.show();
+               
                 return;
             } else if (results.length > 1) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
-                alert.show();
+                
                 latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
             
             } else {
@@ -1064,12 +1054,10 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
         geocodingService.geocode(e.getLocalisation(), (GeocodingResult[] results, GeocoderStatus status) -> {
             LatLong latLong = null;
             if (status == GeocoderStatus.ZERO_RESULTS) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
-                alert.show();
+                
                 return;
             } else if (results.length > 1) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
-                alert.show();
+                
                 latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
             
             } else {
@@ -1096,12 +1084,10 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
         geocodingService.geocode(e.getLocalisation(), (GeocodingResult[] results, GeocoderStatus status) -> {
             LatLong latLong = null;
             if (status == GeocoderStatus.ZERO_RESULTS) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
-                alert.show();
+               
                 return;
             } else if (results.length > 1) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
-                alert.show();
+               
                 latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
             
             } else {
@@ -1128,12 +1114,10 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
         geocodingService.geocode(e.getLocalisation(), (GeocodingResult[] results, GeocoderStatus status) -> {
             LatLong latLong = null;
             if (status == GeocoderStatus.ZERO_RESULTS) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
-                alert.show();
+               
                 return;
             } else if (results.length > 1) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
-                alert.show();
+                
                 latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
             
             } else {
