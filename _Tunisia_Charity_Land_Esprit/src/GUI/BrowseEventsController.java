@@ -8,6 +8,7 @@ package GUI;
 import Entity.Evenement;
 import Entity.Users;
 import Service.ServiceEvenement;
+import Utils.Datasourc;
 import com.lynden.gmapsfx.GoogleMapView;
 import com.lynden.gmapsfx.MapComponentInitializedListener;
 import com.lynden.gmapsfx.javascript.object.GoogleMap;
@@ -47,9 +48,19 @@ import service.ParticipantService;
 import com.lynden.gmapsfx.javascript.object.InfoWindow;
 import com.lynden.gmapsfx.javascript.object.InfoWindowOptions;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseEvent;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.jdbc.JDBCCategoryDataset;
 
 /**
  * FXML Controller class
@@ -84,6 +95,17 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
     private int nbrOfimgInlastPage;
     int x;
     int indexOfImage;
+    
+    private static Statement ste;
+        Connection con=Datasourc.getInstance().getConnexion();
+    
+        public BrowseEventsController(){
+             try{
+                ste=con.createStatement();
+            }catch(SQLException e){
+                System.out.println(e);
+            }
+        }
 
     @FXML
     private Label date1;
@@ -154,6 +176,10 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
     public ArrayList<LatLong> tabLatLong = new ArrayList();
     @FXML
     private Button storBttn;
+    @FXML
+    private Button Gevent;
+    @FXML
+    private Button stat;
 
     /**
      * Initializes the controller class.
@@ -1143,7 +1169,7 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
         }else{
             Parent root = FXMLLoader.load(getClass().getResource("ProfilUserFXML.fxml"));
             cnxBtn.getScene().setRoot(root);
-            cnxBtn.setText("Profil");
+            cnxBtn.setText("   Profil");
         }
         
     }
@@ -1157,8 +1183,33 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
 
     @FXML
     private void navigatsStore(ActionEvent event) throws IOException {
-         Parent root = FXMLLoader.load(getClass().getResource("Gui/store.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("Gui/StoreGuiFXML.fxml"));
             storBttn.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void goToGevent(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/EventsGuiFXML.fxml"));
+            storBttn.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void goToStat(ActionEvent event) {
+        
+        try {
+            final String SQL = "    SELECT event_id , COUNT(user_id) FROM participant GROUP BY event_id";
+            final CategoryDataset dataset = new JDBCCategoryDataset(con, SQL);
+            
+            
+            
+            
+            JFreeChart chart = ChartFactory.createBarChart3D("Events", "axe x", "axe y", dataset, PlotOrientation.VERTICAL, true, true, true);
+            ChartFrame frame = new ChartFrame("Events",chart);
+            frame.pack();
+            frame.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(BrowseEventsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

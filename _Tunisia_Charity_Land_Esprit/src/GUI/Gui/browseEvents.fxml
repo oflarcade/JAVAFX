@@ -12,20 +12,35 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: #F1F0E2;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BrowseEventsController">
+<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BrowseEventsController">
    <children>
-      <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="718.0" prefWidth="191.0" style="-fx-background-color: #C2E7F2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="889.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="718.0" prefWidth="191.0" style="-fx-background-color: #273c75;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="889.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="homrBtn" layoutX="75.0" layoutY="182.0" mnemonicParsing="false" onAction="#navigatHome" style="-fx-background-color: transparent;" text="Home" />
-            <Button fx:id="blogBtn" layoutX="79.0" layoutY="220.0" mnemonicParsing="false" onAction="#navigateBlog" style="-fx-background-color: transparent;" text="Blog" />
-            <Button fx:id="eventBtn" layoutX="72.0" layoutY="261.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Events" textFill="#eb0505" />
-            <Button fx:id="cnxBtn" layoutX="56.0" layoutY="304.0" mnemonicParsing="false" onAction="#navigateConnexion" style="-fx-background-color: transparent;" text="Login/Signup" />
-            <Button fx:id="storBttn" layoutX="80.0" layoutY="345.0" mnemonicParsing="false" onAction="#navigatsStore" style="-fx-background-color: transparent;" text="Store" />
+            <Button fx:id="homrBtn" layoutX="53.0" layoutY="192.0" mnemonicParsing="false" onAction="#navigatHome" style="-fx-background-color: transparent;" text="Home" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="blogBtn" layoutX="60.0" layoutY="243.0" mnemonicParsing="false" onAction="#navigateBlog" style="-fx-background-color: transparent;" text="Blog" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="eventBtn" layoutX="50.0" layoutY="289.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Events" textFill="#eb0505">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="cnxBtn" layoutX="19.0" layoutY="339.0" mnemonicParsing="false" onAction="#navigateConnexion" style="-fx-background-color: transparent;" text="Login/Signup" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="storBttn" layoutX="56.0" layoutY="397.0" mnemonicParsing="false" onAction="#navigatsStore" style="-fx-background-color: transparent;" text="Store" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
          </children>
       </Pane>
-      <Button fx:id="next" layoutX="600.0" layoutY="465.0" mnemonicParsing="false" onAction="#goToNext" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: #3E4E59;" text="Next" textFill="WHITE" />
-      <Button fx:id="previous" layoutX="516.0" layoutY="465.0" mnemonicParsing="false" onAction="#goToPrevious" style="-fx-background-color: #3E4E59;" text="Previous" textFill="WHITE" />
-      <Button fx:id="searchButton" layoutX="755.0" layoutY="31.0" mnemonicParsing="false" onAction="#searchEvents" style="-fx-background-color: #3E4E59;" text="search" textFill="WHITE" />
+      <Button fx:id="next" layoutX="600.0" layoutY="465.0" mnemonicParsing="false" onAction="#goToNext" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: #273c75;" text="Next" textFill="WHITE" />
+      <Button fx:id="previous" layoutX="516.0" layoutY="465.0" mnemonicParsing="false" onAction="#goToPrevious" style="-fx-background-color: #273c75;" text="Previous" textFill="WHITE" />
+      <Button fx:id="searchButton" layoutX="755.0" layoutY="31.0" mnemonicParsing="false" onAction="#searchEvents" style="-fx-background-color: #273c75;" text="search" textFill="WHITE" />
       <TextField fx:id="searchField" layoutX="416.0" layoutY="31.0" onKeyPressed="#searchIsEmpty" prefHeight="27.0" prefWidth="321.0" />
       <Label fx:id="NoResult" layoutX="406.0" layoutY="58.0" prefHeight="17.0" prefWidth="256.0" textFill="RED" />
         <GoogleMapView fx:id="mapView" layoutX="236.0" layoutY="501.0" prefHeight="202.0" prefWidth="750.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="94.0" AnchorPane.topAnchor="501.0">
@@ -178,6 +193,8 @@
             </VBox>
          </children>
       </HBox>
+      <Button fx:id="Gevent" layoutX="993.0" layoutY="31.0" mnemonicParsing="false" onAction="#goToGevent" style="-fx-background-color: #273c75;" text="G-Event" textFill="WHITE" />
+      <Button fx:id="stat" layoutX="839.0" layoutY="31.0" mnemonicParsing="false" onAction="#goToStat" style="-fx-background-color: #273c75 #273c75;" text="Stats" textFill="WHITE" />
 
    </children>
 </AnchorPane>

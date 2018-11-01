@@ -9,6 +9,7 @@ import Entity.Evenement;
 import Entity.Users;
 
 import Service.ServiceEvenement;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -24,8 +25,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 
 import javafx.scene.control.Button;
 
@@ -45,6 +48,7 @@ import javafx.scene.image.ImageView;
 
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 
 
@@ -78,7 +82,6 @@ public class CrudEventFXMLController implements Initializable {
     private TextField smartSearch;
     @FXML
     private Button SearchButton;
-    @FXML
     private TextField delegue;
     @FXML
     private TextField img;
@@ -106,6 +109,18 @@ public class CrudEventFXMLController implements Initializable {
     Set<String> hashSet = new HashSet();
     RegistrationGuiFXMLController C = new RegistrationGuiFXMLController();
     Users user = C.user;
+    @FXML
+    private Button homeButton;
+    @FXML
+    private Button blogButton;
+    @FXML
+    private Button eventButton;
+    @FXML
+    private Button associationButton;
+    @FXML
+    private Button connectionButton;
+    @FXML
+    private Button storeButton;
 
     /**
      * Initializes the controller class.
@@ -414,7 +429,46 @@ public class CrudEventFXMLController implements Initializable {
         } catch (SQLException ex) {        
         }
     }
-   
+
+    @FXML 
+    public void navigateToHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/FXML.fxml"));
+        homeButton.getScene().setRoot(root);
+    }
+    
+    
+    @FXML 
+    public void navigateToEvents(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/browseEvents.fxml"));
+        eventButton.getScene().setRoot(root);
+    }
+    
+    @FXML
+    public void navigateToProfile(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/RegistrationGuiFXML.fxml"));
+        connectionButton.getScene().setRoot(root);
+    }
+    
+    @FXML
+    public void navigateToStore(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/StoreGuiFXML.fxml"));
+        storeButton.getScene().setRoot(root);
+    }
+    
+    @FXML
+    public void navigateToAssociation(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/AssociationGuiFXML.fxml"));
+        associationButton.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void navigateToBlog(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("Gui/BlogGuiFXML.fxml"));
+          blogButton.getScene().setRoot(root);
+    }
+
+    
+    
     
 }
 
