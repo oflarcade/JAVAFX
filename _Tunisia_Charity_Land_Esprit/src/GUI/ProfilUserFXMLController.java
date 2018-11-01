@@ -144,7 +144,9 @@ public class ProfilUserFXMLController implements Initializable {
     @FXML
     private TableColumn<Order, Integer> cuseridorder;
     private Label laberr;
- 
+    private Users user ;
+    private String email;
+    private ServiceUser service;
     /**
      * Initializes the controller class.
      */
@@ -191,8 +193,14 @@ try {
        
         // TODO
     }    
-
-    private void Myeventsuser(ActionEvent event) {
+    
+    public void initData(String email){
+        this.email = email;
+        user = service.getUserByEmail(email);
+    }
+    
+    @FXML
+    public void Myeventsuser(ActionEvent event) {
        try{
         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("MyeventsUserFXML.fxml"));
        Parent root = (Parent) fxmlloader.load();
@@ -205,7 +213,8 @@ try {
                }
     }
 
-    private void Mesblogsuser(ActionEvent event) {
+    @FXML
+    public void Mesblogsuser(ActionEvent event) {
            try{
         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("MyarticlesFXML.fxml"));
        Parent root = (Parent) fxmlloader.load();
@@ -218,7 +227,8 @@ try {
                }
     }
 
-    private void Mesarticlesuser(ActionEvent event) {
+    @FXML
+    public void Mesarticlesuser(ActionEvent event) {
          try{
         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("MyorderFXML.fxml"));
        Parent root = (Parent) fxmlloader.load();
@@ -302,8 +312,9 @@ try {
             
         }
     }
-    @FXML
-     private void supprimerPart(ActionEvent event) throws SQLException, IOException{
+    
+     @FXML
+    public void supprimerPart(ActionEvent event) throws SQLException, IOException{
             ParticipantService or = new ParticipantService();
             int a = Integer.parseInt(textsupp.getText());
      
@@ -338,7 +349,7 @@ try {
        
     }    
     @FXML
-       private void rechercheavancee(KeyEvent event) throws SQLException {
+       public void rechercheavancee(KeyEvent event) throws SQLException {
             
         String x=textrech.getText();
        // String y="'%"+x+"%'";
@@ -357,7 +368,7 @@ try {
          
     }
          @FXML
-    private void supprimerArt(ActionEvent event) throws SQLException, IOException{
+    public void supprimerArt(ActionEvent event) throws SQLException, IOException{
             ArticleService or = new ArticleService();
             int a = Integer.parseInt(textsuppart.getText());
        or.suppArticle(12,a);
@@ -373,8 +384,8 @@ try {
             ccontent.setCellValueFactory(new PropertyValueFactory<>("contenu"));
             cimage.setCellValueFactory(new PropertyValueFactory<>("image_url"));
     }    
-
-    private void modtitre(ActionEvent event) throws SQLException, IOException {
+    @FXML
+    public void modtitre(ActionEvent event) throws SQLException, IOException {
         ArticleService or = new ArticleService ();
         String b = textmod.getText();
         int a = Integer.parseInt(textsuppart.getText());
