@@ -28,6 +28,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -40,6 +41,7 @@ import javafx.scene.layout.Pane;
 public class AdminDashBoardEventFXMLController implements Initializable {
 
     private Users user;
+    
     @FXML
     private AnchorPane myPane;
     private Button logouBtn;
@@ -82,41 +84,105 @@ public class AdminDashBoardEventFXMLController implements Initializable {
     private TableColumn<Evenement, Integer> statusColumn;
     @FXML
     private Pane buttonPane;
-
+    private ArrayList<Evenement> eventsList;
+    @FXML
+    private TextField messageField;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-            profileButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
-            usersButton.setStyle("-fx-text-fill: balck;-fx-background-color: transparent;");
-            blogButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
-            eventButton.setStyle("-fx-text-fill: #F25652;-fx-background-color: transparent;");
-            apiControllButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent; ");
-            logoutButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
+            try {
+                // TODO
+                profileButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
+                usersButton.setStyle("-fx-text-fill: balck;-fx-background-color: transparent;");
+                blogButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
+                eventButton.setStyle("-fx-text-fill: #F25652;-fx-background-color: transparent;");
+                apiControllButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent; ");
+                logoutButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
+                AdminDashBoardService service = new AdminDashBoardService();
+                eventsList = service.getallEventsFromDatabase();
+                try {
+                    
+                    ObservableList observable = FXCollections.observableList(eventsList);
+                    eventsTable.setItems(observable);
+                    idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+                    titleColumn.setCellValueFactory(new PropertyValueFactory<>("shortDescription"));
+                    byColumn.setCellValueFactory(new PropertyValueFactory<>("delegue_id"));
+                    descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("longDescription"));
+                    createdAt.setCellValueFactory(new PropertyValueFactory<>("created_at"));
+                    typeColumn.setCellValueFactory(new PropertyValueFactory<>("eventType"));
+                    statusColumn.setCellValueFactory(new PropertyValueFactory<>("validation_status"));
+                } catch (Exception e) {
+                    
+                    e.printStackTrace();
+                }
+                
+                
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminDashBoardEventFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
             
             
     }    
     
+    
     @FXML
-    public void refreshData(ActionEvent event) throws IOException {
-          System.out.println("hello from refresh");
-            ArrayList<Evenement> eventsList;
+    public void deleteSelectedEvent() throws SQLException {
+        Evenement event = eventsTable.getSelectionModel().getSelectedItem();
+        if(event.equals(null)){
+            messageField.setText("Please select an event in order to delete");
+            messageField.setStyle("-fx-text-fill: red; -fx-background-color:transparent");
+        } else{
+            int selectedEventId = event.getId();
             ServiceEvenement service = new ServiceEvenement();
-            eventsList = service.read();
+            service.deleteById(event);
+            populateTable();
+        }
+    }
+    
+    public void populateTable() throws SQLException{
+       AdminDashBoardService service = new AdminDashBoardService();
+                eventsList = service.getallEventsFromDatabase();
+                try {
+                    
+                    ObservableList observable = FXCollections.observableList(eventsList);
+                    eventsTable.setItems(observable);
+                    idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+                    titleColumn.setCellValueFactory(new PropertyValueFactory<>("shortDescription"));
+                    byColumn.setCellValueFactory(new PropertyValueFactory<>("delegue_id"));
+                    descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("longDescription"));
+                    createdAt.setCellValueFactory(new PropertyValueFactory<>("created_at"));
+                    typeColumn.setCellValueFactory(new PropertyValueFactory<>("eventType"));
+                    statusColumn.setCellValueFactory(new PropertyValueFactory<>("validation_status"));
+                } catch (Exception e) {
+                    
+                    e.printStackTrace();
+                }
+    }
+    
+    @FXML
+    public void refreshData(ActionEvent event) throws IOException, SQLException {
+         
+            ArrayList<Evenement> eventsList;
+            AdminDashBoardService service = new AdminDashBoardService();
+            eventsList = service.getallEventsFromDatabase();
             ObservableList observableList = FXCollections.observableList(eventsList);
             eventsTable.setItems(observableList);
             idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-            titleColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
-            byColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
-            descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("enabled"));
-            createdAt.setCellValueFactory(new PropertyValueFactory<>("last_login"));
-            typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-            //lockedColumn.setCellFactory(new PropertyValueFactory<>("locked"));
-            statusColumn.setCellValueFactory(new PropertyValueFactory<>("statusColumn"));
-            
+            titleColumn.setCellValueFactory(new PropertyValueFactory<>("shortDescription"));
+            byColumn.setCellValueFactory(new PropertyValueFactory<>("delegue_id"));
+            descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("longDescription"));
+            createdAt.setCellValueFactory(new PropertyValueFactory<>("created_at"));
+            typeColumn.setCellValueFactory(new PropertyValueFactory<>("eventType"));
+            statusColumn.setCellValueFactory(new PropertyValueFactory<>("validation_status"));
+            System.out.println("we are refreshing the ");
     }
+    
+    
+    
     
     
     
@@ -171,7 +237,14 @@ public class AdminDashBoardEventFXMLController implements Initializable {
          Parent root = (Parent) loader.load();
         AdminDashBoardApiController controller = loader.<AdminDashBoardApiController>getController() ;
         controller.initData(user);
-        
         apiControllButton.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void validateSelectedEvent(ActionEvent event) {
+    }
+
+    @FXML
+    private void contactEventMaker(ActionEvent event) {
     }
 }
