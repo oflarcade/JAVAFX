@@ -66,6 +66,7 @@ public class AdminDashBoardBlogFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+            
             profileButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
             usersButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
             blogButton.setStyle("-fx-text-fill: #F25652;-fx-background-color: transparent;");
