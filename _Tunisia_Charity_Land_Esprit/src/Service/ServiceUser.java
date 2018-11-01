@@ -14,7 +14,7 @@ import Utils.DataSource;
 public class ServiceUser {
    private Connection con;
     public static Users userStatic = null;
-  
+    public PreparedStatement preparedStatement;
    private Statement ste;
 
     public ServiceUser() throws SQLException {
@@ -60,5 +60,28 @@ public class ServiceUser {
 
         return u;
     }
+     
+     
+     public Users getUserByEmail(String email){
+         String query = "SELECT * FROM fos_user WHERE email ='"+email+"' ";
+         try {
+             preparedStatement = con.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery();
+             while(resultSet.next()){
+                 userStatic = getUserById(resultSet.getInt("id"));
+             }
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }
+         
+         return userStatic;
+     }
+     
+     
+     
+     
+     
+     
+     
 
 }
