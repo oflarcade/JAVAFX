@@ -1,46 +1,136 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="392.0" prefWidth="595.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Gui.AffichageArticleController">
+<AnchorPane id="AnchorPane" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: F1F0E2;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Gui.AffichageArticleController">
    <children>
-      <VBox prefHeight="358.0" prefWidth="600.0">
+      <HBox layoutY="-1.0" prefHeight="717.0" prefWidth="1080.0">
          <children>
-            <HBox prefHeight="63.0" prefWidth="600.0">
+            <VBox prefHeight="591.0" prefWidth="218.0" style="-fx-background-color: C2E7F2;">
                <children>
-                  <Label prefHeight="69.0" prefWidth="120.0" text="BLOG">
-                     <font>
-                        <Font size="37.0" />
-                     </font>
-                  </Label>
+                  <ImageView fitHeight="145.0" fitWidth="223.0">
+                     <image>
+                        <Image url="@../../../../../../../Users/Asus/Downloads/a13df6e4-88a2-4c6f-9d26-d1553bf66034.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="homeButton" mnemonicParsing="false" onAction="#navigateToHome" prefHeight="77.0" prefWidth="228.0" style="-fx-background-color: transparent;" text="Home" textFill="#3e4e59" />
+                  <Button fx:id="blogButton" mnemonicParsing="false" onAction="#navigateToBlog" prefHeight="77.0" prefWidth="234.0" style="-fx-background-color: transparent;" text="Blog" textFill="#3e4e59" />
+                  <Button fx:id="eventButton" mnemonicParsing="false" onAction="#navigateToEvents" prefHeight="77.0" prefWidth="233.0" style="-fx-background-color: transparent;" text="Events" textFill="#3e4e59" />
+                  <Button fx:id="associationButton" mnemonicParsing="false" onAction="#navigateToAssociation" prefHeight="77.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Association" textFill="#3e4e59" />
+                  <Button fx:id="connectionButton" mnemonicParsing="false" onAction="#navigateToProfile" prefHeight="77.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Login/SignUp" textFill="#3e4e59" />
+                  <Button fx:id="storeButton" mnemonicParsing="false" onAction="#navigateToStore" prefHeight="77.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Store" textFill="#3e4e59" />
                </children>
-            </HBox>
-            <HBox prefHeight="165.0" prefWidth="600.0">
+            </VBox>
+            <VBox prefHeight="717.0" prefWidth="864.0">
                <children>
-                  <Label fx:id="titre1" prefHeight="33.0" prefWidth="87.0" text="Article1">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
+                  <HBox prefHeight="63.0" prefWidth="600.0">
+                     <children>
+                        <TextField fx:id="rech_tf" prefHeight="25.0" prefWidth="509.0" />
+                        <Button fx:id="btn_tf" mnemonicParsing="false" onAction="#recherche" style="-fx-background-color: #3E4E59;" text="recherche" textFill="#d9bb93">
+                           <HBox.margin>
+                              <Insets left="15.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="15.0" top="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="300.0" prefWidth="500.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="titre1" prefHeight="33.0" prefWidth="87.0" text="Article1">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fx:id="img1" fitHeight="205.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+                              <Label fx:id="dateLabel1" prefHeight="41.0" prefWidth="200.0" text="date1" />
+                           </children>
+                        </VBox>
+                        <TextArea fx:id="contenuLabel1" editable="false" prefHeight="289.0" prefWidth="509.0" style="-fx-background-color: F1F0E2;">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin></TextArea>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="258.0" prefWidth="788.0">
+                           <children>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label fx:id="titre2" prefHeight="33.0" prefWidth="87.0" text="Article1">
+                                       <font>
+                                          <Font size="25.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="img2" fitHeight="205.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+                                    <Label fx:id="dateLabel2" prefHeight="41.0" prefWidth="200.0" text="date2" />
+                                 </children>
+                              </VBox>
+                              <TextArea fx:id="contenuLabel2" editable="false" prefHeight="258.0" prefWidth="510.0" style="-fx-background-color: F1F0E2;">
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </TextArea>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="previous1" mnemonicParsing="false" onAction="#goToPrevious" prefHeight="36.0" prefWidth="89.0" style="-fx-background-color: #3E4E59;" text="previous" textFill="#d9bb93">
+                           <HBox.margin>
+                              <Insets left="500.0" top="10.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="next1" mnemonicParsing="false" onAction="#goToNext" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: #3E4E59;" text="next" textFill="#d9bb93">
+                           <HBox.margin>
+                              <Insets left="25.0" top="10.0" />
+                           </HBox.margin></Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox fx:id="titre" prefHeight="187.0" prefWidth="600.0">
-               <children>
-                  <Label fx:id="titre2" prefHeight="33.0" prefWidth="87.0" text="Article2">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
+            </VBox>
+         </children>
+      </HBox>
+      <VBox prefHeight="591.0" prefWidth="218.0" style="-fx-background-color: C2E7F2;">
+         <children>
+            <ImageView fitHeight="145.0" fitWidth="223.0">
+               <image>
+                  <Image url="@../../../../../../../Users/Asus/Downloads/a13df6e4-88a2-4c6f-9d26-d1553bf66034.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="homeButton1" mnemonicParsing="false" onAction="#navigateToHome" prefHeight="77.0" prefWidth="228.0" style="-fx-background-color: transparent;" text="Home" textFill="#3e4e59" />
+            <Button fx:id="blogButton1" mnemonicParsing="false" onAction="#navigateToBlog" prefHeight="77.0" prefWidth="234.0" style="-fx-background-color: transparent;" text="Blog" textFill="#3e4e59" />
+            <Button fx:id="eventButton1" mnemonicParsing="false" onAction="#navigateToEvents" prefHeight="77.0" prefWidth="233.0" style="-fx-background-color: transparent;" text="Events" textFill="#3e4e59" />
+            <Button fx:id="associationButton1" mnemonicParsing="false" onAction="#navigateToAssociation" prefHeight="77.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Association" textFill="#3e4e59" />
+            <Button fx:id="connectionButton1" mnemonicParsing="false" onAction="#navigateToProfile" prefHeight="77.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Login/SignUp" textFill="#3e4e59" />
+            <Button fx:id="storeButton1" mnemonicParsing="false" onAction="#navigateToStore" prefHeight="77.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Store" textFill="#3e4e59" />
          </children>
       </VBox>
-      <Button fx:id="next" layoutX="530.0" layoutY="358.0" mnemonicParsing="false" onAction="#goToNext" text="next" />
-      <Button fx:id="previous" layoutX="459.0" layoutY="358.0" mnemonicParsing="false" onAction="#goToPrevious" text="previous" />
    </children>
 </AnchorPane>

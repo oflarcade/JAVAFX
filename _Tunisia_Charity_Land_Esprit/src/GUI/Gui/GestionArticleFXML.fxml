@@ -6,13 +6,15 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="ga_rootpane" prefHeight="717.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GestionArticleFXMLController">
+<AnchorPane id="AnchorPane" fx:id="ga_rootpane" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: #F1F0E2;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.GestionArticleFXMLController">
    <children>
       <HBox layoutY="-1.0" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: F1F0F2;">
          <children>
@@ -23,16 +25,48 @@
                         <Image url="@../../../../../../../Users/Asus/Downloads/a13df6e4-88a2-4c6f-9d26-d1553bf66034.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="homeButton" mnemonicParsing="false" onAction="#navigateToHome" prefHeight="77.0" prefWidth="228.0" style="-fx-background-color: transparent;" text="Home" textFill="#3e4e59" />
-                  <Button fx:id="blogButton" mnemonicParsing="false" onAction="#navigateToBlog" prefHeight="77.0" prefWidth="234.0" style="-fx-background-color: transparent;" text="Blog" textFill="#3e4e59" />
-                  <Button fx:id="eventButton" mnemonicParsing="false" onAction="#navigateToEvents" prefHeight="77.0" prefWidth="233.0" style="-fx-background-color: transparent;" text="Events" textFill="#3e4e59" />
-                  <Button fx:id="associationButton" mnemonicParsing="false" onAction="#navigateToAssociation" prefHeight="77.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Association" textFill="#3e4e59" />
-                  <Button fx:id="connectionButton" mnemonicParsing="false" onAction="#navigateToProfile" prefHeight="77.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Login/SignUp" textFill="#3e4e59" />
-                  <Button fx:id="storeButton" mnemonicParsing="false" onAction="#navigateToStore" prefHeight="77.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Store" textFill="#3e4e59" />
+                  <Button fx:id="homeButton" mnemonicParsing="false" onAction="#navigateToHome" prefHeight="77.0" prefWidth="228.0" style="-fx-background-color: transparent;" text="Home" textFill="#f25652">
+                     <font>
+                        <Font size="17.0" />
+                     </font></Button>
+                  <Button fx:id="blogButton" mnemonicParsing="false" onAction="#navigateToBlog" prefHeight="77.0" prefWidth="234.0" style="-fx-background-color: transparent;" text="Blog" textFill="#f25652">
+                     <font>
+                        <Font size="17.0" />
+                     </font></Button>
+                  <Button fx:id="eventButton" mnemonicParsing="false" onAction="#navigateToEvents" prefHeight="77.0" prefWidth="233.0" style="-fx-background-color: transparent;" text="Events" textFill="#f25652">
+                     <font>
+                        <Font size="17.0" />
+                     </font></Button>
+                  <Button fx:id="associationButton" mnemonicParsing="false" onAction="#navigateToAssociation" prefHeight="77.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Association" textFill="#f25652">
+                     <font>
+                        <Font size="17.0" />
+                     </font></Button>
+                  <Button fx:id="connectionButton" mnemonicParsing="false" onAction="#navigateToProfile" prefHeight="77.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Login/SignUp" textFill="#f25652">
+                     <font>
+                        <Font size="17.0" />
+                     </font></Button>
+                  <Button fx:id="storeButton" mnemonicParsing="false" onAction="#navigateToStore" prefHeight="77.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Store" textFill="#3e4e59">
+                     <font>
+                        <Font size="17.0" />
+                     </font></Button>
                </children>
             </VBox>
             <VBox layoutX="10.0" layoutY="10.0" prefHeight="717.0" prefWidth="862.0" style="-fx-background-color: F1F0F2;">
                <children>
+                  <HBox prefHeight="63.0" prefWidth="600.0">
+                     <children>
+                        <TextField fx:id="rech_tf" prefHeight="25.0" prefWidth="509.0">
+                           <HBox.margin>
+                              <Insets left="200.0" top="20.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button fx:id="btn_tf" mnemonicParsing="false" onAction="#recherche" style="-fx-background-color: #3e4e59;" text="recherche" textFill="#d9bb93">
+                           <HBox.margin>
+                              <Insets left="15.0" top="15.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
                   <TableView fx:id="ga_tv" editable="true" prefHeight="490.0" prefWidth="857.0">
                     <columns>
                       <TableColumn fx:id="tv_id" editable="false" prefWidth="75.0" text="ID" />
@@ -56,24 +90,30 @@
                         <Insets />
                      </opaqueInsets>
                      <VBox.margin>
-                        <Insets top="100.0" />
+                        <Insets left="15.0" top="15.0" />
                      </VBox.margin>
                   </TableView>
-                  <HBox>
+                  <HBox prefHeight="91.0" prefWidth="436.0">
                      <children>
-                        <Button fx:id="pdfBtn" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#convertToPdf" prefHeight="34.0" prefWidth="200.0" style="-fx-background-color: 3E4E59;" text="convertir en pdf" textAlignment="CENTER">
+                        <Button fx:id="pdfBtn" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#convertToPdf" prefHeight="34.0" prefWidth="200.0" style="-fx-background-color: #3e4e59;" text="convertir en pdf" textAlignment="CENTER" textFill="#d9bb93">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
+                           <HBox.margin>
+                              <Insets top="15.0" />
+                           </HBox.margin>
                         </Button>
-                        <Button fx:id="addArticleBT" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="200.0" style="-fx-background-color: 3E4E59;" text="Ajouter" textAlignment="CENTER">
+                        <Button fx:id="addArticleBT" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="34.0" prefWidth="200.0" style="-fx-background-color: #3e4e59;" text="ajouter article" textAlignment="CENTER" textFill="#d9bb93">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
+                           <HBox.margin>
+                              <Insets left="10.0" top="15.0" />
+                           </HBox.margin>
                         </Button>
                      </children>
                      <VBox.margin>
-                        <Insets left="450.0" />
+                        <Insets left="400.0" />
                      </VBox.margin>
                   </HBox>
                </children>

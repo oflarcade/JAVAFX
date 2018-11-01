@@ -20,7 +20,7 @@ public class AjArtTest extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {  
-        Parent root = FXMLLoader.load(getClass().getResource("Gui/GestionArticleFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/AffichageArticle.fxml"));
 
         Scene scene = new Scene(root);
         primaryStage.setTitle("Gestion des articles");
