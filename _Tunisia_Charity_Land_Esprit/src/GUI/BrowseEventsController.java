@@ -362,7 +362,7 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
     }
 
     public void intImageToEmpty() {
-        Image image = new Image("images/empty-image.jpg");
+        Image image = new Image("Images/empty-image.jpg");
         image1.setImage(image);
         image2.setImage(image);
         image3.setImage(image);
