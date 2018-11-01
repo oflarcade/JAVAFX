@@ -147,7 +147,7 @@ public class ProfilUserFXMLController implements Initializable {
     @FXML
     private TableColumn<Order2, Integer> cuseridorder;
     private Label laberr;
-    private Users user ;
+    public static Users user ;
     private String email;
     private ServiceUser service;
     @FXML
@@ -211,7 +211,7 @@ try {
     
     public void initData(String email){
         this.email = email;
-        user = service.getUserByEmail(email);
+        
     }
     
     public void Myeventsuser(ActionEvent event) {

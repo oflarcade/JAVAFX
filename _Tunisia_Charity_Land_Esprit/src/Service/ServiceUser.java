@@ -69,6 +69,7 @@ public class ServiceUser {
              ResultSet resultSet = preparedStatement.executeQuery();
              while(resultSet.next()){
                  userStatic = getUserById(resultSet.getInt("id"));
+                 System.out.println(userStatic.toString());
              }
          } catch (SQLException e) {
              e.printStackTrace();

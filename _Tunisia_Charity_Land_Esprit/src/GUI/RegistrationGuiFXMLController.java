@@ -104,11 +104,11 @@ public class RegistrationGuiFXMLController implements Initializable {
                         break;
                     }
                     case "user" :{
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/FXML.fxml")); // this is home
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilUserFXML.fxml")); // this is home
                             Parent root =  (Parent) loader.load();
-                            FXMLController controller = loader.<FXMLController>getController();
+                            ProfilUserFXMLController controller = loader.<ProfilUserFXMLController>getController();
                             System.out.println("This is for NORMAL USER !!!");
-                            controller.initData(user);
+                            controller.initData(user.getEmail());
                             loginBtn.getScene().setRoot(root);
                         break;
                     }

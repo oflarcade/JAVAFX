@@ -13,7 +13,9 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -65,7 +67,11 @@ public class MailConfirmationTokenFXMLController implements Initializable {
            
         if(confirmationTokenField.getText().equals(userConfirmatiomToken)){
             System.out.println("mail is confirmed !");
-            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilUserFXML.fxml"));
+            Parent root = (Parent) loader.load();
+            ProfilUserFXMLController controller = loader.<ProfilUserFXMLController>getController();
+            controller.initData(email);
+            activateAccount.getScene().setRoot(root);
             
         }else {
             errorMessage.setText("Please check your confirmation token again !");
