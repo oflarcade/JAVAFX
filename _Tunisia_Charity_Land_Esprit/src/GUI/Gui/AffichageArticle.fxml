@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: F1F0E2;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Gui.AffichageArticleController">
+<AnchorPane id="AnchorPane" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: #f5f6fa;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Gui.AffichageArticleController">
    <children>
       <HBox layoutY="-1.0" prefHeight="717.0" prefWidth="1080.0">
          <children>
@@ -36,7 +36,7 @@
                   <HBox prefHeight="63.0" prefWidth="600.0">
                      <children>
                         <TextField fx:id="rech_tf" prefHeight="25.0" prefWidth="509.0" />
-                        <Button fx:id="btn_tf" mnemonicParsing="false" onAction="#recherche" style="-fx-background-color: #3E4E59;" text="recherche" textFill="#d9bb93">
+                        <Button fx:id="btn_tf" mnemonicParsing="false" onAction="#recherche" style="-fx-background-color: #273c75;" text="recherche" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="15.0" />
                            </HBox.margin>
@@ -50,7 +50,7 @@
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label fx:id="titre1" prefHeight="33.0" prefWidth="87.0" text="Article1">
+                              <Label fx:id="titre1" prefHeight="36.0" prefWidth="248.0" text="Article1">
                                  <font>
                                     <Font size="25.0" />
                                  </font>
@@ -74,7 +74,7 @@
                            <children>
                               <VBox prefHeight="200.0" prefWidth="100.0">
                                  <children>
-                                    <Label fx:id="titre2" prefHeight="33.0" prefWidth="87.0" text="Article1">
+                                    <Label fx:id="titre2" prefHeight="36.0" prefWidth="240.0" text="Article1">
                                        <font>
                                           <Font size="25.0" />
                                        </font>
@@ -100,11 +100,11 @@
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="previous1" mnemonicParsing="false" onAction="#goToPrevious" prefHeight="36.0" prefWidth="89.0" style="-fx-background-color: #3E4E59;" text="previous" textFill="#d9bb93">
+                        <Button fx:id="previous1" mnemonicParsing="false" onAction="#goToPrevious" prefHeight="36.0" prefWidth="89.0" style="-fx-background-color: #273c75;" text="previous" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="500.0" top="10.0" />
                            </HBox.margin></Button>
-                        <Button fx:id="next1" mnemonicParsing="false" onAction="#goToNext" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: #3E4E59;" text="next" textFill="#d9bb93">
+                        <Button fx:id="next1" mnemonicParsing="false" onAction="#goToNext" prefHeight="37.0" prefWidth="98.0" style="-fx-background-color: #273c75;" text="next" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="25.0" top="10.0" />
                            </HBox.margin></Button>
@@ -117,36 +117,32 @@
             </VBox>
          </children>
       </HBox>
-      <VBox prefHeight="591.0" prefWidth="218.0" style="-fx-background-color: C2E7F2;">
+      <VBox prefHeight="717.0" prefWidth="223.0" style="-fx-background-color: #273c75;">
          <children>
             <ImageView fitHeight="145.0" fitWidth="223.0">
                <image>
                   <Image url="@../../../../../../../Users/Asus/Downloads/a13df6e4-88a2-4c6f-9d26-d1553bf66034.png" />
                </image>
             </ImageView>
-            <Button fx:id="homeButton1" mnemonicParsing="false" onAction="#navigateToHome" prefHeight="77.0" prefWidth="228.0" style="-fx-background-color: transparent;" text="Home" textFill="#3e4e59">
+            <Button fx:id="homeButton1" mnemonicParsing="false" onAction="#navigateToHome" prefHeight="77.0" prefWidth="228.0" style="-fx-background-color: transparent; -fx-font-size: 20;" text="Home" textFill="WHITE">
                <font>
-                  <Font name="Arial Narrow Bold" size="26.0" />
+                  <Font name="Arial Bold" size="20.0" />
                </font></Button>
-            <Button fx:id="blogButton1" mnemonicParsing="false" onAction="#navigateToBlog" prefHeight="77.0" prefWidth="234.0" style="-fx-background-color: transparent;" text="Blog" textFill="#3e4e59">
+            <Button fx:id="blogButton1" mnemonicParsing="false" onAction="#navigateToBlog" prefHeight="77.0" prefWidth="234.0" style="-fx-background-color: transparent; -fx-font-size: 20;" text="Blog" textFill="WHITE">
                <font>
-                  <Font name="Arial Narrow Bold" size="26.0" />
+                  <Font name="Arial Bold" size="20.0" />
                </font></Button>
-            <Button fx:id="eventButton1" mnemonicParsing="false" onAction="#navigateToEvents" prefHeight="77.0" prefWidth="233.0" style="-fx-background-color: transparent;" text="Events" textFill="#3e4e59">
+            <Button fx:id="eventButton1" mnemonicParsing="false" onAction="#navigateToEvents" prefHeight="77.0" prefWidth="233.0" style="-fx-background-color: transparent; -fx-font-size: 20;" text="Events" textFill="WHITE">
                <font>
-                  <Font name="Arial Narrow Bold" size="26.0" />
+                  <Font name="Arial Bold" size="20.0" />
                </font></Button>
-            <Button fx:id="associationButton1" mnemonicParsing="false" onAction="#navigateToAssociation" prefHeight="77.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Association" textFill="#3e4e59">
+            <Button fx:id="connectionButton1" mnemonicParsing="false" onAction="#navigateToProfile" prefHeight="77.0" prefWidth="225.0" style="-fx-background-color: transparent; -fx-font-size: 20;" text="Login/SignUp" textFill="WHITE">
                <font>
-                  <Font name="Arial Narrow Bold" size="26.0" />
+                  <Font name="Arial Bold" size="20.0" />
                </font></Button>
-            <Button fx:id="connectionButton1" mnemonicParsing="false" onAction="#navigateToProfile" prefHeight="77.0" prefWidth="225.0" style="-fx-background-color: transparent;" text="Login/SignUp" textFill="#3e4e59">
+            <Button fx:id="storeButton1" mnemonicParsing="false" onAction="#navigateToStore" prefHeight="77.0" prefWidth="236.0" style="-fx-background-color: transparent; -fx-font-size: 20;" text="Store" textFill="WHITE">
                <font>
-                  <Font name="Arial Narrow Bold" size="26.0" />
-               </font></Button>
-            <Button fx:id="storeButton1" mnemonicParsing="false" onAction="#navigateToStore" prefHeight="77.0" prefWidth="236.0" style="-fx-background-color: transparent;" text="Store" textFill="#3e4e59">
-               <font>
-                  <Font name="Arial Narrow Bold" size="26.0" />
+                  <Font name="Arial Bold" size="20.0" />
                </font></Button>
          </children>
       </VBox>

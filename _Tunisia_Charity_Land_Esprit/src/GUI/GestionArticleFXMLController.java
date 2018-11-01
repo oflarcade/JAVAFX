@@ -6,6 +6,7 @@
 package GUI;
 
 import Entity.Article;
+import static GUI.RegistrationGuiFXMLController.user;
 import Service.CreatePdf;
 import Service.ServiceArticle;
 import static Utils.DataSource.getInstance;
@@ -68,8 +69,6 @@ public class GestionArticleFXMLController implements Initializable {
     @FXML
     private Button eventButton;
     @FXML
-    private Button associationButton;
-    @FXML
     private Button connectionButton;
     @FXML
     private Button storeButton;
@@ -104,6 +103,9 @@ public class GestionArticleFXMLController implements Initializable {
            tv_titre.setCellFactory(TextFieldTableCell.forTableColumn());
            tv_contenu.setCellFactory(TextFieldTableCell.forTableColumn());
            tv_image.setCellFactory(TextFieldTableCell.forTableColumn());
+           if (user == null){
+               connectionButton.setText("Login/Sign up");
+           }
            
         } catch (SQLException ex) {
             Logger.getLogger(GestionArticleFXMLController.class.getName()).log(Level.SEVERE, null, ex);
@@ -131,7 +133,6 @@ public class GestionArticleFXMLController implements Initializable {
             tv_contenu.setCellValueFactory(new PropertyValueFactory<>("contenu"));
             tv_image.setCellValueFactory(new PropertyValueFactory<>("image_url"));
         }
-    
      @FXML
     private void modifierTitre(TableColumn.CellEditEvent<Article, String> event) {
           Article  articleSelectionne = ga_tv.getSelectionModel().getSelectedItem();
@@ -143,7 +144,6 @@ public class GestionArticleFXMLController implements Initializable {
             Logger.getLogger(GestionArticleFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
      @FXML
     private void modifierContenu(TableColumn.CellEditEvent<Article, String> event) {
         Article  articleSelectionne = ga_tv.getSelectionModel().getSelectedItem();
@@ -155,7 +155,6 @@ public class GestionArticleFXMLController implements Initializable {
             Logger.getLogger(GestionArticleFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
      @FXML
     private void modifierImage(TableColumn.CellEditEvent<Article, String> event) {
         Article  articleSelectionne = ga_tv.getSelectionModel().getSelectedItem();
@@ -169,13 +168,17 @@ public class GestionArticleFXMLController implements Initializable {
     }
 
     @FXML
-    private void navigateToHome(ActionEvent event) {
+    private void navigateToHome(ActionEvent event) throws IOException {
+          Parent root = FXMLLoader.load(getClass().getResource("Gui/FXML.fxml"));
+        
+        //Scene scene = new Scene(root);
+        homeButton.getScene().setRoot(root);
     }
 
     @FXML
     private void navigateToBlog(ActionEvent event) throws IOException {
         
-                   Parent root = FXMLLoader.load(getClass().getResource("Gui/AfficherArticle.fxml"));
+                   Parent root = FXMLLoader.load(getClass().getResource("Gui/AffichageArticle.fxml"));
         
         //Scene scene = new Scene(root);
         blogButton.getScene().setRoot(root);
@@ -186,19 +189,28 @@ public class GestionArticleFXMLController implements Initializable {
          Parent root = FXMLLoader.load(getClass().getResource("Gui/browseEvents.fxml"));
         
         //Scene scene = new Scene(root);
-        blogButton.getScene().setRoot(root);
+        eventButton.getScene().setRoot(root);
+    }
+
+
+    @FXML
+    private void navigateToProfile(ActionEvent event) throws IOException {
+        if(user == null){
+            Parent root = FXMLLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml"));
+            connectionButton.getScene().setRoot(root);
+        }else{
+            Parent root = FXMLLoader.load(getClass().getResource("ProfilUserFXML.fxml"));
+           connectionButton.getScene().setRoot(root);
+            connectionButton.setText("Profil");
+        }
     }
 
     @FXML
-    private void navigateToAssociation(ActionEvent event) {
-    }
-
-    @FXML
-    private void navigateToProfile(ActionEvent event) {
-    }
-
-    @FXML
-    private void navigateToStore(ActionEvent event) {
+    private void navigateToStore(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("Gui/StoreGuiFXML.fxml"));
+        
+        //Scene scene = new Scene(root);
+        storeButton.getScene().setRoot(root);
     }
 
    
@@ -342,6 +354,7 @@ public class GestionArticleFXMLController implements Initializable {
         //Scene scene = new Scene(root);
         addArticleBT.getScene().setRoot(root);
     }
+
     
     
 

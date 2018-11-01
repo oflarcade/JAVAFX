@@ -6,6 +6,7 @@
 package GUI.Gui;
 
 import Entity.Article;
+import static GUI.RegistrationGuiFXMLController.user;
 import Service.ServiceArticle;
 import java.io.IOException;
 import java.net.URL;
@@ -80,8 +81,6 @@ public class AffichageArticleController implements Initializable {
     @FXML
     private Button eventButton1;
     @FXML
-    private Button associationButton1;
-    @FXML
     private Button connectionButton1;
     @FXML
     private Button storeButton1;
@@ -96,6 +95,9 @@ public class AffichageArticleController implements Initializable {
             ServiceArticle serv = new ServiceArticle();
             ArrayList<Article> listOfArticle = serv.read();
             initTitle(listOfArticle);
+            if (user == null){
+               connectionButton1.setText("Login/Sign up");
+           }
         } catch (SQLException ex) {
             Logger.getLogger(AffichageArticleController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -266,7 +268,11 @@ public class AffichageArticleController implements Initializable {
 
 
     @FXML
-    private void navigateToHome(ActionEvent event) {
+    private void navigateToHome(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/FXML.fxml"));
+        
+        //Scene scene = new Scene(root);
+        homeButton1.getScene().setRoot(root);
     }
 
     @FXML
@@ -278,7 +284,7 @@ public class AffichageArticleController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("browseEvents.fxml"));
         
         //Scene scene = new Scene(root);
-        blogButton1.getScene().setRoot(root);
+        eventButton1.getScene().setRoot(root);
     }
 
    /* @FXML
@@ -286,11 +292,23 @@ public class AffichageArticleController implements Initializable {
     }*/
 
     @FXML
-    private void navigateToProfile(ActionEvent event) {
+    private void navigateToProfile(ActionEvent event) throws IOException {
+        if(user == null){
+            Parent root = FXMLLoader.load(getClass().getResource("registrationGuiFXML.fxml"));
+            connectionButton1.getScene().setRoot(root);
+        }else{
+            Parent root = FXMLLoader.load(getClass().getResource("ProfilUserFXML.fxml"));
+           connectionButton1.getScene().setRoot(root);
+            connectionButton1.setText("Profil");
+        }
     }
 
     @FXML
-    private void navigateToStore(ActionEvent event) {
+    private void navigateToStore(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("Gui/StoreGuiFXML.fxml"));
+        
+        //Scene scene = new Scene(root);
+        storeButton1.getScene().setRoot(root);
     }
 
     @FXML
