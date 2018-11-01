@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import Entity.Article;
 import Entity.Users;
 import GUI.Gui.AdminDashBordFXMLController;
 import java.io.IOException;
@@ -16,8 +17,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -36,7 +39,7 @@ public class AdminDashBoardBlogFXMLController implements Initializable {
     private Button apiControllButton;
     private Button ProfileBtn;
     @FXML
-    private TableView<?> BlogTable;
+    private TableView<Article> BlogTable;
     @FXML
     private Button profileButton;
     @FXML
@@ -45,6 +48,16 @@ public class AdminDashBoardBlogFXMLController implements Initializable {
     private Button eventButton;
     @FXML
     private Button logoutButton;
+    @FXML
+    private TableColumn<Article, Integer> idColumn;
+    @FXML
+    private TableColumn<Article, Integer> authorColumn;
+    @FXML
+    private TableColumn<Article, String> titleColumn;
+    @FXML
+    private TableColumn<Article, String> contentColumn;
+    @FXML
+    private Text messageField;
 
     /**
      * Initializes the controller class.
@@ -59,6 +72,14 @@ public class AdminDashBoardBlogFXMLController implements Initializable {
             eventButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
             apiControllButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent; ");
             logoutButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
+            
+            
+            
+            
+            
+            
+            
+            
     }    
     
      public void initData(Users user) {

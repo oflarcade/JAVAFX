@@ -85,7 +85,6 @@ public class AdminDashBoardEventFXMLController implements Initializable {
     @FXML
     private Pane buttonPane;
     private ArrayList<Evenement> eventsList;
-    @FXML
     private TextField messageField;
     /**
      * Initializes the controller class.
@@ -93,11 +92,14 @@ public class AdminDashBoardEventFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        profileButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
-        usersButton.setStyle("-fx-text-fill: balck;-fx-background-color: transparent;");
-        blogButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
+        messageField = new TextField();
+        messageField.setText("Testing if this is working");
+        
+        profileButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
+        usersButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
+        blogButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
         eventButton.setStyle("-fx-text-fill: #F25652;-fx-background-color: transparent;");
-        apiControllButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent; ");
+        apiControllButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent; ");
         logoutButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
         ServiceEvenement service = new ServiceEvenement();
         eventsList = service.read();
@@ -125,11 +127,12 @@ public class AdminDashBoardEventFXMLController implements Initializable {
     @FXML
     public void deleteSelectedEvent() throws SQLException {
         Evenement event = eventsTable.getSelectionModel().getSelectedItem();
+        
         if(event.equals(null)){
-            messageField.setText("Please select an event in order to delete");
+            messageField = new TextField("Please select an event in order to delete");
+            
             messageField.setStyle("-fx-text-fill: red; -fx-background-color:transparent");
-        } else{
-            int selectedEventId = event.getId();
+        } else {
             ServiceEvenement service = new ServiceEvenement();
             service.deleteById(event);
             populateTable();
@@ -158,7 +161,7 @@ public class AdminDashBoardEventFXMLController implements Initializable {
     
     @FXML
     public void refreshData(ActionEvent event) throws IOException, SQLException {
-         
+            messageField.clear();
             ArrayList<Evenement> eventsList;
             ServiceEvenement service = new ServiceEvenement();
             eventsList = service.read();
@@ -172,6 +175,9 @@ public class AdminDashBoardEventFXMLController implements Initializable {
             typeColumn.setCellValueFactory(new PropertyValueFactory<>("eventType"));
             statusColumn.setCellValueFactory(new PropertyValueFactory<>("validation_status"));
             System.out.println("we are refreshing the ");
+            messageField = new TextField("Data is refreshed !");
+            
+            messageField.setStyle("-fx-text-fill: red; -fx-background-color:transparent;");
     }
     
     

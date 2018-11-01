@@ -45,7 +45,7 @@
       </Pane>
       <Pane fx:id="buttonPane" layoutX="235.0" layoutY="648.0" prefHeight="69.0" prefWidth="855.0" style="-fx-background-color: transparent;">
          <children>
-            <Button fx:id="validateButton" layoutX="201.0" layoutY="15.0" mnemonicParsing="false" onAction="#validateSelectedEvenet" prefHeight="30.0" prefWidth="181.0" style="-fx-background-color: #273c75;" text="Validate " textFill="#f5f5f5" />
+            <Button fx:id="validateButton" layoutX="201.0" layoutY="15.0" mnemonicParsing="false" onAction="#validateSelectedEvent" prefHeight="30.0" prefWidth="181.0" style="-fx-background-color: #273c75;" text="Validate " textFill="#f5f5f5" />
             <Button fx:id="deleteButton" layoutX="405.0" layoutY="15.0" mnemonicParsing="false" onAction="#deleteSelectedEvent" prefHeight="30.0" prefWidth="181.0" style="-fx-background-color: #e84118;" text="Delete" textFill="WHITE" />
             <Button fx:id="contactButton" layoutX="668.0" layoutY="16.0" mnemonicParsing="false" onAction="#contactEventMaker" prefHeight="30.0" prefWidth="181.0" style="-fx-background-color: #fbc531;" text="Contact Maker" textFill="WHITE" />
             <Button fx:id="refreshButton" layoutX="7.0" layoutY="15.0" mnemonicParsing="false" onAction="#refreshData" prefHeight="30.0" prefWidth="181.0" style="-fx-background-color: #44bd32;" text="Refresh" textFill="WHITE" />
