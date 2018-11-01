@@ -1,27 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: #F1F0E2;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLController">
+<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLController">
    <children>
-      <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="718.0" prefWidth="191.0" style="-fx-background-color: #C2E7F2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="889.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="718.0" prefWidth="191.0" style="-fx-background-color: #273c75;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="889.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="homeButton" layoutX="75.0" layoutY="182.0" mnemonicParsing="false" onAction="#navigateToHome" style="-fx-background-color: transparent;" text="Home" />
-            <Button fx:id="blogButton" layoutX="81.0" layoutY="219.0" mnemonicParsing="false" onAction="#navigateToBlog" style="-fx-background-color: transparent;" text="Blog" />
-            <Button fx:id="eventButton" layoutX="76.0" layoutY="259.0" mnemonicParsing="false" onAction="#navigateToEvents" style="-fx-background-color: transparent;" text="Events" />
-            <Button fx:id="associationButton" layoutX="61.0" layoutY="309.0" mnemonicParsing="false" onAction="#navigateToAssociation" style="-fx-background-color: transparent;" text="Association" />
-            <Button fx:id="connectionButton" layoutX="52.0" layoutY="358.0" mnemonicParsing="false" onAction="#navigateToProfile" style="-fx-background-color: transparent;" text="Login/SignUp" />
-            <Button fx:id="storeButton" layoutX="73.0" layoutY="409.0" mnemonicParsing="false" onAction="#navigateToStore" style="-fx-background-color: transparent;" text="Store" />
+            <Button fx:id="homeButton" layoutX="30.0" layoutY="182.0" mnemonicParsing="false" onAction="#navigateToHome" style="-fx-background-color: transparent;" text="Home" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="blogButton" layoutX="30.0" layoutY="219.0" mnemonicParsing="false" onAction="#navigateToBlog" style="-fx-background-color: transparent;" text="Blog" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="eventButton" layoutX="30.0" layoutY="259.0" mnemonicParsing="false" onAction="#navigateToEvents" style="-fx-background-color: transparent;" text="Events" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="associationButton" layoutX="30.0" layoutY="309.0" mnemonicParsing="false" onAction="#navigateToAssociation" style="-fx-background-color: transparent;" text="Association" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="connectionButton" layoutX="30.0" layoutY="358.0" mnemonicParsing="false" onAction="#navigateToProfile" style="-fx-background-color: transparent;" text="Login/SignUp" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="storeButton" layoutX="30.0" layoutY="409.0" mnemonicParsing="false" onAction="#navigateToStore" style="-fx-background-color: transparent;" text="Store" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
             <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="22.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Images/Logo.png" />
                </image>
             </ImageView>
          </children>
+         <effect>
+            <DropShadow />
+         </effect>
       </Pane>
    </children>
 </AnchorPane>

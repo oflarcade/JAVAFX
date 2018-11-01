@@ -8,20 +8,27 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="myPane" maxHeight="717.0" maxWidth="1080.0" minHeight="717.0" minWidth="1080.0" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SignupFXMLController">
+<AnchorPane id="AnchorPane" fx:id="myPane" maxHeight="717.0" maxWidth="1080.0" minHeight="717.0" minWidth="1080.0" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.SignupFXMLController">
     <children>
-      <Text layoutX="463.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Tunisia Charity Land" AnchorPane.bottomAnchor="1045.0" AnchorPane.leftAnchor="463.0" AnchorPane.rightAnchor="414.89697265625" AnchorPane.topAnchor="24.0" />
-      <Text layoutX="540.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register" />
-       <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="718.0" prefWidth="191.0" style="-fx-background-color: #C2E7F2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="889.0" AnchorPane.topAnchor="0.0">
+      <Text layoutX="453.0" layoutY="87.203125" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Tunisia Charity Land" AnchorPane.bottomAnchor="624.734375" AnchorPane.leftAnchor="453.0" AnchorPane.rightAnchor="253.88671875" AnchorPane.topAnchor="64.0">
+         <font>
+            <Font size="24.0" />
+         </font></Text>
+      <Text layoutX="577.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register">
+         <font>
+            <Font size="24.0" />
+         </font></Text>
+       <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="718.0" prefWidth="191.0" style="-fx-background-color: #273c75;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="889.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="homeButton" layoutX="75.0" layoutY="182.0" mnemonicParsing="false" onAction="#navigateToHome" style="-fx-background-color: transparent;" text="Home" />
-            <Button fx:id="blogButton" layoutX="81.0" layoutY="219.0" mnemonicParsing="false" onAction="#navigateToBlog" style="-fx-background-color: transparent;" text="Blog" />
-            <Button fx:id="eventButton" layoutX="76.0" layoutY="259.0" mnemonicParsing="false" onAction="#navigateToEvents" style="-fx-background-color: transparent;" text="Events" />
-            <Button fx:id="associationButton" layoutX="61.0" layoutY="309.0" mnemonicParsing="false" onAction="#navigateToAssociation" style="-fx-background-color: transparent;" text="Association" />
-            <Button fx:id="connectionButton" layoutX="52.0" layoutY="358.0" mnemonicParsing="false" onAction="#navigateToProfile" style="-fx-background-color: transparent;" text="Login/SignUp" />
-            <Button fx:id="storeButton" layoutX="73.0" layoutY="409.0" mnemonicParsing="false" onAction="#navigateToStore" style="-fx-background-color: transparent;" text="Store" />
+            <Button fx:id="homeButton" layoutX="75.0" layoutY="182.0" mnemonicParsing="false" onAction="#navigateToHome" style="-fx-background-color: transparent;" text="Home" textFill="WHITE" />
+            <Button fx:id="blogButton" layoutX="81.0" layoutY="219.0" mnemonicParsing="false" onAction="#navigateToBlog" style="-fx-background-color: transparent;" text="Blog" textFill="WHITE" />
+            <Button fx:id="eventButton" layoutX="76.0" layoutY="259.0" mnemonicParsing="false" onAction="#navigateToEvents" style="-fx-background-color: transparent;" text="Events" textFill="WHITE" />
+            <Button fx:id="associationButton" layoutX="61.0" layoutY="309.0" mnemonicParsing="false" onAction="#navigateToAssociation" style="-fx-background-color: transparent;" text="Association" textFill="WHITE" />
+            <Button fx:id="connectionButton" layoutX="52.0" layoutY="358.0" mnemonicParsing="false" onAction="#navigateToProfile" style="-fx-background-color: transparent;" text="Login/SignUp" textFill="WHITE" />
+            <Button fx:id="storeButton" layoutX="73.0" layoutY="409.0" mnemonicParsing="false" onAction="#navigateToStore" style="-fx-background-color: transparent;" text="Store" textFill="WHITE" />
             <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="22.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../Images/Logo.png" />
@@ -34,24 +41,24 @@
       </Pane>
       <Pane layoutX="191.0" layoutY="146.0" prefHeight="360.0" prefWidth="883.0">
          <children>
-            <Text layoutX="10.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-            <Text layoutX="10.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-            <Text layoutX="10.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-            <Text layoutX="10.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-            <TextField fx:id="personalUsername" alignment="CENTER" layoutX="99.0" layoutY="78.0" maxHeight="25.0" maxWidth="180.0" minHeight="25.0" minWidth="180.0" prefHeight="25.0" prefWidth="180.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-radius: 20;" />
-            <TextField fx:id="personalEmail" layoutX="106.0" layoutY="107.0" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-radius: 20;" />
-            <TextField fx:id="personalPassword" layoutX="102.0" layoutY="136.0" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-radius: 20;" />
-            <TextField fx:id="personalSecondPassword" layoutX="102.0" layoutY="165.0" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-radius: 20;" />
-            <Button fx:id="personalSignup" layoutX="108.0" layoutY="297.0" mnemonicParsing="false" onAction="#signInUserWithUsernameAndEmailAndPassword" text="Sign in" />
-            <Text layoutX="411.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of the association" />
-            <Text layoutX="500.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-            <Text layoutX="500.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-            <Text layoutX="498.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+            <Text layoutX="10.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
+            <Text layoutX="10.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+            <Text layoutX="10.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+            <Text layoutX="10.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+            <TextField fx:id="personalUsername" alignment="CENTER" layoutX="139.0" layoutY="86.0" maxHeight="25.0" maxWidth="180.0" minHeight="25.0" minWidth="180.0" prefHeight="25.0" prefWidth="180.0" promptText="Username" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-radius: 20;" />
+            <TextField fx:id="personalEmail" layoutX="143.0" layoutY="115.0" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-radius: 20;" />
+            <TextField fx:id="personalPassword" layoutX="142.0" layoutY="151.0" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-radius: 20;" />
+            <TextField fx:id="personalSecondPassword" layoutX="142.0" layoutY="185.0" style="-fx-background-color: transparent; -fx-border-color: blue; -fx-border-radius: 20;" />
+            <Button fx:id="personalSignup" layoutX="111.0" layoutY="261.0" mnemonicParsing="false" onAction="#signInUserWithUsernameAndEmailAndPassword" prefWidth="181.0" text="Sign in" />
+            <Text layoutX="395.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of the association" />
+            <Text layoutX="395.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+            <Text layoutX="395.0" layoutY="172.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+            <Text layoutX="395.0" layoutY="202.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
             <TextField fx:id="assoName" layoutX="587.0" layoutY="82.0" />
             <TextField fx:id="assoEmail" layoutX="587.0" layoutY="120.0" />
             <PasswordField fx:id="assPassword" layoutX="587.0" layoutY="152.0" />
             <PasswordField fx:id="assSecondPassword" layoutX="587.0" layoutY="184.0" />
-            <Button fx:id="associationSignup" layoutX="651.0" layoutY="260.0" mnemonicParsing="false" onAction="#signInAssociationWithNameAndEmailAndPassword" text="Sign in " />
+            <Button fx:id="associationSignup" layoutX="462.0" layoutY="258.0" mnemonicParsing="false" onAction="#signInAssociationWithNameAndEmailAndPassword" prefHeight="30.0" prefWidth="181.0" text="Sign in " />
          </children>
       </Pane>
    </children>
