@@ -361,12 +361,12 @@ public class CrudEventFXMLController implements Initializable {
            
             serE = new ServiceEvenement();
             if(user != null){
-           if(user.getRoles().equals("delegue")) {
+           if(user != null){
+           if(user.getRoles().equals("association")) {
                list = serE.read(user.getId());
                System.out.println(user.toString()+"===========");
-           } else {
-               list = serE.read();
-           }
+           } 
+         }
          }
             
             topResults = search(list, smartSearch.getText());
