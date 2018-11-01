@@ -45,18 +45,22 @@ public class AdminDashBoardApiController implements Initializable {
     private Circle mailingSignal;
     @FXML
     private Button mailApiTestButton;
+    @FXML
+    private Button mapApiTestButton;
+    @FXML
+    private Circle MapSignal;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-         profileButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
-            usersButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
-            blogButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
-            eventButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
+         profileButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
+            usersButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
+            blogButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
+            eventButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
             apiControllButton.setStyle("-fx-text-fill: #F25652;-fx-background-color: transparent; ");
-            logoutButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
+            logoutButton.setStyle("-fx-text-fill: #273c75;-fx-background-color: transparent;");
         // TODO
     }    
     
@@ -126,6 +130,10 @@ public class AdminDashBoardApiController implements Initializable {
     private void navigateToExit(ActionEvent event) throws IOException{
          Parent root = FXMLLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml"));
         logoutButton.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void testMapAPi(ActionEvent event) {
     }
 
    
