@@ -53,6 +53,7 @@ import javafx.scene.text.TextFlow;
 import Service.ParticipantService;
 import com.lynden.gmapsfx.javascript.object.InfoWindow;
 import com.lynden.gmapsfx.javascript.object.InfoWindowOptions;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -155,8 +156,6 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
     private Button cnxBtn;
     RegistrationGuiFXMLController C = new RegistrationGuiFXMLController();
     Users user = C.user;
-    @FXML
-    private Label pageNumber;
     //tableau des localisation
     public ArrayList<LatLong> tabLatLong = new ArrayList();
 
@@ -205,15 +204,15 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
         geocodingService = new GeocodingService();
         MapOptions mapOptions = new MapOptions();
 
-        mapOptions.center(new LatLong(36.8065, 10.1815))
-                .mapType(MapTypeIdEnum.ROADMAP)
+        mapOptions.center(new LatLong(33.8869, 9.5375))
+                .mapType(MapTypeIdEnum.HYBRID)
                 .overviewMapControl(false)
                 .panControl(false)
                 .rotateControl(false)
                 .scaleControl(false)
                 .streetViewControl(false)
                 .zoomControl(false)
-                .zoom(7);
+                .zoom(5);
 
         map = mapView.createMap(mapOptions);
 
@@ -827,16 +826,17 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
             serE = new ServiceEvenement();
             list = serE.read();
             topResults = search(list, searchField.getText());
-            System.out.println("-----");
-            System.out.println(topResults);
-            //loading the table
-//            System.out.println(list.toString()); 
-
-            System.out.println("to omages: " + topResults.size());
             if (topResults.size() != 0) {
+                
+                CurrP=1;
                 NoResult.setText("");
+                lisOfEvent.clear();
+                lisOfEvent.addAll(topResults);
+                System.out.println(lisOfEvent);
                 intImageToEmpty();
                 initImages(topResults);
+                indexOfImage = 6;
+                
             } else {
                 NoResult.setText("no result maches your search");
             }
@@ -932,11 +932,6 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
                     }
                 }
             }
-
-//            System.out.println("tableau de score");
-//            System.out.println(tabScore);
-//            System.out.println("to results are :");
-//            System.out.println(tamponTab);
             return tamponTab;
         }
         return new ArrayList<Evenement>();
@@ -946,12 +941,14 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
     @FXML
     private void searchIsEmpty(KeyEvent event) {
         if (searchField.getText().equals("")) {
+            ServiceEvenement serE = new ServiceEvenement();
+            lisOfEvent = serE.read();
             initImages(lisOfEvent);
             CurrP = 1;
             i = 0;
             nbrOfimgInlastPage = 0;
             x = 0;
-            indexOfImage = 0;
+            indexOfImage = 6;
         }
     }
 
@@ -961,6 +958,200 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
 
     @FXML
     private void navigateConnexion(ActionEvent event) {
+    }
+
+    @FXML
+    private void centerMap1(MouseEvent event) {
+        
+        Evenement e =lisOfEvent.get(indexOfImage -6 );
+        geocodingService.geocode(e.getLocalisation(), (GeocodingResult[] results, GeocoderStatus status) -> {
+            LatLong latLong = null;
+            if (status == GeocoderStatus.ZERO_RESULTS) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
+                alert.show();
+                return;
+            } else if (results.length > 1) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
+                alert.show();
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+            
+            } else {
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+               map.setCenter(latLong);
+               map.setZoom(12);
+                MarkerOptions markerOptions1 = new MarkerOptions();
+                markerOptions1.position(latLong);
+                Marker joeSmithMarker = new Marker(markerOptions1);
+                map.addMarker(joeSmithMarker);
+               InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
+                infoWindowOptions.content("<h2>"+e.getShortDescription()+"</h2>"
+                        + "Description:"+e.getLongDescription()+"<br>"
+                        );
+                InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
+                fredWilkeInfoWindow.open(map, joeSmithMarker);
+            }
+        });
+        
+    }
+
+    @FXML
+    private void centerMap4(MouseEvent event) {
+        Evenement e =lisOfEvent.get(indexOfImage -3 );
+        geocodingService.geocode(e.getLocalisation(), (GeocodingResult[] results, GeocoderStatus status) -> {
+            LatLong latLong = null;
+            if (status == GeocoderStatus.ZERO_RESULTS) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
+                alert.show();
+                return;
+            } else if (results.length > 1) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
+                alert.show();
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+            
+            } else {
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+               map.setCenter(latLong);
+               map.setZoom(12);
+                MarkerOptions markerOptions1 = new MarkerOptions();
+                markerOptions1.position(latLong);
+                Marker joeSmithMarker = new Marker(markerOptions1);
+                map.addMarker(joeSmithMarker);
+               InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
+                infoWindowOptions.content("<h2>"+e.getShortDescription()+"</h2>"
+                        + "Description:"+e.getLongDescription()+"<br>"
+                        );
+                InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
+                fredWilkeInfoWindow.open(map, joeSmithMarker);
+            }
+        });
+    }
+
+    @FXML
+    private void centerMap2(MouseEvent event) {
+         Evenement e =lisOfEvent.get(indexOfImage -5 );
+        geocodingService.geocode(e.getLocalisation(), (GeocodingResult[] results, GeocoderStatus status) -> {
+            LatLong latLong = null;
+            if (status == GeocoderStatus.ZERO_RESULTS) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
+                alert.show();
+                return;
+            } else if (results.length > 1) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
+                alert.show();
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+            
+            } else {
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+               map.setCenter(latLong);
+               map.setZoom(12);
+                MarkerOptions markerOptions1 = new MarkerOptions();
+                markerOptions1.position(latLong);
+                Marker joeSmithMarker = new Marker(markerOptions1);
+                map.addMarker(joeSmithMarker);
+               InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
+                infoWindowOptions.content("<h2>"+e.getShortDescription()+"</h2>"
+                        + "Description:"+e.getLongDescription()+"<br>"
+                        );
+                InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
+                fredWilkeInfoWindow.open(map, joeSmithMarker);
+            }
+        });
+    }
+
+    @FXML
+    private void centerMap5(MouseEvent event) {
+        Evenement e =lisOfEvent.get(indexOfImage -2 );
+        geocodingService.geocode(e.getLocalisation(), (GeocodingResult[] results, GeocoderStatus status) -> {
+            LatLong latLong = null;
+            if (status == GeocoderStatus.ZERO_RESULTS) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
+                alert.show();
+                return;
+            } else if (results.length > 1) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
+                alert.show();
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+            
+            } else {
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+               map.setCenter(latLong);
+               map.setZoom(12);
+                MarkerOptions markerOptions1 = new MarkerOptions();
+                markerOptions1.position(latLong);
+                Marker joeSmithMarker = new Marker(markerOptions1);
+                map.addMarker(joeSmithMarker);
+               InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
+                infoWindowOptions.content("<h2>"+e.getShortDescription()+"</h2>"
+                        + "Description:"+e.getLongDescription()+"<br>"
+                        );
+                InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
+                fredWilkeInfoWindow.open(map, joeSmithMarker);
+            }
+        });
+    }
+
+    @FXML
+    private void centerMap3(MouseEvent event) {
+         Evenement e =lisOfEvent.get(indexOfImage -4 );
+        geocodingService.geocode(e.getLocalisation(), (GeocodingResult[] results, GeocoderStatus status) -> {
+            LatLong latLong = null;
+            if (status == GeocoderStatus.ZERO_RESULTS) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
+                alert.show();
+                return;
+            } else if (results.length > 1) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
+                alert.show();
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+            
+            } else {
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+               map.setCenter(latLong);
+               map.setZoom(12);
+                MarkerOptions markerOptions1 = new MarkerOptions();
+                markerOptions1.position(latLong);
+                Marker joeSmithMarker = new Marker(markerOptions1);
+                map.addMarker(joeSmithMarker);
+               InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
+                infoWindowOptions.content("<h2>"+e.getShortDescription()+"</h2>"
+                        + "Description:"+e.getLongDescription()+"<br>"
+                        );
+                InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
+                fredWilkeInfoWindow.open(map, joeSmithMarker);
+            }
+        });
+    }
+
+    @FXML
+    private void centerMap6(MouseEvent event) {
+       Evenement e =lisOfEvent.get(indexOfImage -1 );
+        geocodingService.geocode(e.getLocalisation(), (GeocodingResult[] results, GeocoderStatus status) -> {
+            LatLong latLong = null;
+            if (status == GeocoderStatus.ZERO_RESULTS) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
+                alert.show();
+                return;
+            } else if (results.length > 1) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
+                alert.show();
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+            
+            } else {
+                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+               map.setCenter(latLong);
+               map.setZoom(12);
+                MarkerOptions markerOptions1 = new MarkerOptions();
+                markerOptions1.position(latLong);
+                Marker joeSmithMarker = new Marker(markerOptions1);
+                map.addMarker(joeSmithMarker);
+               InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
+                infoWindowOptions.content("<h2>"+e.getShortDescription()+"</h2>"
+                        + "Description:"+e.getLongDescription()+"<br>"
+                        );
+                InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
+                fredWilkeInfoWindow.open(map, joeSmithMarker);
+            }
+        });
     }
 
 }

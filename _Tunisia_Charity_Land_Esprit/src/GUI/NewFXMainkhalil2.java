@@ -24,7 +24,7 @@ public class NewFXMainkhalil2 extends Application  {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/EventsGuiFXML.fxml"));
         
         Scene scene = new Scene(root);
         

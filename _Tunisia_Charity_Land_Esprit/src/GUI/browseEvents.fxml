@@ -37,7 +37,7 @@
          <children>
             <VBox prefHeight="373.0" prefWidth="250.0">
                <children>
-                  <ImageView fx:id="image1" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="image1" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#centerMap1" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </VBox.margin></ImageView>
@@ -54,7 +54,7 @@
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </VBox.margin></Label>
-                  <ImageView fx:id="image4" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="image4" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#centerMap4" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </VBox.margin></ImageView>
@@ -78,7 +78,7 @@
             </VBox>
             <VBox prefHeight="373.0" prefWidth="250.0">
                <children>
-                  <ImageView fx:id="image2" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="image2" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#centerMap2" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </VBox.margin></ImageView>
@@ -95,7 +95,7 @@
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </VBox.margin></Label>
-                  <ImageView fx:id="image5" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="image5" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#centerMap5" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </VBox.margin></ImageView>
@@ -119,7 +119,7 @@
             </VBox>
             <VBox prefHeight="373.0" prefWidth="250.0">
                <children>
-                  <ImageView fx:id="image3" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="image3" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#centerMap3" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </VBox.margin></ImageView>
@@ -136,7 +136,7 @@
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </VBox.margin></Label>
-                  <ImageView fx:id="image6" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="image6" fitHeight="120.0" fitWidth="120.0" onMouseClicked="#centerMap6" pickOnBounds="true" preserveRatio="true">
                      <VBox.margin>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </VBox.margin></ImageView>
