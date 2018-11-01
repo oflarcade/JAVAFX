@@ -107,7 +107,7 @@ public class GestionArticleFXMLController implements Initializable {
     }    
 
     @FXML
-    private void deleteById(ActionEvent event) throws SQLException {
+    public void deleteById(ActionEvent event) throws SQLException {
         Article article_selectionne = ga_tv.getSelectionModel().getSelectedItem();
    int id_article = article_selectionne.getId();
   
@@ -127,7 +127,7 @@ public class GestionArticleFXMLController implements Initializable {
             tv_image.setCellValueFactory(new PropertyValueFactory<>("image_url"));
         }
      @FXML
-    private void modifierTitre(TableColumn.CellEditEvent<Article, String> event) {
+    public void modifierTitre(TableColumn.CellEditEvent<Article, String> event) {
           Article  articleSelectionne = ga_tv.getSelectionModel().getSelectedItem();
         articleSelectionne.setTitre(event.getNewValue());
         try {
@@ -138,7 +138,7 @@ public class GestionArticleFXMLController implements Initializable {
         }
     }
      @FXML
-    private void modifierContenu(TableColumn.CellEditEvent<Article, String> event) {
+    public void modifierContenu(TableColumn.CellEditEvent<Article, String> event) {
         Article  articleSelectionne = ga_tv.getSelectionModel().getSelectedItem();
         articleSelectionne.setContenu(event.getNewValue());
         try {
@@ -149,7 +149,7 @@ public class GestionArticleFXMLController implements Initializable {
         }
     }
      @FXML
-    private void modifierImage(TableColumn.CellEditEvent<Article, String> event) {
+    public void modifierImage(TableColumn.CellEditEvent<Article, String> event) {
         Article  articleSelectionne = ga_tv.getSelectionModel().getSelectedItem();
         articleSelectionne.setImage_url(event.getNewValue());
         try {

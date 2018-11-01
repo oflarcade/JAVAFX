@@ -8,6 +8,7 @@ package GUI;
 import Entity.Users;
 import GUI.Gui.AdminDashBordFXMLController;
 import Service.AdminDashBoardService;
+import Service.ServiceUser;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -27,6 +28,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
@@ -76,7 +78,11 @@ public class AdminDashBoardUserFXMLController implements Initializable {
     private TableColumn<Users, Integer> lockedColumn;
     @FXML
     private TableColumn<Users, Date> expiredColumn;
-
+    
+    private ArrayList<Users> usersList;
+    private String selectedUser;
+    @FXML
+    private TextField messageField;
     /**
      * Initializes the controller class.
      */
@@ -90,7 +96,6 @@ public class AdminDashBoardUserFXMLController implements Initializable {
             apiControllButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent; ");
             logoutButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
             
-            ArrayList<Users> usersList;
         try {
             AdminDashBoardService service = new AdminDashBoardService();
             usersList = service.getAllUsersFromDatabase();
@@ -115,6 +120,15 @@ public class AdminDashBoardUserFXMLController implements Initializable {
         this.user = user;
         System.out.println(user.toString());
     }
+    
+     public void navigateToContactMail(ActionEvent event) throws IOException{
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/AdminDashBoardMailContactFXML.fxml"));
+         Parent root = (Parent) loader.load();
+         AdminDashBoardMailContactFXMLController controller = loader.<AdminDashBoardMailContactFXMLController>getController();
+         controller.intiEmail(selectedUser);
+         contactUser.getScene().setRoot(root);
+     }
+     
     
     @FXML
     public void navigateToProfile() throws IOException{
@@ -166,7 +180,7 @@ public class AdminDashBoardUserFXMLController implements Initializable {
     @FXML
     public void refreshData(ActionEvent event) throws IOException {
           System.out.println("hello from refresh");
-            ArrayList<Users> usersList;
+            
         try {
             AdminDashBoardService service = new AdminDashBoardService();
             usersList = service.getAllUsersFromDatabase();
@@ -184,6 +198,38 @@ public class AdminDashBoardUserFXMLController implements Initializable {
             Logger.getLogger(AdminDashBoardUserFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
             
+    }
+    
+    @FXML
+    public void DeleteSelectedUser(ActionEvent event) throws IOException, SQLException {
+        Users selectedUser = userTable.getSelectionModel().getSelectedItem();
+        if(selectedUser.equals(null)){
+            messageField.setText("Please select a user to contact");
+            messageField.setStyle("-fx-text-fill:red;");
+        }
+        int selectedId = selectedUser.getId();
+        ServiceUser userService = new ServiceUser();
+        userService.supprimerUser(selectedId);
+        populateTabel();
+    }
+    
+    public void populateTabel() {
+        try {
+            AdminDashBoardService service = new AdminDashBoardService();
+            usersList = service.getAllUsersFromDatabase();
+            ObservableList observableList = FXCollections.observableList(usersList);
+            userTable.setItems(observableList);
+            idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+            usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+            emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+            enabledColumn.setCellValueFactory(new PropertyValueFactory<>("enabled"));
+            lastLoginColumn.setCellValueFactory(new PropertyValueFactory<>("last_login"));
+            //lockedColumn.setCellFactory(new PropertyValueFactory<>("locked"));
+            expiredColumn.setCellValueFactory(new PropertyValueFactory<>("credentials_expires_at"));
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminDashBoardUserFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
    
