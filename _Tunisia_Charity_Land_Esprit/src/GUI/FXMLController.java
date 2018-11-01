@@ -90,7 +90,7 @@ public class FXMLController implements Initializable {
     
     @FXML 
     public void navigateToEvents(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Gui/EventsGuiFXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/browseEvents.fxml"));
         eventButton.getScene().setRoot(root);
     }
     

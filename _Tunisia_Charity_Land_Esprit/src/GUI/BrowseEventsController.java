@@ -1141,7 +1141,7 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
             Parent root = FXMLLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml"));
             cnxBtn.getScene().setRoot(root);
         }else{
-            Parent root = FXMLLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("ProfilUserFXML.fxml"));
             cnxBtn.getScene().setRoot(root);
             cnxBtn.setText("Profil");
         }
