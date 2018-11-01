@@ -6,7 +6,7 @@
 package GUI;
 
 import Entity.Article;
-import Entity.Order;
+import Entity.Order2;
 import Entity.Participant;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -132,17 +132,17 @@ public class ProfilUserFXMLController implements Initializable {
     @FXML
     private TextField textrechorder;
     @FXML
-    private TableView<Order> tableorder;
+    private TableView<Order2> tableorder;
     @FXML
-    private TableColumn<Order, Integer> cprodi;
+    private TableColumn<Order2, Integer> cprodi;
     @FXML
-    private TableColumn<Order, Integer> cquantite;
+    private TableColumn<Order2, Integer> cquantite;
     @FXML
-    private TableColumn<Order, Integer> cprix;
+    private TableColumn<Order2, Integer> cprix;
     @FXML
-    private TableColumn<Order, Integer> cproductowner;
+    private TableColumn<Order2, Integer> cproductowner;
     @FXML
-    private TableColumn<Order, Integer> cuseridorder;
+    private TableColumn<Order2, Integer> cuseridorder;
     private Label laberr;
     private Users user ;
     private String email;
@@ -300,8 +300,8 @@ try {
             blog.setVisible(false);
             order.setVisible(true);
              OrderService as = new OrderService();
-        ArrayList<Order> asl = new ArrayList();
-           asl = (ArrayList <Order>) as.getByUserID(1);
+        ArrayList<Order2> asl = new ArrayList();
+         //  asl = (ArrayList <Order2>) as.getByUserID(1);
          ObservableList obs = FXCollections.observableArrayList(asl);
             tableorder.setItems(obs);
             cprodi.setCellValueFactory(new PropertyValueFactory<>("productid"));
@@ -428,8 +428,8 @@ try {
             int a = Integer.parseInt(textsupporder.getText());
        or.suppOrder(a,1);
         OrderService as = new OrderService();
-        ArrayList<Order> asl = new ArrayList();
-           asl = (ArrayList <Order>) as.getByUserID(1);
+        ArrayList<Order2> asl = new ArrayList();
+//           asl = (ArrayList <Order2>) as.getByUserID(1);
          ObservableList obs = FXCollections.observableArrayList(asl);
             tableorder.setItems(obs);
             cprodi.setCellValueFactory(new PropertyValueFactory<>("productid"));
@@ -447,8 +447,8 @@ try {
         int a = Integer.parseInt(textsupporder.getText());
         or.modOrder(b, a,1);
          OrderService as = new OrderService();
-        ArrayList<Order> asl = new ArrayList();
-           asl = (ArrayList <Order>) as.getByUserID(1);
+        ArrayList<Order2> asl = new ArrayList();
+//           asl = (ArrayList <Order2>) as.getByUserID(1);
          ObservableList obs = FXCollections.observableArrayList(asl);
             tableorder.setItems(obs);
             cprodi.setCellValueFactory(new PropertyValueFactory<>("productid"));
@@ -467,9 +467,9 @@ try {
      int a = Integer.parseInt(x);
       
         OrderService as = new OrderService();
-        ArrayList<Order> part = new ArrayList();
-        part =  (ArrayList<Order>) as.getByUserID(1);
-           part = as.rechercherOrder(1,a);   
+        ArrayList<Order2> part = new ArrayList();
+//        part =  (ArrayList<Order2>) as.getByUserID(1);
+      //     part = as.rechercherOrder(1,a);   
        
         
          ObservableList obs = FXCollections.observableArrayList(part);

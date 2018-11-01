@@ -5,7 +5,7 @@
  */
 package service;
 
-import Entity.Order;
+import Entity.Order2;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -27,8 +27,8 @@ public class OrderService {
     public OrderService() throws SQLException {
         connection = DataSource.getInstance().getConnection();
     }
-      public List<Order> getByUserID(Integer r) {
-         List<Order> part = new ArrayList<>();
+      public List<Order2> getByUserID(Integer r) {
+         List<Order2> part = new ArrayList<>();
         String req = "select * from orders where user_id=?";
         PreparedStatement preparedStatement;
         try {
@@ -36,8 +36,8 @@ public class OrderService {
             preparedStatement.setInt(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-               Order pa;
-                pa = new Order(resultSet.getInt("product_id"), resultSet.getInt("user_id"),resultSet.getInt("quantity"), resultSet.getInt("price"), resultSet.getInt("product_owner"));
+               Order2 pa;
+                pa = new Order2(resultSet.getInt("product_id"), resultSet.getInt("user_id"),resultSet.getInt("quantity"), resultSet.getInt("price"), resultSet.getInt("product_owner"));
                 System.out.println(pa);
                 part.add(pa);
             }
@@ -46,7 +46,7 @@ public class OrderService {
         }
         return part;
     }
-      public void ajouterOrder(Order p) throws SQLException
+      public void ajouterOrder(Order2 p) throws SQLException
     {
          String query = " insert into orders (product_id, user_id, quantity , price , product_owner)"
             + " values (?, ?, ?, ?, ?)";
@@ -100,8 +100,8 @@ public class OrderService {
          //System.out.println("False");
          return false ;
        }
-      public ArrayList<Order> rechercherOrder( int x, Integer a) {
-         ArrayList<Order> part = new ArrayList<>();
+      public ArrayList<Order2> rechercherOrder( int x, Integer a) {
+         ArrayList<Order2> part = new ArrayList<>();
         String req = "select * from article where  user_id="+a+" and prduct_id like '%"+x+"%'";
         System.out.println(req);
         PreparedStatement preparedStatement;
@@ -111,8 +111,8 @@ public class OrderService {
        
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-               Order pa;
-              pa = new Order(resultSet.getInt("product_id"), resultSet.getInt("user_id"),resultSet.getInt("quantity"), resultSet.getInt("price"), resultSet.getInt("product_owner"));
+               Order2 pa;
+              pa = new Order2(resultSet.getInt("product_id"), resultSet.getInt("user_id"),resultSet.getInt("quantity"), resultSet.getInt("price"), resultSet.getInt("product_owner"));
                 System.out.println(pa);
                 part.add(pa);
             }
