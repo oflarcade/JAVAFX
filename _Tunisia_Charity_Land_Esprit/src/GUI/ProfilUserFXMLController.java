@@ -42,7 +42,7 @@ import Service.ArticleService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import service.OrderService;
-import Service.ParticipantService;
+import service.ParticipantService;
 
 /**
  * FXML Controller class
@@ -55,7 +55,6 @@ public class ProfilUserFXMLController implements Initializable {
     private TextField textusernameuser;
     @FXML
     private TextField textemailuser;
-    private TextField textnomuser;
     private TextField textprenomuser;
     @FXML
     private Button enregistreruser;        
@@ -117,11 +116,7 @@ public class ProfilUserFXMLController implements Initializable {
     private TextField textpassuser;
     @FXML
     private TextField textadresseuserr;
-    @FXML
     private TextField textmod;
-    @FXML
-    private Button modbutton;
-    @FXML
     private TextField rechart;
     @FXML
     private ImageView buttorder;
@@ -129,7 +124,6 @@ public class ProfilUserFXMLController implements Initializable {
     private AnchorPane order;
     @FXML
     private TextField textmodorder;
-    @FXML
     private TextField textsupporder;
     @FXML
     private Button buttsupporder;
@@ -149,7 +143,6 @@ public class ProfilUserFXMLController implements Initializable {
     private TableColumn<Order, Integer> cproductowner;
     @FXML
     private TableColumn<Order, Integer> cuseridorder;
-    @FXML
     private Label laberr;
  
     /**
@@ -381,7 +374,6 @@ try {
             cimage.setCellValueFactory(new PropertyValueFactory<>("image_url"));
     }    
 
-    @FXML
     private void modtitre(ActionEvent event) throws SQLException, IOException {
         ArticleService or = new ArticleService ();
         String b = textmod.getText();
@@ -401,7 +393,6 @@ try {
         
     }
 
-    @FXML
     private void rechercheart(KeyEvent event) throws SQLException {
           String x=rechart.getText();
         String y="'%"+x+"%'";

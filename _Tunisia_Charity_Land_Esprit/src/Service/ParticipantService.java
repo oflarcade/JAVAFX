@@ -3,21 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Service;
+package service;
 
-import Entity.Evenement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import Entity.Participant;
-import Entity.Users;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.Statement;
 import Utils.DataSource;
-import javax.xml.registry.infomodel.User;
 
 /**
  *
@@ -63,14 +60,15 @@ public class ParticipantService {
         // execute the preparedstatement
         preparedStmt.execute();
     }
-      public void suppPart(int x) throws SQLException
+      public void suppPart(int x, int y) throws SQLException
     {
-        String requete="DELETE FROM `participant` WHERE `event_id`=?;";
+        String requete="DELETE FROM `participant` WHERE `event_id`=? and user_id =? ;";
           PreparedStatement preparedStatement;
          
         try {
             preparedStatement = connection.prepareStatement(requete);
             preparedStatement.setInt(1, x);
+            preparedStatement.setInt(2, y);
             preparedStatement.executeUpdate();
              
         } catch (SQLException ex) {
@@ -79,9 +77,9 @@ public class ParticipantService {
         }
         
     }
-       public ArrayList<Participant> rechercherPart( Integer x) {
+       public ArrayList<Participant> rechercherPart( Integer x, Integer a) {
          ArrayList<Participant> part = new ArrayList<>();
-        String req = "select * from participant where (event_id like '%"+x+"%')";
+        String req = "select * from participant where and user_id="+a+" event_id like '%"+x+"%'";
         System.out.println(req);
         PreparedStatement preparedStatement;
         try {
@@ -100,9 +98,9 @@ public class ParticipantService {
         }
         return part;
     }
-       public boolean rech(int a) throws SQLException{
+       public boolean rech(int a, int x) throws SQLException{
            Statement stmt = connection.createStatement();
-         ResultSet RS = stmt.executeQuery("select * from participant where event_id like "+a);
+         ResultSet RS = stmt.executeQuery("select * from participant where user_id="+x+" and event_id like "+a);
          if (RS.next())
          {//System.out.println("True");
              return true ;
@@ -114,7 +112,7 @@ public class ParticipantService {
        public void add(int id_user,int id_ev) throws SQLException{
            
 
-        String query = "INSERT INTO `esprit`.`participant` (`event_id`, `user_id`, `due_date`)"
+        String query = "INSERT INTO esprit.`participant` (event_id, user_id, due_date)"
                    + " VALUES (?, ?, CURRENT_TIME());";
         PreparedStatement preStatement;
         try {

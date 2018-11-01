@@ -62,13 +62,14 @@ public class ArticleService {
         // execute the preparedstatement
         preparedStmt.execute();
     }
-      public void suppArticle(int x) throws SQLException
+      public void suppArticle(int x,int y) throws SQLException
     {
-        String requete="DELETE FROM `article` WHERE `id_auteur`=?;";
+        String requete="DELETE FROM `article` WHERE id_auteur=? and `id`=?;";
           PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(requete);
             preparedStatement.setInt(1, x);
+            preparedStatement.setInt(2, y);
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -76,7 +77,7 @@ public class ArticleService {
     }
     public void modArticle (String x, int a) throws SQLException
     {
-        String requete="UPDATE `article` SET `titre`=? WHERE `id_auteur`=? ;";
+        String requete="UPDATE `article` SET `titre`=? WHERE `id`=? ;";
           PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(requete);
@@ -88,5 +89,37 @@ public class ArticleService {
             System.out.println(ex);
         }
     }
+    public ArrayList<Article> rechercherArt( String x, Integer a) {
+         ArrayList<Article> part = new ArrayList<>();
+        String req = "select * from article where  id_auteur="+a+" and titre like "+x;
+        System.out.println(req);
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+           // preparedStatement.setInt(1, r);
+       
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+               Article pa;
+               pa = new Article(resultSet.getInt("id"), resultSet.getInt("id_auteur"),resultSet.getDate("date_creation"), resultSet.getString("titre"), resultSet.getString("contenu"), resultSet.getString("image"));
+                System.out.println(pa);
+                part.add(pa);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return part;
+    }
+       public boolean rech(int a, int x) throws SQLException{
+           Statement stmt = connection.createStatement();
+         ResultSet RS = stmt.executeQuery("select * from article where id_auteur="+x+" and id like "+a);
+         if (RS.next())
+         {//System.out.println("True");
+             return true ;
+         
+         }
+         //System.out.println("False");
+         return false ;
+       }
 }
     

@@ -35,7 +35,7 @@
                   <Image url="@../Images/icons8-salon-de-discussion-64.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="buttuser2" layoutX="397.0" layoutY="8.0" onMousePressed="#handlebutton" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="buttorder" layoutX="397.0" layoutY="8.0" onMousePressed="#handlebutton" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/icons8-panier-64.png" />
                </image>
@@ -60,12 +60,12 @@
                   <Font name="Arial Black" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="31.0" layoutY="244.0" text="Prenom" textFill="WHITE">
+            <Label layoutX="38.0" layoutY="256.0" text="Adresse" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="36.0" layoutY="196.0" text="Nom" textFill="WHITE">
+            <Label layoutX="36.0" layoutY="196.0" text="Password" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="14.0" />
                </font>
@@ -82,8 +82,8 @@
             </Label>
             <TextField fx:id="textemailuser" layoutX="156.0" layoutY="134.0" />
             <TextField fx:id="textusernameuser" layoutX="156.0" layoutY="78.0" />
-            <TextField fx:id="textnomuser" layoutX="156.0" layoutY="195.0" />
-            <TextField fx:id="textprenomuser" layoutX="156.0" layoutY="254.0" />
+            <TextField fx:id="textpassuser" layoutX="156.0" layoutY="195.0" />
+            <TextField fx:id="textadresseuserr" layoutX="156.0" layoutY="254.0" />
             <Button fx:id="enregistreruser" layoutX="194.0" layoutY="305.0" mnemonicParsing="false" onAction="#Enregistreruser" text="Modifier" />
          </children>
       </AnchorPane>
