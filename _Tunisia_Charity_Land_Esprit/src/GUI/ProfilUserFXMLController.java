@@ -4,7 +4,11 @@
  * and open the template in the editor.
  */
 package GUI;
-
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.types.User;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import Entity.Article;
 import Entity.Order2;
 import Entity.Participant;
@@ -25,7 +29,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import javafx.fxml.FXMLLoader;
-import javafx.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.Scene;
@@ -147,6 +150,18 @@ public class ProfilUserFXMLController implements Initializable {
     private Users user ;
     private String email;
     private ServiceUser service;
+    @FXML
+    private ImageView facebookapi;
+    @FXML
+    private Button homeButton;
+    @FXML
+    private Button blogButton;
+    @FXML
+    private Button eventButton;
+    @FXML
+    private Button connectionButton;
+    @FXML
+    private Button storeButton;
     /**
      * Initializes the controller class.
      */
@@ -199,7 +214,6 @@ try {
         user = service.getUserByEmail(email);
     }
     
-    @FXML
     public void Myeventsuser(ActionEvent event) {
        try{
         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("MyeventsUserFXML.fxml"));
@@ -213,7 +227,6 @@ try {
                }
     }
 
-    @FXML
     public void Mesblogsuser(ActionEvent event) {
            try{
         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("MyarticlesFXML.fxml"));
@@ -227,7 +240,6 @@ try {
                }
     }
 
-    @FXML
     public void Mesarticlesuser(ActionEvent event) {
          try{
         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("MyorderFXML.fxml"));
@@ -301,7 +313,7 @@ try {
             order.setVisible(true);
              OrderService as = new OrderService();
         ArrayList<Order2> asl = new ArrayList();
-         //  asl = (ArrayList <Order2>) as.getByUserID(1);
+           asl = (ArrayList <Order2>) as.getByUserID(1);
          ObservableList obs = FXCollections.observableArrayList(asl);
             tableorder.setItems(obs);
             cprodi.setCellValueFactory(new PropertyValueFactory<>("productid"));
@@ -429,7 +441,7 @@ try {
        or.suppOrder(a,1);
         OrderService as = new OrderService();
         ArrayList<Order2> asl = new ArrayList();
-//           asl = (ArrayList <Order2>) as.getByUserID(1);
+           asl = (ArrayList <Order2>) as.getByUserID(1);
          ObservableList obs = FXCollections.observableArrayList(asl);
             tableorder.setItems(obs);
             cprodi.setCellValueFactory(new PropertyValueFactory<>("productid"));
@@ -448,7 +460,7 @@ try {
         or.modOrder(b, a,1);
          OrderService as = new OrderService();
         ArrayList<Order2> asl = new ArrayList();
-//           asl = (ArrayList <Order2>) as.getByUserID(1);
+           asl = (ArrayList <Order2>) as.getByUserID(1);
          ObservableList obs = FXCollections.observableArrayList(asl);
             tableorder.setItems(obs);
             cprodi.setCellValueFactory(new PropertyValueFactory<>("productid"));
@@ -468,8 +480,8 @@ try {
       
         OrderService as = new OrderService();
         ArrayList<Order2> part = new ArrayList();
-//        part =  (ArrayList<Order2>) as.getByUserID(1);
-      //     part = as.rechercherOrder(1,a);   
+        part =  (ArrayList<Order2>) as.getByUserID(1);
+           part = as.rechercherOrder(1,a);   
        
         
          ObservableList obs = FXCollections.observableArrayList(part);
@@ -491,5 +503,74 @@ try {
                
                 
                  buttuser1.getScene().setRoot(root);
+    }
+
+
+    @FXML
+    private void facebook(MouseEvent event) {
+           String domain = "https://www.google.com/";
+        String appId = "1930575387248668" ;
+          String authUrl = "https://graph.facebook.com/oauth/authorize?type=user_agent&client_id="+appId+"&redirect_uri="+domain+"&scope=user_about_me,"
+                + "user_actions.books,user_actions.fitness,user_actions.music,user_actions.news,user_actions.video,user_activities,user_birthday,user_education_history,"
+                + "user_events,user_photos,user_friends,user_games_activity,user_groups,user_hometown,user_interests,user_likes,user_location,user_photos,user_relationship_details,"
+                + "user_relationships,user_religion_politics,user_status,user_tagged_places,user_videos,user_website,user_work_history,ads_management,ads_read,email,"
+                + "manage_notifications,manage_pages,publish_actions,read_insights,read_mailbox,read_page_mailboxes,read_stream,rsvp_event";
+          
+           System.setProperty("webdirver.chrome.driver", "chromedriver.exe");
+           
+        WebDriver driver = new ChromeDriver();
+        driver.get(authUrl);
+        String accessToken;
+        while(true){
+       
+            if(!driver.getCurrentUrl().contains("facebook.com")){
+            String url = driver.getCurrentUrl();
+            accessToken = url.replaceAll(".*#access_token=(.+)&.*", "$1");
+           
+            driver.quit();
+           
+                FacebookClient fbClient = new DefaultFacebookClient(accessToken);
+                User user = fbClient.fetchObject("me",User.class);
+               
+               // message.setText(user.getName());
+           
+          
+         
+    }
+    
+} 
+    }
+
+    @FXML
+    private void navigateToHome(ActionEvent event) {
+    }
+
+    @FXML
+    private void navigateToBlog(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/AdminDashBoardBlogFXML.fxml"));
+        Parent root =  (Parent) loader.load();
+        AdminDashBoardBlogFXMLController controller = loader.<AdminDashBoardBlogFXMLController>getController();
+        
+        
+        
+        blogButton.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void navigateToEvents(ActionEvent event) throws IOException {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/browseEvents.fxml"));
+        Parent root =  (Parent) loader.load();
+       // AdminDashBoFXMLController controller = loader.<AdminDashBoardEventFXMLController>getController();
+        
+        
+        eventButton.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void navigateToProfile(ActionEvent event) {
+    }
+
+    @FXML
+    private void navigateToStore(ActionEvent event) {
     }
 }
