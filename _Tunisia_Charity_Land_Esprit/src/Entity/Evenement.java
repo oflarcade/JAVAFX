@@ -24,7 +24,7 @@ public class Evenement {
     private Date date;
     private Type type;//no set method
     private int validation_status;
-    
+    private String eventType;
     public enum Type{
         ENVIRONMENTAL,
         SANTE,
@@ -56,6 +56,29 @@ public class Evenement {
         this.type = type;
         this.validation_status = validation_status;
     }
+
+    public Evenement(int id, int delegue_id, String shortDescription, String longDescription, Date created_at,String eventType, int validation_status) {
+        this.id = id;
+        this.delegue_id = delegue_id;
+        this.shortDescription = shortDescription;
+        this.longDescription = longDescription;
+        this.created_at = created_at;
+        this.validation_status = validation_status;
+        this.eventType = eventType;
+    }
+    
+    
+    
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(String eventType) {
+        this.eventType = eventType;
+    }
+    
+    
    
     public int getId() {
         return id;
