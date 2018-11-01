@@ -92,36 +92,29 @@ public class AdminDashBoardEventFXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-            try {
-                // TODO
-                profileButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
-                usersButton.setStyle("-fx-text-fill: balck;-fx-background-color: transparent;");
-                blogButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
-                eventButton.setStyle("-fx-text-fill: #F25652;-fx-background-color: transparent;");
-                apiControllButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent; ");
-                logoutButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
-                AdminDashBoardService service = new AdminDashBoardService();
-                eventsList = service.getallEventsFromDatabase();
-                try {
-                    
-                    ObservableList observable = FXCollections.observableList(eventsList);
-                    eventsTable.setItems(observable);
-                    idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-                    titleColumn.setCellValueFactory(new PropertyValueFactory<>("shortDescription"));
-                    byColumn.setCellValueFactory(new PropertyValueFactory<>("delegue_id"));
-                    descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("longDescription"));
-                    createdAt.setCellValueFactory(new PropertyValueFactory<>("created_at"));
-                    typeColumn.setCellValueFactory(new PropertyValueFactory<>("eventType"));
-                    statusColumn.setCellValueFactory(new PropertyValueFactory<>("validation_status"));
-                } catch (Exception e) {
-                    
-                    e.printStackTrace();
-                }
-                
-                
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(AdminDashBoardEventFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        // TODO
+        profileButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
+        usersButton.setStyle("-fx-text-fill: balck;-fx-background-color: transparent;");
+        blogButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent;");
+        eventButton.setStyle("-fx-text-fill: #F25652;-fx-background-color: transparent;");
+        apiControllButton.setStyle("-fx-text-fill: black;-fx-background-color: transparent; ");
+        logoutButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
+        ServiceEvenement service = new ServiceEvenement();
+        eventsList = service.read();
+        try {
+            
+            ObservableList observable = FXCollections.observableList(eventsList);
+            eventsTable.setItems(observable);
+            idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+            titleColumn.setCellValueFactory(new PropertyValueFactory<>("shortDescription"));
+            byColumn.setCellValueFactory(new PropertyValueFactory<>("delegue_id"));
+            descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("longDescription"));
+            createdAt.setCellValueFactory(new PropertyValueFactory<>("created_at"));
+            typeColumn.setCellValueFactory(new PropertyValueFactory<>("eventType"));
+            statusColumn.setCellValueFactory(new PropertyValueFactory<>("validation_status"));
+        } catch (Exception e) {
+            
+            e.printStackTrace();
         }
             
             
@@ -144,8 +137,8 @@ public class AdminDashBoardEventFXMLController implements Initializable {
     }
     
     public void populateTable() throws SQLException{
-       AdminDashBoardService service = new AdminDashBoardService();
-                eventsList = service.getallEventsFromDatabase();
+                ServiceEvenement service = new ServiceEvenement();
+                eventsList = service.read();
                 try {
                     
                     ObservableList observable = FXCollections.observableList(eventsList);
@@ -167,8 +160,8 @@ public class AdminDashBoardEventFXMLController implements Initializable {
     public void refreshData(ActionEvent event) throws IOException, SQLException {
          
             ArrayList<Evenement> eventsList;
-            AdminDashBoardService service = new AdminDashBoardService();
-            eventsList = service.getallEventsFromDatabase();
+            ServiceEvenement service = new ServiceEvenement();
+            eventsList = service.read();
             ObservableList observableList = FXCollections.observableList(eventsList);
             eventsTable.setItems(observableList);
             idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
