@@ -130,44 +130,37 @@ public class RegistrationGuiFXMLController implements Initializable {
     }
 
     @FXML
-    private void navigateToHome(ActionEvent event) throws IOException {
+    public void navigateToHome(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Gui/FXML.fxml"));
         homeButton.getScene().setRoot(root);
     }
 
     @FXML
-    private void navigateToBlog(ActionEvent event) throws IOException {
+    public void navigateToBlog(ActionEvent event) throws IOException {
          Parent root = FXMLLoader.load(getClass().getResource("Gui/BlogGuiFXML.fxml"));
           blogButton.getScene().setRoot(root);
     }
 
     @FXML
-    private void navigateToEvents(ActionEvent event)  throws IOException{
+    public void navigateToEvents(ActionEvent event)  throws IOException{
          Parent root = FXMLLoader.load(getClass().getResource("Gui/browseEvents.fxml"));
         eventButton.getScene().setRoot(root);
     }
 
-    private void navigateToAssociation(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Gui/AssociationGuiFXML.fxml"));
-        associationButton.getScene().setRoot(root);
-    }
+    
 
     @FXML
-    private void navigateToProfile(ActionEvent event)  throws IOException{
+    public void navigateToProfile(ActionEvent event)  throws IOException{
          Parent root = FXMLLoader.load(getClass().getResource("Gui/RegistrationGuiFXML.fxml"));
          connectionButton.getScene().setRoot(root);
     }
 
     @FXML
-    private void navigateToStore(ActionEvent event) throws IOException {
+    public void navigateToStore(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Gui/StoreGuiFXML.fxml"));
         storeButton.getScene().setRoot(root);
     }
 
-    private void navigateToForgotPassword(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("Gui/PasswordResetFXML.fxml"));
-        forgotPassword.getScene().setRoot(root);
-    }
     
     
 }
