@@ -124,7 +124,7 @@
       </HBox>
       <VBox prefHeight="717.0" prefWidth="223.0" style="-fx-background-color: #273c75;">
          <children>
-            <ImageView fitHeight="145.0" fitWidth="223.0">
+            <ImageView fx:id="logo" fitHeight="145.0" fitWidth="223.0">
                <image>
                   <Image url="@../../../../../../../Users/Asus/Downloads/a13df6e4-88a2-4c6f-9d26-d1553bf66034.png" />
                </image>
