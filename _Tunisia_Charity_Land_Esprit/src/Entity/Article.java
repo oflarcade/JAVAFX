@@ -56,7 +56,7 @@ public class Article {
 
     @Override
     public String toString() {
-        return "Article{" + "id=" + id + ", id_auteur=" + id_auteur + ", date_creation=" + date_creation + ", titre=" + titre + ", contenu=" + contenu + ", image_url=" + image_url + '}';
+        return  "\n\n\n\n\n" + "id=" + id + ",\n id_auteur=" + id_auteur + ",\n date_creation=" + date_creation + ",\n titre=" + titre + ",\n contenu=" + contenu + ",\n image_url=" + image_url;
     }
 
     public String getContenu() {

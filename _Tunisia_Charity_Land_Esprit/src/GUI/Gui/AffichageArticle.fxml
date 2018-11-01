@@ -41,6 +41,11 @@
                               <Insets left="15.0" />
                            </HBox.margin>
                         </Button>
+                        <Button fx:id="gesstionArticleButton" layoutX="534.0" layoutY="10.0" mnemonicParsing="false" onAction="#NavigatetoGestionArticle" style="-fx-background-color: #273c75;" text="Gestion blog" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="70.0" />
+                           </HBox.margin>
+                        </Button>
                      </children>
                      <VBox.margin>
                         <Insets left="15.0" top="15.0" />
@@ -128,7 +133,7 @@
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font></Button>
-            <Button fx:id="blogButton1" mnemonicParsing="false" onAction="#navigateToBlog" prefHeight="77.0" prefWidth="234.0" style="-fx-background-color: transparent; -fx-font-size: 20;" text="Blog" textFill="WHITE">
+            <Button fx:id="blogButton1" mnemonicParsing="false" onAction="#navigateToBlog" prefHeight="77.0" prefWidth="234.0" style="-fx-background-color: transparent; -fx-font-size: 20;" text="Blog" textFill="RED">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font></Button>

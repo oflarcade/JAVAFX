@@ -79,6 +79,7 @@ public class UserAuthenticationService {
                 user.setLast_login(rs.getDate("last_login"));
                 System.out.println("console log from auth Service : "+user.getId());
                 System.out.println(user.toString());
+               
                 return user;
             }
 

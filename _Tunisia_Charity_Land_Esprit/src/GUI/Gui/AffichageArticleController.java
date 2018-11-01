@@ -84,6 +84,8 @@ public class AffichageArticleController implements Initializable {
     private Button connectionButton1;
     @FXML
     private Button storeButton1;
+    @FXML
+    private Button gesstionArticleButton;
 
     /**
      * Initializes the controller class.
@@ -97,6 +99,7 @@ public class AffichageArticleController implements Initializable {
             initTitle(listOfArticle);
             if (user == null){
                connectionButton1.setText("Login/Sign up");
+               gesstionArticleButton.setVisible(false);
            }
         } catch (SQLException ex) {
             Logger.getLogger(AffichageArticleController.class.getName()).log(Level.SEVERE, null, ex);
@@ -420,6 +423,15 @@ public class AffichageArticleController implements Initializable {
 
     @FXML
     private void navigateToAssociation(ActionEvent event) {
+    }
+
+    @FXML
+    private void NavigatetoGestionArticle(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("GestionArticleFXML.fxml"));
+        
+        //Scene scene = new Scene(root);
+        gesstionArticleButton.getScene().setRoot(root);
+        
     }
    
 }

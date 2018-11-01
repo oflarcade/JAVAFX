@@ -6,6 +6,8 @@
 package GUI;
 
 import Entity.Article;
+import Entity.Users;
+import static GUI.RegistrationGuiFXMLController.user;
 import Service.ServiceArticle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
@@ -18,6 +20,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -26,18 +31,15 @@ import javafx.scene.Parent;
  */
 public class AjouterArticleFXMLController implements Initializable {
 
+   
     @FXML
-    private JFXTextArea auteur_article;
+    private TextField titre_article;
     @FXML
-    private JFXTextArea titre_article;
+    private TextField image_article;
     @FXML
-    private JFXTextArea image_article;
+    private TextArea contenu_article;
     @FXML
-    private JFXTextArea contenu_article;
-    @FXML
-    private JFXButton boutton_ajout;
-    @FXML
-    private JFXButton bouton_cancel;
+    private Button boutton_ajout;
 
     /**
      * Initializes the controller class.
@@ -49,13 +51,14 @@ public class AjouterArticleFXMLController implements Initializable {
 
     @FXML
     private void add(ActionEvent event) throws SQLException, IOException {
+        RegistrationGuiFXMLController C = new RegistrationGuiFXMLController();
+         Users user = C.user;
+         
           Article a = new Article();
         a.setImage_url(image_article.getText());
         a.setTitre(titre_article.getText());
           a.setContenu(contenu_article.getText());
-        int ida = Integer.parseInt(auteur_article.getText());
-
-        a.setId_auteur(ida);
+        a.setId_auteur(12);
         
         ServiceArticle sa = new ServiceArticle();
         sa.add(a);
@@ -63,6 +66,7 @@ public class AjouterArticleFXMLController implements Initializable {
         
         //Scene scene = new Scene(root);
         boutton_ajout.getScene().setRoot(root);
-    }
+        
     
+}
 }

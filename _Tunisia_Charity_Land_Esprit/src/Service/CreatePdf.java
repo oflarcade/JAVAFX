@@ -47,7 +47,7 @@ public class CreatePdf {
             tab.add(a);}
             Document document = new Document();
             try {
-                PdfWriter.getInstance(document, new FileOutputStream("HelloWorld.pdf"));
+                PdfWriter.getInstance(document, new FileOutputStream("articles.pdf"));
                 document.open();
                 int i;
               for(i=0;i<tab.size();i++){
