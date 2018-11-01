@@ -33,7 +33,7 @@ public class RegistrationGuiFXMLController implements Initializable {
     private Button loginBtn;
     private Button SignUpBtn;
     public static Users user;
-    private boolean  isSignedIn = false;
+
     private TextField username;
     private TextField email;
     private TextField password;
@@ -49,14 +49,14 @@ public class RegistrationGuiFXMLController implements Initializable {
     private Button blogButton;
     @FXML
     private Button eventButton;
-    @FXML
     private Button associationButton;
     @FXML
     private Button connectionButton;
     @FXML
     private Button storeButton;
-    @FXML
     private Button forgotPassword;
+    @FXML
+    private Text errorMessage;
     
     
     /**
@@ -147,7 +147,6 @@ public class RegistrationGuiFXMLController implements Initializable {
         eventButton.getScene().setRoot(root);
     }
 
-    @FXML
     private void navigateToAssociation(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Gui/AssociationGuiFXML.fxml"));
         associationButton.getScene().setRoot(root);
@@ -165,7 +164,6 @@ public class RegistrationGuiFXMLController implements Initializable {
         storeButton.getScene().setRoot(root);
     }
 
-    @FXML
     private void navigateToForgotPassword(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Gui/PasswordResetFXML.fxml"));
         forgotPassword.getScene().setRoot(root);
