@@ -61,7 +61,7 @@ public class PrivateRoomController implements Initializable {
         String request = "SELECT * FROM messages WHERE (sender_id = '"+c+"' AND receiver_id = '"+d+"') OR (receiver_id = '"+c+"' AND sender_id ='"+d+"')";
         try{
            ResultSet rs = ste.executeQuery(request);
-            while(rs.next()){
+            while(rs.next()){   
                 String sender_id = rs.getString("sender_id");
                 String receiver_id = rs.getString("receiver_id");
                 String title = rs.getString("title");

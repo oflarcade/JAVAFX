@@ -206,7 +206,7 @@ static String allacc;
              account c = (account) mtonline.getSelectionModel().getSelectedItem();
              accountus = c.getUsername();
              Stage stage = new Stage();
-               Parent root = FXMLLoader.load(getClass().getResource("PrivateRoom.fxml"));
+               Parent root = FXMLLoader.load(getClass().getResource("Gui/PrivateRoom.fxml"));
 
         Scene scene = new Scene(root);
 
@@ -222,7 +222,7 @@ static String allacc;
              friend c = (friend) mtfriend.getSelectionModel().getSelectedItem();
              friendus = c.getFriendusername();
              Stage stage = new Stage();
-               Parent root = FXMLLoader.load(getClass().getResource("PrivateRoom.fxml"));
+               Parent root = FXMLLoader.load(getClass().getResource("Gui/PrivateRoom.fxml"));
 
         Scene scene = new Scene(root);
 
@@ -240,7 +240,7 @@ static String allacc;
              requestuser =c.getUser_receive();
              requestmsg =c.getMsg();
              Stage stage = new Stage();
-               Parent root = FXMLLoader.load(getClass().getResource("RequestAcceptance.fxml"));
+               Parent root = FXMLLoader.load(getClass().getResource("Gui/RequestAcceptance.fxml"));
 
         Scene scene = new Scene(root);
 
@@ -256,7 +256,7 @@ static String allacc;
              account c = (account) mtallusers.getSelectionModel().getSelectedItem();
              allacc = c.getUsername();
              Stage stage = new Stage();
-               Parent root = FXMLLoader.load(getClass().getResource("AddFriend.fxml"));
+               Parent root = FXMLLoader.load(getClass().getResource("Gui/AddFriend.fxml"));
 
         Scene scene = new Scene(root);
 

@@ -17,8 +17,8 @@
       <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="718.0" prefWidth="191.0" style="-fx-background-color: #C2E7F2;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="889.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="homrBtn" layoutX="75.0" layoutY="182.0" mnemonicParsing="false" onAction="#navigatHome" style="-fx-background-color: transparent;" text="Home" />
-            <Button fx:id="blogBtn" layoutX="81.0" layoutY="219.0" mnemonicParsing="false" onAction="#navigateBlog" style="-fx-background-color: transparent;" text="Blog" />
-            <Button fx:id="eventBtn" layoutX="76.0" layoutY="259.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Events" textFill="#eb0505" />
+            <Button fx:id="blogBtn" layoutX="79.0" layoutY="220.0" mnemonicParsing="false" onAction="#navigateBlog" style="-fx-background-color: transparent;" text="Blog" />
+            <Button fx:id="eventBtn" layoutX="72.0" layoutY="261.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Events" textFill="#eb0505" />
             <Button fx:id="cnxBtn" layoutX="56.0" layoutY="304.0" mnemonicParsing="false" onAction="#navigateConnexion" style="-fx-background-color: transparent;" text="Login/Signup" />
             <Button fx:id="storBttn" layoutX="80.0" layoutY="345.0" mnemonicParsing="false" onAction="#navigatsStore" style="-fx-background-color: transparent;" text="Store" />
          </children>
