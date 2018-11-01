@@ -137,7 +137,7 @@ public class RegistrationGuiFXMLController implements Initializable {
 
     @FXML
     public void navigateToBlog(ActionEvent event) throws IOException {
-         Parent root = FXMLLoader.load(getClass().getResource("Gui/BlogGuiFXML.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("Gui/GestionArticleFXML.fxml"));
           blogButton.getScene().setRoot(root);
     }
 

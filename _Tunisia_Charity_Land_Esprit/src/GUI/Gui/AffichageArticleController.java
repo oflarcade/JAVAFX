@@ -135,13 +135,13 @@ public class AffichageArticleController implements Initializable {
                 loadTitle1(listOfArticle.get(index).getTitre());
                 loadContenu1(listOfArticle.get(index).getContenu());
                 loadDate1(listOfArticle.get(index).getDate_creation().toString());
-              //  loadImg1(listOfArticle.get(index).getImage_url());
+               loadImg1(listOfArticle.get(index).getImage_url());
                 index++;
                 
                 loadTitle2(listOfArticle.get(index).getTitre());
                 loadContenu2(listOfArticle.get(index).getContenu());
                 loadDate2(listOfArticle.get(index).getDate_creation().toString());
-              //  loadImg2(listOfArticle.get(index).getImage_url());
+                loadImg2(listOfArticle.get(index).getImage_url());
                 index ++;
             }
             }
