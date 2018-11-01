@@ -18,6 +18,7 @@ import javax.mail.internet.MimeMessage;
  * @author oflcad
  */
 public class SendMailSSL {
+     
      public SendMailSSL(){
      }
      
@@ -26,8 +27,9 @@ public class SendMailSSL {
      public void sendEmail(String email, String username ) throws SQLException{
          
                 UserAuthenticationService service = new UserAuthenticationService();
-                String confirmation_token = service.getConfirmationToken(email);
-                System.out.println("we are sending an email with this confirmation token" + confirmation_token);
+                String confirmation_tokenSent = service.getConfirmationToken(email);
+                
+                System.out.println("we are sending an email with this confirmation token: " + confirmation_tokenSent);
                 Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.socketFactory.port", "465");
@@ -51,12 +53,12 @@ public class SendMailSSL {
 			message.setRecipients(Message.RecipientType.TO,
 					InternetAddress.parse("omarlakhdhar@gmail.com"));
 			message.setSubject("Verification for Tunisia Charity Land subscription");
-			message.setText("Dear Mr/Mme '"+username+"'," +
+			message.setText("Dear Mr/Mme '"+ username +"'," +
                                         
 					"\n\n Welcome to Tunisia Charity Land,"
-                                +" Please verify your email with copying this <b>confirmation Token</b>"
-                                + " please Copy this confirmation token : <br>"
-                                + " <b>'"+confirmation_token+"'</b>!");
+                                + " Please verify your email with copying this confirmation Token"
+                                + " please Copy this confirmation token :"
+                                + " '"+confirmation_tokenSent+"'");
 
 			Transport.send(message);
 

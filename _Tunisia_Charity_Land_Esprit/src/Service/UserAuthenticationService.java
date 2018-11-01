@@ -8,6 +8,7 @@ package Service;
 import Entity.Users;
 import Utils.DataSource;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,7 +17,10 @@ import java.sql.Statement;
 import java.util.UUID;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
@@ -266,6 +270,7 @@ public class UserAuthenticationService {
         String confirmation_token = genrateConfirmationToken();
         int newID = getNewIdFromDatabase();
         boolean isChecked = validateUserInputFields(username, email, password, secondPassword);
+        System.out.println("database check return :"+isChecked);
         if(isChecked){
             
             String query = "INSERT INTO fos_user (id,username,email,password,enabled,confirmation_token,roles) VALUES (?,?,?,?,?,?,?)";
@@ -282,9 +287,10 @@ public class UserAuthenticationService {
                 System.out.println("please check database new user is created");
                 isInserted = true;
               } catch (SQLException ex) {
-                Logger.getLogger(UserAuthenticationService.class.getName()).log(Level.SEVERE, null, ex);
+                ex.printStackTrace();
             }
         }
+        System.out.println("database insertion"+isInserted);
         return isInserted;
     }
     
@@ -296,8 +302,11 @@ public class UserAuthenticationService {
             boolean isInserted = false;
             String confirmation_token = genrateConfirmationToken();
             int newId = getNewIdFromDatabase();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Calendar calendar = Calendar.getInstance();
+            java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
                 if(validateUserInputFields(name,email,password,secondPassword)){
-                    String query = "INSERT INTO fos_user (id,username,email,password,enabled,confirmation_token,roles) VALUES (?,?,?,?,?,?,?)";
+                    String query = "INSERT INTO fos_user (id,username,email,password,enabled,confirmation_token,roles,last_login,expires_at,password_requested_at,credentials_expires_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
                     try {
                         preparedStatement = connection.prepareStatement(query);
                         preparedStatement.setInt(1, newId);
@@ -307,6 +316,10 @@ public class UserAuthenticationService {
                         preparedStatement.setInt(5, 0);
                         preparedStatement.setString(6, confirmation_token);
                         preparedStatement.setString(7, "association");
+                        preparedStatement.setDate(8, ourJavaDateObject);
+                        preparedStatement.setDate(9, ourJavaDateObject);
+                        preparedStatement.setDate(10, ourJavaDateObject);
+                        preparedStatement.setDate(11, ourJavaDateObject);
                         preparedStatement.executeUpdate();
                         System.out.println("please check database new user is created");
                         isInserted= true;   

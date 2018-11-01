@@ -100,11 +100,11 @@ public class SignupFXMLController implements Initializable {
         String secondPassword = personalSecondPassword.getText();
         boolean isClear = false;
             isClear = service.insertNewUserIntoDatabase(username, email, password, secondPassword);
-            //System.out.println("this is Signup FXML Controller line 97 :" +service.insertNewUserIntoDatabase(username, email, password, secondPassword));
+            System.out.println("this is Signup FXML Controller line 97 :" +service.insertNewUserIntoDatabase(username, email, password, secondPassword));
             if(isClear){
             //all data are good to go
                 System.out.println("we are good to go please send an email to complete sign up !");
-                mailApi.sendEmail("omarlakhdhar@gmail.com","oflcad");
+                mailApi.sendEmail(email,username);
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/mailConfirmationTokenFXML.fxml"));
                 Parent root = (Parent) loader.load();
                 MailConfirmationTokenFXMLController controller = loader.<MailConfirmationTokenFXMLController>getController();
@@ -131,8 +131,8 @@ public class SignupFXMLController implements Initializable {
         
             if(service.inserNewAssociationIntoDatabase(name,email,password,secondPassword)){
                 System.out.println("we are good to go! Please send an email to complete signup !");
-                mailApi.sendEmail(email,"oflcad");
-                Parent root = FXMLLoader.load(getClass().getResource("Gui/mailConfirmationToken.fxml"));
+                mailApi.sendEmail(email,name);
+                Parent root = FXMLLoader.load(getClass().getResource("Gui/mailConfirmationTokenFXML.fxml"));
                 associationSignup.getScene().setRoot(root); 
                 System.out.println("We are going to profile now");
             } else {

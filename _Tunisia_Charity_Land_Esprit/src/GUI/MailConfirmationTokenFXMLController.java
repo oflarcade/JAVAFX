@@ -65,7 +65,7 @@ public class MailConfirmationTokenFXMLController implements Initializable {
            
         if(confirmationTokenField.getText().equals(userConfirmatiomToken)){
             System.out.println("mail is confirmed !");
-            System.out.println("redirect the shit to Raed profile");
+            
             
         }else {
             errorMessage.setText("Please check your confirmation token again !");
