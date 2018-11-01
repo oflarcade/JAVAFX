@@ -4,10 +4,8 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.StoreController">
    <children>
@@ -40,38 +38,25 @@
             </ImageView>
       <ImageView fx:id="image2" fitHeight="153.0" fitWidth="164.0" layoutX="541.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="image3" fitHeight="153.0" fitWidth="164.0" layoutX="857.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="view_p3" layoutX="896.0" layoutY="294.0" mnemonicParsing="false" onAction="#cart3" style="-fx-background-color: green;" text="View Product" textFill="WHITE" />
-      <Button fx:id="view_p2" layoutX="579.0" layoutY="297.0" mnemonicParsing="false" onAction="#cart2" style="-fx-background-color: green;" text="View Product" textFill="WHITE" />
+      <Button fx:id="view_p3" layoutX="896.0" layoutY="294.0" mnemonicParsing="false" onAction="#cart3" style="-fx-background-color: #273c75;" text="View Product" textFill="WHITE" />
+      <Button fx:id="view_p2" layoutX="579.0" layoutY="297.0" mnemonicParsing="false" onAction="#cart2" style="-fx-background-color: #273c75;" text="View Product" textFill="WHITE" />
          </children>
       </Pane>
 <ImageView fx:id="image1" fitHeight="153.0" fitWidth="164.0" layoutX="251.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true" />
-<Button fx:id="view_p1" layoutX="295.0" layoutY="297.0" mnemonicParsing="false" onAction="#cart1" style="-fx-background-color: green;" text="View Product" textFill="WHITE" />
-<HBox alignment="CENTER" layoutX="190.0" layoutY="-6.0" prefHeight="130.0" prefWidth="697.0" style="-fx-background-color: #273c75;">
-   <children>
-      <Text fill="#c5d700" strokeType="OUTSIDE" strokeWidth="0.0" text="Every sell is a contribution for a better world" textAlignment="CENTER">
-         <font>
-            <Font name="Bodoni MT Condensed" size="44.0" />
-         </font>
-      </Text>
-   </children>
-</HBox>
+<Button fx:id="view_p1" layoutX="295.0" layoutY="297.0" mnemonicParsing="false" onAction="#cart1" style="-fx-background-color: #273c75;" text="View Product" textFill="WHITE" />
 <ImageView fx:id="image4" fitHeight="153.0" fitWidth="164.0" layoutX="246.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true" />
-<Button fx:id="view_p4" layoutX="285.0" layoutY="586.0" mnemonicParsing="false" onAction="#cart4" style="-fx-background-color: green;" text="View Product" textFill="WHITE" />
+<Button fx:id="view_p4" layoutX="285.0" layoutY="586.0" mnemonicParsing="false" onAction="#cart4" style="-fx-background-color: #273c75;" text="View Product" textFill="WHITE" />
 <ImageView fx:id="image5" fitHeight="153.0" fitWidth="164.0" layoutX="552.0" layoutY="431.0" pickOnBounds="true" preserveRatio="true" />
-<Button fx:id="view_p5" layoutX="587.0" layoutY="584.0" mnemonicParsing="false" onAction="#cart5" style="-fx-background-color: green;" text="View Product" textFill="WHITE" />
-<Button fx:id="view_p6" layoutX="904.0" layoutY="583.0" mnemonicParsing="false" onAction="#cart6" style="-fx-background-color: green;" text="View Product" textFill="WHITE" />
+<Button fx:id="view_p5" layoutX="587.0" layoutY="584.0" mnemonicParsing="false" onAction="#cart5" style="-fx-background-color: #273c75;" text="View Product" textFill="WHITE" />
+<Button fx:id="view_p6" layoutX="904.0" layoutY="583.0" mnemonicParsing="false" onAction="#cart6" style="-fx-background-color: #273c75;" text="View Product" textFill="WHITE" />
 <ImageView fx:id="image6" fitHeight="153.0" fitWidth="164.0" layoutX="870.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true" />
-<Button fx:id="next_page" layoutX="748.0" layoutY="656.0" mnemonicParsing="false" onAction="#go_next" prefHeight="29.0" prefWidth="123.0" style="-fx-background-color: yellow;" text="Next page" textFill="#260000" />
-      <Button fx:id="prev_page" layoutX="436.0" layoutY="655.0" mnemonicParsing="false" onAction="#go_prev" prefHeight="29.0" prefWidth="123.0" style="-fx-background-color: yellow;" text="Previous page" textFill="#260000" />
-      <ImageView fitHeight="130.0" fitWidth="191.0" layoutX="886.0" layoutY="1.0">
-         <image>
-            <Image url="@../../pics/Charitystore.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="stat_prod" layoutX="223.0" layoutY="660.0" mnemonicParsing="false" onAction="#gostat" prefHeight="29.0" prefWidth="92.0" style="-fx-background-color: red;" text="Stats" textFill="WHITE">
+<Button fx:id="next_page" layoutX="748.0" layoutY="656.0" mnemonicParsing="false" onAction="#go_next" prefHeight="29.0" prefWidth="123.0" style="-fx-background-color: #fbc531;" text="Next page" textFill="#260000" />
+      <Button fx:id="prev_page" layoutX="436.0" layoutY="655.0" mnemonicParsing="false" onAction="#go_prev" prefHeight="29.0" prefWidth="123.0" style="-fx-background-color: #fbc531;" text="Previous page" textFill="#260000" />
+      <Button fx:id="stat_prod" layoutX="885.0" layoutY="33.0" mnemonicParsing="false" onAction="#gostat" prefHeight="36.0" prefWidth="123.0" style="-fx-background-color: #e84118;" text="Stats" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
+      <Button fx:id="gprod_but" layoutX="240.0" layoutY="35.0" mnemonicParsing="false" onAction="#nav_gp" prefHeight="36.0" prefWidth="103.0" style="-fx-background-color: #e84118;" text="Gestion Produit" textFill="WHITE" />
    </children>
 </AnchorPane>

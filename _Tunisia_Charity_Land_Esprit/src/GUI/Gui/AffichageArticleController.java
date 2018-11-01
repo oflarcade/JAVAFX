@@ -182,6 +182,8 @@ public class AffichageArticleController implements Initializable {
         dateLabel2.setText(t);
     }
     
+    /*final String imageURI = "http://www.developpez.com/template/images/logo.png"; 
+final Image image = new Image(imageURI);*/
     public void loadImg1(String url) {
         Image image1 = new Image(url);
        img1.setImage(image1);
@@ -243,7 +245,7 @@ public class AffichageArticleController implements Initializable {
                 loadImg2(listOfArticle.get(index).getImage_url());
                 index++;
                 CurrP++;
-                
+        
             }
             else if(CurrP<nbP){
                 initTitle();
@@ -308,7 +310,7 @@ public class AffichageArticleController implements Initializable {
 
     @FXML
     private void navigateToStore(ActionEvent event) throws IOException {
-         Parent root = FXMLLoader.load(getClass().getResource("Gui/StoreGuiFXML.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("StoreGuiFXML.fxml"));
         
         //Scene scene = new Scene(root);
         storeButton1.getScene().setRoot(root);

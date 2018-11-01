@@ -45,6 +45,6 @@
          <font>
             <Font size="22.0" />
          </font></Label>
-          <Button fx:id="Supprimer_prod1" layoutX="525.0" layoutY="372.0" mnemonicParsing="false" onAction="#suppression" prefHeight="34.0" prefWidth="215.0" style="-fx-background-color: red;" text="Supprimer" textFill="WHITE" />
+          <Button fx:id="Supprimer_prod1" layoutX="525.0" layoutY="372.0" mnemonicParsing="false" onAction="#suppression" prefHeight="34.0" prefWidth="215.0" style="-fx-background-color: #c23616;" text="Supprimer" textFill="WHITE" />
    </children>
 </AnchorPane>

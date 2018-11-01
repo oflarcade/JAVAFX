@@ -53,8 +53,8 @@
       <TableColumn fx:id="name_tab" maxWidth="134.39999999999998" prefWidth="104.0" text="Product Name" />
   </columns>
 </TableView>
-<Button fx:id="Supprimer_prod" layoutX="829.0" layoutY="101.0" mnemonicParsing="false" onAction="#fenetre_supp" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: red;" text="Supprimer" textFill="WHITE" />
+<Button fx:id="Supprimer_prod" layoutX="829.0" layoutY="101.0" mnemonicParsing="false" onAction="#fenetre_supp" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #e84118;" text="Supprimer" textFill="WHITE" />
 <Button fx:id="Modifier_prod" layoutX="581.0" layoutY="99.0" mnemonicParsing="false" onAction="#fenetre_mod" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #273c75;" text="Modifier" textFill="WHITE" />
-<Button fx:id="Ajouter_prod" layoutX="351.0" layoutY="101.0" mnemonicParsing="false" onAction="#fenetre_aj" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: green;" text="Ajouter" textAlignment="CENTER" textFill="WHITE" />
+<Button fx:id="Ajouter_prod" layoutX="351.0" layoutY="101.0" mnemonicParsing="false" onAction="#fenetre_aj" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #273c75;" text="Ajouter" textAlignment="CENTER" textFill="WHITE" />
    </children>
 </AnchorPane>

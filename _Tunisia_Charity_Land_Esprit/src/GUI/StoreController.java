@@ -49,8 +49,6 @@ public class StoreController implements Initializable {
     @FXML
     private Button eventButton;
     @FXML
-    private Button associationButton;
-    @FXML
     private Button connectionButton;
     @FXML
     private Button storeButton;
@@ -95,6 +93,8 @@ public class StoreController implements Initializable {
     int indexOfImage;
     private static Statement ste;
         Connection con=Datasourc.getInstance().getConnexion();
+    @FXML
+    private Button gprod_but;
     
         public StoreController(){
              try{
@@ -436,4 +436,12 @@ final CategoryDataset dataset = new JDBCCategoryDataset(con, SQL);
          frame.pack();
          frame.setVisible(true);
 
-}}
+}
+
+    @FXML
+    private void nav_gp(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/deleg.fxml"));   
+   //  Scene scene = new Scene(root); 
+gprod_but.getScene().setRoot(root);
+    }
+}

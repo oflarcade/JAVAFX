@@ -136,14 +136,14 @@ public class DelegController implements Initializable {
 
    @FXML
     private void fenetre_aj(ActionEvent event) throws SQLException, IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("ajoutprod.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/ajoutprod.fxml"));
         
         //Scene scene = new Scene(root);
         Ajouter_prod.getScene().setRoot(root);
     }
     @FXML
     private void fenetre_mod(ActionEvent event) throws SQLException, IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("modifprod.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/modifprod.fxml"));
         
         //Scene scene = new Scene(root);
         Modifier_prod.getScene().setRoot(root);}
@@ -151,7 +151,7 @@ public class DelegController implements Initializable {
      @FXML
     
      private void fenetre_supp(ActionEvent event) throws SQLException, IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("suppprod.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/suppprod.fxml"));
         
         //Scene scene = new Scene(root);
         Supprimer_prod.getScene().setRoot(root);

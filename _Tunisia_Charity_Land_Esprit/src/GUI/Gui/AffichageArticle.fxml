@@ -60,7 +60,7 @@
                                     <Font size="25.0" />
                                  </font>
                               </Label>
-                              <ImageView fx:id="img1" fitHeight="205.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="img1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                               <Label fx:id="dateLabel1" prefHeight="41.0" prefWidth="200.0" text="date1" />
                            </children>
                         </VBox>
@@ -84,7 +84,7 @@
                                           <Font size="25.0" />
                                        </font>
                                     </Label>
-                                    <ImageView fx:id="img2" fitHeight="205.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="img2" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                                     <Label fx:id="dateLabel2" prefHeight="41.0" prefWidth="200.0" text="date2" />
                                  </children>
                               </VBox>
