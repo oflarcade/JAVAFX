@@ -57,6 +57,6 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="gprod_but" layoutX="240.0" layoutY="35.0" mnemonicParsing="false" onAction="#nav_gp" prefHeight="36.0" prefWidth="103.0" style="-fx-background-color: #e84118;" text="Gestion Produit" textFill="WHITE" />
+      <Button fx:id="gprod_but" layoutX="240.0" layoutY="35.0" mnemonicParsing="false" onAction="#nav_gp" prefHeight="36.0" prefWidth="163.0" style="-fx-background-color: #e84118;" text="Gestion Produit" textFill="WHITE" />
    </children>
 </AnchorPane>
