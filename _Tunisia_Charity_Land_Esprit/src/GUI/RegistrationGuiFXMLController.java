@@ -56,7 +56,7 @@ public class RegistrationGuiFXMLController implements Initializable {
     private Button storeButton;
     private Button forgotPassword;
     @FXML
-    private Text errorMessage;
+    private TextField errorField;
     
     
     /**
@@ -84,14 +84,16 @@ public class RegistrationGuiFXMLController implements Initializable {
                     //Getting data from GUI 
                 String username = login_username.getText();
                 String pass = login_pass.getText();
-                
+                boolean isValid = false;
                 UserAuthenticationService service = new UserAuthenticationService();
                 user = service.authenticateUserWithCrendentials(username,pass);
+                
                 String roles = user.getRoles();
                 
                 System.out.println(username);
                 System.out.println(pass);
                 System.out.println(roles);
+                if(!(username.equals("") || pass.equals(""))){
                 // case treatment for each type of users
                 switch(roles){
                     case "admin":{
@@ -122,7 +124,10 @@ public class RegistrationGuiFXMLController implements Initializable {
                         break;
                     }
                 }
-                
+               } else {
+                    errorField.setText("Please check you credentials!");
+                    errorField.setStyle("-fx-text-fill:red; -fx-background-color:transparent");
+                }
                 
                 
                  

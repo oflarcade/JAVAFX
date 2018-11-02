@@ -8,6 +8,13 @@ package GUI;
 import Entity.Users;
 import GUI.Gui.AdminDashBordFXMLController;
 import Service.SendMailSSL;
+import com.lynden.gmapsfx.GoogleMapView;
+import com.lynden.gmapsfx.MapComponentInitializedListener;
+import com.lynden.gmapsfx.javascript.object.GoogleMap;
+import com.lynden.gmapsfx.javascript.object.LatLong;
+import com.lynden.gmapsfx.javascript.object.MapOptions;
+import com.lynden.gmapsfx.javascript.object.MapTypeIdEnum;
+import com.lynden.gmapsfx.service.geocoding.GeocodingService;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -49,7 +56,10 @@ public class AdminDashBoardApiController implements Initializable {
     private Button mapApiTestButton;
     @FXML
     private Circle MapSignal;
-
+    @FXML
+    private GoogleMapView mapView;
+    private GoogleMap map;
+    private GeocodingService geocodingService;
     /**
      * Initializes the controller class.
      */
@@ -60,7 +70,7 @@ public class AdminDashBoardApiController implements Initializable {
             blogButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
             eventButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
             apiControllButton.setStyle("-fx-text-fill: #F25652;-fx-background-color: transparent; ");
-            logoutButton.setStyle("-fx-text-fill: #273c75;-fx-background-color: transparent;");
+            logoutButton.setStyle("-fx-text-fill: white ;-fx-background-color: transparent;");
         // TODO
     }    
     
@@ -118,7 +128,7 @@ public class AdminDashBoardApiController implements Initializable {
     }
 
     @FXML
-    private void navigateToPosts(ActionEvent event) throws IOException {
+    public void navigateToPosts(ActionEvent event) throws IOException {
          FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/AdminDashBoardBlogFXML.fxml"));
          Parent root = (Parent) loader.load();
         AdminDashBoardBlogFXMLController controller = loader.<AdminDashBoardBlogFXMLController>getController();
@@ -127,13 +137,27 @@ public class AdminDashBoardApiController implements Initializable {
     }
 
     @FXML
-    private void navigateToExit(ActionEvent event) throws IOException{
+    public void navigateToExit(ActionEvent event) throws IOException{
          Parent root = FXMLLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml"));
         logoutButton.getScene().setRoot(root);
     }
 
     @FXML
-    private void testMapAPi(ActionEvent event) {
+    public void testMapAPi(ActionEvent event) {
+        geocodingService = new GeocodingService();
+        MapOptions mapOptions = new MapOptions();
+
+        mapOptions.center(new LatLong(33.8869, 9.5375))
+                .mapType(MapTypeIdEnum.HYBRID)
+                .overviewMapControl(false)
+                .panControl(false)
+                .rotateControl(false)
+                .scaleControl(false)
+                .streetViewControl(false)
+                .zoomControl(false)
+                .zoom(5);
+
+        map = mapView.createMap(mapOptions);
     }
 
    

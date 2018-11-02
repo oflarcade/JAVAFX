@@ -132,7 +132,12 @@ public class SignupFXMLController implements Initializable {
             if(service.inserNewAssociationIntoDatabase(name,email,password,secondPassword)){
                 System.out.println("we are good to go! Please send an email to complete signup !");
                 mailApi.sendEmail(email,name);
-                Parent root = FXMLLoader.load(getClass().getResource("Gui/mailConfirmationTokenFXML.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/mailConfirmationTokenFXML.fxml"));
+                
+                Parent root = (Parent) loader.load();
+                MailConfirmationTokenFXMLController controller = loader.<MailConfirmationTokenFXMLController>getController();
+                controller.initData(email);
+                
                 associationSignup.getScene().setRoot(root); 
                 System.out.println("We are going to profile now");
             } else {

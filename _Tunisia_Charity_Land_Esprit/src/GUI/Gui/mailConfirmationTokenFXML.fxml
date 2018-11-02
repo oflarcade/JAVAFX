@@ -44,6 +44,6 @@
       </Text>
       <Button fx:id="activateAccount" layoutX="482.0" layoutY="534.0" mnemonicParsing="false" onAction="#checkConfirmationToken" style="-fx-background-color: #27ae60;" text="Activate Account" textFill="WHITE" />
       <Text fx:id="errorMessage" layoutX="645.0" layoutY="519.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <TextField alignment="CENTER" layoutX="469.0" layoutY="494.0" prefHeight="27.0" prefWidth="368.0" style="-fx-background-color: transparent;" />
+      <TextField alignment="CENTER" layoutX="345.0" layoutY="494.0" prefHeight="27.0" prefWidth="398.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="345.0" AnchorPane.rightAnchor="337.0" AnchorPane.topAnchor="494.0" />
    </children>
 </AnchorPane>

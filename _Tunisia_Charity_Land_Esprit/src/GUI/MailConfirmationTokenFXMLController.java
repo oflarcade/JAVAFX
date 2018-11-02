@@ -6,6 +6,7 @@
 package GUI;
 
 import Entity.Users;
+import Service.ServiceUser;
 import Service.UserAuthenticationService;
 import java.io.IOException;
 import java.net.URL;
@@ -37,7 +38,7 @@ public class MailConfirmationTokenFXMLController implements Initializable {
     private Button activateAccount;
     @FXML
     private Text errorMessage;
-
+    private ServiceUser userService;
     /**
      * Initializes the controller class.
      */
@@ -70,11 +71,13 @@ public class MailConfirmationTokenFXMLController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilUserFXML.fxml"));
             Parent root = (Parent) loader.load();
             ProfilUserFXMLController controller = loader.<ProfilUserFXMLController>getController();
+            ProfilUserFXMLController.user = userService.getUserByEmail(email);
             controller.initData(email);
             activateAccount.getScene().setRoot(root);
             
         }else {
             errorMessage.setText("Please check your confirmation token again !");
+            errorMessage.setStyle("-fx-fill: red;");
         }
         
         

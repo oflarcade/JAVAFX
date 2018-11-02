@@ -90,7 +90,7 @@ public class AdminDashBoardBlogFXMLController implements Initializable {
             blogButton.setStyle("-fx-text-fill: #F25652;-fx-background-color: transparent;");
             eventButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
             apiControllButton.setStyle("-fx-text-white: black;-fx-background-color: transparent; ");
-            logoutButton.setStyle("-fx-text-fill: #273c75;-fx-background-color: transparent;");
+            logoutButton.setStyle("-fx-text-fill: white ;-fx-background-color: transparent;");
         try {
             ServiceArticle service = new ServiceArticle();
             articleList = service.read();

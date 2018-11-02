@@ -149,8 +149,8 @@ public class ProfilUserFXMLController implements Initializable {
     @FXML
     private TableColumn<Order2, Integer> cuseridorder;
     private Label laberr;
-    RegistrationGuiFXMLController C = new RegistrationGuiFXMLController();
-    Users user = C.user;
+   
+    public static Users user;
     private String email;
     private ServiceUser service;
     @FXML
@@ -172,19 +172,10 @@ public class ProfilUserFXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-/*          FXMLLoader fxmlLoader = new FXMLLoader();
-try {
-    fxmlLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml").openStream());
-    RegistrationGuiFXMLController controller = fxmlLoader.getController();
-    // Or use this to find your label
-    TextField mytextfield = (TextField) fxmlLoader.getNamespace().get("login_username");
-     TextField mytextfield1 = (TextField) fxmlLoader.getNamespace().get("login_pass");
-     String a = mytextfield.getText();
-     String b = mytextfield1.getText();
-} catch (IOException e) {
-    e.printStackTrace();
-}*/
-         textusernameuser.setText(user.getUsername() );
+       
+        System.out.println("this is the email :" + email);
+        //this.user = service.getUserByEmail(email);  
+         textusernameuser.setText(user.getUsername());
         textpassuser.setText(user.getPassword());
         textadresseuserr.setText(user.getAdresse());
         textemailuser.setText(user.getEmail());
@@ -217,6 +208,7 @@ try {
     public void initData(String email){
         this.email = email;
         
+        System.out.println("");
     }
     
     public void Myeventsuser(ActionEvent event) {

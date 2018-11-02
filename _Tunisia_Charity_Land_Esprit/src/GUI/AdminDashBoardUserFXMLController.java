@@ -94,7 +94,7 @@ public class AdminDashBoardUserFXMLController implements Initializable {
             blogButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
             eventButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
             apiControllButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent; ");
-            logoutButton.setStyle("-fx-text-fill: #273c75;-fx-background-color: transparent;");
+            logoutButton.setStyle("-fx-text-fill: white ;-fx-background-color: transparent;");
             
         try {
             AdminDashBoardService service = new AdminDashBoardService();

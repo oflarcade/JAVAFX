@@ -103,7 +103,7 @@ public class AdminDashBoardEventFXMLController implements Initializable {
         blogButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
         eventButton.setStyle("-fx-text-fill: #F25652;-fx-background-color: transparent;");
         apiControllButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent; ");
-        logoutButton.setStyle("-fx-text-fill: #273c75;-fx-background-color: transparent;");
+        logoutButton.setStyle("-fx-text-fill: white ;-fx-background-color: transparent;");
         ServiceEvenement service = new ServiceEvenement();
         eventsList = service.read();
         try {

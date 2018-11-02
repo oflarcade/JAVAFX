@@ -196,11 +196,11 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
             Gevent.setVisible(false);
             isInternaute();            
         }else if(user.getRoles().equals("association")){
-            cnxBtn.setText("Profil");
+            cnxBtn.setText("Profile");
             Gevent.setVisible(true);
         }
         else {
-            cnxBtn.setText("Profil");
+            cnxBtn.setText("Profile");
             Gevent.setVisible(false);
         }
 
