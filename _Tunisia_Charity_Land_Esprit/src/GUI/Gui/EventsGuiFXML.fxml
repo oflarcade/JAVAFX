@@ -22,27 +22,27 @@
    <children>
       <Pane prefHeight="755.0" prefWidth="201.0" style="-fx-background-color: #273c75;">
          <children>
-            <Button fx:id="homeButton" layoutX="48.0" layoutY="191.0" mnemonicParsing="false" onAction="#navigateToHome" style="-fx-background-color: transparent;" text="Home" textFill="WHITE">
+            <Button fx:id="homeButton" layoutX="30.0" layoutY="191.0" mnemonicParsing="false" onAction="#navigateToHome" style="-fx-background-color: transparent;" text="Home" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="blogButton" layoutX="55.0" layoutY="237.0" mnemonicParsing="false" onAction="#navigateToBlog" style="-fx-background-color: transparent;" text="Blog" textFill="WHITE">
+            <Button fx:id="blogButton" layoutX="30.0" layoutY="237.0" mnemonicParsing="false" onAction="#navigateToBlog" style="-fx-background-color: transparent;" text="Blog" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="eventButton" layoutX="45.0" layoutY="291.0" mnemonicParsing="false" onAction="#navigateToEvents" style="-fx-background-color: transparent;" text="Events" textFill="WHITE">
+            <Button fx:id="eventButton" layoutX="30.0" layoutY="291.0" mnemonicParsing="false" onAction="#navigateToEvents" style="-fx-background-color: transparent;" text="Events" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="associationButton" layoutX="28.0" layoutY="345.0" mnemonicParsing="false" onAction="#navigateToAssociation" style="-fx-background-color: transparent;" text="Association" textFill="WHITE">
+            <Button fx:id="associationButton" layoutX="30.0" layoutY="345.0" mnemonicParsing="false" onAction="#navigateToAssociation" style="-fx-background-color: transparent;" text="Association" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="connectionButton" layoutX="23.0" layoutY="397.0" mnemonicParsing="false" onAction="#navigateToProfile" style="-fx-background-color: transparent;" text="Login/SignUp" textFill="WHITE">
+            <Button fx:id="connectionButton" layoutX="4.0" layoutY="397.0" mnemonicParsing="false" onAction="#navigateToProfile" prefHeight="40.0" prefWidth="194.0" style="-fx-background-color: transparent;" text="Login/SignUp" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="storeButton" layoutX="58.0" layoutY="460.0" mnemonicParsing="false" onAction="#navigateToStore" style="-fx-background-color: transparent;" text="Store" textFill="WHITE">
+            <Button fx:id="storeButton" layoutX="30.0" layoutY="460.0" mnemonicParsing="false" onAction="#navigateToStore" style="-fx-background-color: transparent;" text="Store" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Button>
@@ -53,7 +53,7 @@
             </ImageView>
          </children>
       </Pane>
-      <HBox layoutX="212.0" prefHeight="742.0" prefWidth="868.0">
+      <HBox layoutX="207.0" layoutY="8.0" prefHeight="588.0" prefWidth="873.0">
          <children>
             <VBox prefHeight="702.0" prefWidth="308.0">
                <children>
@@ -114,7 +114,7 @@
             </VBox>
             <VBox prefHeight="684.0" prefWidth="631.0">
                <children>
-                  <HBox prefHeight="166.0" prefWidth="557.0">
+                  <HBox prefHeight="166.0" prefWidth="484.0">
                      <children>
                         <TextField fx:id="smartSearch" onKeyPressed="#SearchIsEmpty" prefHeight="28.0" prefWidth="536.0" promptText="Search">
                            <HBox.margin>
@@ -162,8 +162,11 @@
                         <Insets bottom="8.0" left="5.0" right="5.0" top="180.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Label fx:id="createdAt" prefHeight="111.0" prefWidth="198.0" text="      Date de creation" />
-                  <Label fx:id="modifiedAt" prefHeight="123.0" prefWidth="198.0" text="    Dernière modification" />
+                  <Label fx:id="createdAt" layoutX="30.0" prefHeight="111.0" prefWidth="198.0" text="      Date de creation">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></Label>
+                  <Label fx:id="modifiedAt" layoutX="30.0" prefHeight="123.0" prefWidth="198.0" text="    Dernière modification" />
                </children>
                <HBox.margin>
                   <Insets bottom="30.0" left="5.0" right="5.0" top="30.0" />
