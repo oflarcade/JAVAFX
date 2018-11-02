@@ -8,9 +8,17 @@ package GUI;
 import Entity.Article;
 import Entity.Users;
 import GUI.Gui.AdminDashBordFXMLController;
+import Service.ArticleService;
+import Service.ServiceArticle;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +27,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 
@@ -58,7 +67,10 @@ public class AdminDashBoardBlogFXMLController implements Initializable {
     private TableColumn<Article, String> contentColumn;
     @FXML
     private Text messageField;
-
+    private ArrayList<Article> articleList;
+    private ServiceArticle service ;
+    @FXML
+    private Button deleteVutton;
     /**
      * Initializes the controller class.
      */
@@ -73,6 +85,19 @@ public class AdminDashBoardBlogFXMLController implements Initializable {
             eventButton.setStyle("-fx-text-fill: white;-fx-background-color: transparent;");
             apiControllButton.setStyle("-fx-text-white: black;-fx-background-color: transparent; ");
             logoutButton.setStyle("-fx-text-fill: #273c75;-fx-background-color: transparent;");
+        try {
+            ServiceArticle service = new ServiceArticle();
+            articleList = service.read();
+            ObservableList observableList = FXCollections.observableList(articleList);
+            BlogTable.setItems(observableList);
+            idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+            authorColumn.setCellValueFactory(new PropertyValueFactory<>("id_auteur"));
+            titleColumn.setCellValueFactory(new PropertyValueFactory<>("titre"));
+            contentColumn.setCellValueFactory(new PropertyValueFactory<>("contenu"));
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminDashBoardBlogFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
             
             
             
@@ -87,6 +112,38 @@ public class AdminDashBoardBlogFXMLController implements Initializable {
         this.user = user;
     }
     
+    public void deleteSelectedPost(ActionEvent event){
+        
+        Article  selectedArticle = BlogTable.getSelectionModel().getSelectedItem();
+        if(selectedArticle.equals(null)){
+            messageField.setText("Please select a post to delete");
+        }else {
+            
+            service.deleteById(selectedArticle);
+            populateTable();
+        }
+        
+    }
+    
+    public void populateTable(){
+        articleList = service.read();
+        try {
+            ObservableList observableList = FXCollections.observableList(articleList);
+            BlogTable.setItems(observableList);
+            idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+            authorColumn.setCellValueFactory(new PropertyValueFactory<>("id_auteur"));
+            titleColumn.setCellValueFactory(new PropertyValueFactory<>("titre"));
+            contentColumn.setCellValueFactory(new PropertyValueFactory<>("contenu"));
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    @FXML
+    public void contactMaker(ActionEvent event){
+        
+    }
     
     @FXML
     public void navigateToProfile() throws IOException {
@@ -146,6 +203,11 @@ public class AdminDashBoardBlogFXMLController implements Initializable {
         controller.initData(user);
         
         apiControllButton.getScene().setRoot(root);
+    }
+
+    @FXML
+    public void validateSelectedBlog(ActionEvent event) {
+        
     }
     
     
