@@ -306,7 +306,7 @@ static String allacc;
 
     @FXML
     private void navigateToStore(ActionEvent event) throws IOException {
-         Parent root = FXMLLoader.load(getClass().getResource("Gui/store.fxml"));
+         Parent root = FXMLLoader.load(getClass().getResource("Gui/StoreGuiFXML.fxml"));
             storeButton.getScene().setRoot(root);
     }
      @FXML
