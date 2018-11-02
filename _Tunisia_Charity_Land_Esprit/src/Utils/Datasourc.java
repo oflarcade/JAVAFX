@@ -23,7 +23,7 @@ import java.sql.SQLException;
 public class Datasourc {
     private static String url="jdbc:mysql://localhost:3306/esprit";
     private static  String user="root";
-    private static  String pass="mysql";
+    private static  String pass="";
     private static Datasourc Connection;
     private static Connection con;
     private static Datasourc data;

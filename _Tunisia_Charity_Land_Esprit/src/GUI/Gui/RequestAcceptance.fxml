@@ -5,13 +5,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="199.0" prefWidth="343.0" style="-fx-background-color: #F1F0E2;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.RequestAcceptanceController">
+<AnchorPane id="AnchorPane" prefHeight="199.0" prefWidth="343.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.RequestAcceptanceController">
    <children>
       <Label fx:id="mtlabel" layoutX="48.0" layoutY="30.0" prefHeight="55.0" prefWidth="248.0" textAlignment="CENTER">
          <font>
-            <Font size="16.0" />
+            <Font size="17.0" />
          </font></Label>
-      <Button fx:id="mtaccept" layoutX="48.0" layoutY="117.0" mnemonicParsing="false" onAction="#mtacceptaction" prefHeight="34.0" prefWidth="94.0" text="Accepte" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="201.0" AnchorPane.topAnchor="117.0" />
-      <Button fx:id="mtdecline" layoutX="202.0" layoutY="117.0" mnemonicParsing="false" onAction="#mtdeclineaction" prefHeight="34.0" prefWidth="94.0" text="Decline" />
+      <Button fx:id="mtaccept" layoutX="32.0" layoutY="117.0" mnemonicParsing="false" onAction="#mtacceptaction" prefHeight="43.0" prefWidth="110.0" style="-fx-background-color: #273c75;" text="Accepte" textFill="WHITE" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="201.0" AnchorPane.topAnchor="117.0">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="mtdecline" layoutX="202.0" layoutY="117.0" mnemonicParsing="false" onAction="#mtdeclineaction" prefHeight="43.0" prefWidth="110.0" style="-fx-background-color: #fbc531;" text="Decline" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>
