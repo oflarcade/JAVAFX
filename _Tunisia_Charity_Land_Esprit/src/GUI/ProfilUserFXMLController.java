@@ -547,9 +547,9 @@ try {
 
     @FXML
     private void navigateToBlog(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/AdminDashBoardBlogFXML.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/GestionArticleFXML.fxml"));
         Parent root =  (Parent) loader.load();
-        AdminDashBoardBlogFXMLController controller = loader.<AdminDashBoardBlogFXMLController>getController();
+        //AdminDashBoardBlogFXMLController controller = loader.<AdminDashBoardBlogFXMLController>getController();
         
         
         
