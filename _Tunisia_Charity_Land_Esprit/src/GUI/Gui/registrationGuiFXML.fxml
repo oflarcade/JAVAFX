@@ -15,14 +15,29 @@
    <children>
        <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="718.0" prefWidth="191.0" style="-fx-background-color: #273c75;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="889.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="homeButton" layoutX="50.0" layoutY="242.0" mnemonicParsing="false" onAction="#navigateToHome" style="-fx-background-color: transparent;" text="Home" textFill="WHITE" />
-            <Button fx:id="blogButton" layoutX="50.0" layoutY="279.0" mnemonicParsing="false" onAction="#navigateToBlog" style="-fx-background-color: transparent;" text="Blog" textFill="WHITE" />
-            <Button fx:id="eventButton" layoutX="50.0" layoutY="319.0" mnemonicParsing="false" onAction="#navigateToEvents" style="-fx-background-color: transparent;" text="Events" textFill="WHITE" />
-            <Button fx:id="connectionButton" layoutX="50.0" layoutY="358.0" mnemonicParsing="false" onAction="#navigateToProfile" style="-fx-background-color: transparent;" text="Login/SignUp" textFill="WHITE" />
-            <Button fx:id="storeButton" layoutX="50.0" layoutY="404.0" mnemonicParsing="false" onAction="#navigateToStore" style="-fx-background-color: transparent;" text="Store" textFill="WHITE" />
+            <Button fx:id="homeButton" layoutX="30.0" layoutY="242.0" mnemonicParsing="false" onAction="#navigateToHome" style="-fx-background-color: transparent;" text="Home" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="blogButton" layoutX="30.0" layoutY="279.0" mnemonicParsing="false" onAction="#navigateToBlog" style="-fx-background-color: transparent;" text="Blog" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="eventButton" layoutX="30.0" layoutY="319.0" mnemonicParsing="false" onAction="#navigateToEvents" style="-fx-background-color: transparent;" text="Events" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="connectionButton" layoutX="30.0" layoutY="358.0" mnemonicParsing="false" onAction="#navigateToProfile" style="-fx-background-color: transparent;" text="Login/SignUp" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Button fx:id="storeButton" layoutX="30.0" layoutY="404.0" mnemonicParsing="false" onAction="#navigateToStore" style="-fx-background-color: transparent;" text="Store" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
             <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="22.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Images/Logo.png" />
+                  <Image url="@../../Images/logoCharity.png" />
                </image>
             </ImageView>
          </children>

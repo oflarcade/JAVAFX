@@ -278,18 +278,18 @@ final Image image = new Image(imageURI);*/
 
     @FXML
     private void navigateToHome(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/FXML.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("FXML.fxml"));
         
         //Scene scene = new Scene(root);
         homeButton1.getScene().setRoot(root);
     }
 
     @FXML
-    private void navigateToBlog(ActionEvent event) {
+    public void navigateToBlog(ActionEvent event) {
     }
 
     @FXML
-    private void navigateToEvents(ActionEvent event) throws IOException {
+    public void navigateToEvents(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("browseEvents.fxml"));
         
         //Scene scene = new Scene(root);
@@ -301,7 +301,7 @@ final Image image = new Image(imageURI);*/
     }*/
 
     @FXML
-    private void navigateToProfile(ActionEvent event) throws IOException {
+    public void navigateToProfile(ActionEvent event) throws IOException {
         if(user == null){
             Parent root = FXMLLoader.load(getClass().getResource("registrationGuiFXML.fxml"));
             connectionButton1.getScene().setRoot(root);
@@ -313,7 +313,7 @@ final Image image = new Image(imageURI);*/
     }
 
     @FXML
-    private void navigateToStore(ActionEvent event) throws IOException {
+    public void navigateToStore(ActionEvent event) throws IOException {
          Parent root = FXMLLoader.load(getClass().getResource("StoreGuiFXML.fxml"));
         
         //Scene scene = new Scene(root);

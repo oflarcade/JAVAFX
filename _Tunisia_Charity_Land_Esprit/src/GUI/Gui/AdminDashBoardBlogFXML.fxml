@@ -26,9 +26,9 @@
             <TableColumn fx:id="contentColumn" prefWidth="582.4290771484375" text="Content" />
         </columns>
       </TableView>
-      <Button layoutX="456.0" layoutY="659.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="181.0" style="-fx-background-color: #e84118;" text="Delete" textFill="WHITE" />
-      <Button layoutX="852.0" layoutY="659.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="181.0" style="-fx-background-color: #fbc531;" text="Contact Creater" textFill="WHITE" />
-      <Button layoutX="260.0" layoutY="659.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="181.0" style="-fx-background-color: #273c75;" text="Refresh" textFill="WHITE" />
+      <Button fx:id="deleteVutton" layoutX="456.0" layoutY="659.0" mnemonicParsing="false" onAction="#deleteSelectedPost" prefHeight="30.0" prefWidth="181.0" style="-fx-background-color: #e84118;" text="Delete" textFill="WHITE" />
+      <Button fx:id="contactButton" layoutX="852.0" layoutY="659.0" mnemonicParsing="false" onAction="#contactMaker" prefHeight="30.0" prefWidth="181.0" style="-fx-background-color: #fbc531;" text="Contact Creater" textFill="WHITE" />
+      <Button fx:id="refreshButton" layoutX="260.0" layoutY="659.0" mnemonicParsing="false" onAction="#refreshData" prefHeight="30.0" prefWidth="181.0" style="-fx-background-color: #273c75;" text="Refresh" textFill="WHITE" />
       <Pane layoutX="2.0" layoutY="1.0" prefHeight="217.0" prefWidth="225.0" style="-fx-background-color: #273c75;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="855.0" AnchorPane.topAnchor="0.0">
          <children>
             <Text fill="WHITE" fontSmoothingType="LCD" layoutX="10.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin DashBoard">

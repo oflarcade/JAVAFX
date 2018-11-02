@@ -9,6 +9,7 @@ import Entity.Evenement;
 import Entity.Users;
 import GUI.Gui.AdminDashBordFXMLController;
 import Service.AdminDashBoardService;
+import Service.EventValidation;
 import Service.ServiceEvenement;
 import java.io.IOException;
 import java.net.URL;
@@ -86,6 +87,8 @@ public class AdminDashBoardEventFXMLController implements Initializable {
     private Pane buttonPane;
     private ArrayList<Evenement> eventsList;
     private TextField messageField;
+    private ServiceEvenement service;
+    private EventValidation eventValidationService;
     /**
      * Initializes the controller class.
      */
@@ -240,10 +243,20 @@ public class AdminDashBoardEventFXMLController implements Initializable {
     }
 
     @FXML
-    private void validateSelectedEvent(ActionEvent event) {
+    public void validateSelectedEvent(ActionEvent events) throws SQLException {
+        Evenement event = eventsTable.getSelectionModel().getSelectedItem();
+        System.out.println(event.toString());
+        if(event.equals(null)){
+            messageField.setText("Please select an Event To Validate");  
+        } else {
+            eventValidationService.approveEvent(event);
+            populateTable();
+        }
+        
     }
 
     @FXML
-    private void contactEventMaker(ActionEvent event) {
+    public void contactEventMaker(ActionEvent event) {
+        
     }
 }

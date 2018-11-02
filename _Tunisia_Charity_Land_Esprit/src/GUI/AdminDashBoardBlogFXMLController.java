@@ -8,6 +8,7 @@ package GUI;
 import Entity.Article;
 import Entity.Users;
 import GUI.Gui.AdminDashBordFXMLController;
+import Service.AdminDashBoardService;
 import Service.ArticleService;
 import Service.ServiceArticle;
 import java.io.IOException;
@@ -69,8 +70,13 @@ public class AdminDashBoardBlogFXMLController implements Initializable {
     private Text messageField;
     private ArrayList<Article> articleList;
     private ServiceArticle service ;
+    private AdminDashBoardService adminDashBoardService;
     @FXML
     private Button deleteVutton;
+    @FXML
+    private Button contactButton;
+    @FXML
+    private Button refreshButton;
     /**
      * Initializes the controller class.
      */
@@ -112,14 +118,17 @@ public class AdminDashBoardBlogFXMLController implements Initializable {
         this.user = user;
     }
     
-    public void deleteSelectedPost(ActionEvent event){
+    @FXML
+    public void deleteSelectedPost(ActionEvent event) throws SQLException{
         
         Article  selectedArticle = BlogTable.getSelectionModel().getSelectedItem();
+        
+        System.out.println(selectedArticle.toString());
         if(selectedArticle.equals(null)){
             messageField.setText("Please select a post to delete");
         }else {
-            
-            service.deleteById(selectedArticle);
+            adminDashBoardService.deleteSelectedArticle(selectedArticle);
+            //service.deleteById(selectedArticle);
             populateTable();
         }
         
@@ -205,9 +214,11 @@ public class AdminDashBoardBlogFXMLController implements Initializable {
         apiControllButton.getScene().setRoot(root);
     }
 
+    
+
     @FXML
-    public void validateSelectedBlog(ActionEvent event) {
-        
+    public void refreshData(ActionEvent event) {
+        populateTable();
     }
     
     

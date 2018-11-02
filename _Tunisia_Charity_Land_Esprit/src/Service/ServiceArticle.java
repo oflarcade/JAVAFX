@@ -105,7 +105,7 @@ public class ServiceArticle {
         
         public ArrayList<Article> read() {
         ArrayList<Article> tab = new ArrayList<>();
-        String req = "SELECT * FROM `article`";
+        String req = "SELECT * FROM `article`;";
         try {   
             Statement ste = connection.createStatement();
             ResultSet result = ste.executeQuery(req);
@@ -122,17 +122,17 @@ public class ServiceArticle {
                 Article a = new Article(id,id_auteur,date,titre,contenu,image_url);
              
                 tab.add(a); 
-                 for(int i = 0;i<tab.size();i++){
-       System.out.println(tab.get(i));
-   }
+                 
             }
         } catch (SQLException e) {
+            e.printStackTrace();
         } finally{
              return tab;
         }
         }   
+        
         public void deleteById(Article a) {
-        String req = "DELETE  FROM `article` WHERE `id` = ?";
+        String req = "DELETE  FROM `article` WHERE `id` = ? ;";
         PreparedStatement preStatement;
         try {
             preStatement = connection.prepareStatement(req);

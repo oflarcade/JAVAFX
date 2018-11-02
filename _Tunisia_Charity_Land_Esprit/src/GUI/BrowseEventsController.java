@@ -1200,7 +1200,7 @@ public class BrowseEventsController implements Initializable, MapComponentInitia
     }
 
     @FXML
-    private void goToStat(ActionEvent event) {
+    public void goToStat(ActionEvent event) {
         
         try {
             final String SQL = "    SELECT event_id , COUNT(user_id) FROM participant GROUP BY event_id";

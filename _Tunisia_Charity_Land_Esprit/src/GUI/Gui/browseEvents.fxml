@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -12,30 +13,35 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BrowseEventsController">
+<AnchorPane id="AnchorPane" fx:id="myPane" prefHeight="717.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.BrowseEventsController">
    <children>
       <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="718.0" prefWidth="191.0" style="-fx-background-color: #273c75;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="889.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="homrBtn" layoutX="30.0" layoutY="192.0" mnemonicParsing="false" onAction="#navigatHome" style="-fx-background-color: transparent;" text="Home" textFill="WHITE">
+            <Button fx:id="homrBtn" layoutX="30.0" layoutY="265.0" mnemonicParsing="false" onAction="#navigatHome" style="-fx-background-color: transparent;" text="Home" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="blogBtn" layoutX="30.0" layoutY="243.0" mnemonicParsing="false" onAction="#navigateBlog" style="-fx-background-color: transparent;" text="Blog" textFill="WHITE">
+            <Button fx:id="blogBtn" layoutX="30.0" layoutY="316.0" mnemonicParsing="false" onAction="#navigateBlog" style="-fx-background-color: transparent;" text="Blog" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="eventBtn" layoutX="30.0" layoutY="289.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Events" textFill="#eb0505">
+            <Button fx:id="eventBtn" layoutX="30.0" layoutY="362.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Events" textFill="#eb0505">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="cnxBtn" layoutX="30.0" layoutY="339.0" mnemonicParsing="false" onAction="#navigateConnexion" style="-fx-background-color: transparent;" text="Login/Signup" textFill="WHITE">
+            <Button fx:id="cnxBtn" layoutX="30.0" layoutY="412.0" mnemonicParsing="false" onAction="#navigateConnexion" style="-fx-background-color: transparent;" text="Login/Signup" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="storBttn" layoutX="30.0" layoutY="397.0" mnemonicParsing="false" onAction="#navigatsStore" style="-fx-background-color: transparent;" text="Store" textFill="WHITE">
+            <Button fx:id="storBttn" layoutX="30.0" layoutY="470.0" mnemonicParsing="false" onAction="#navigatsStore" style="-fx-background-color: transparent;" text="Store" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Button>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="20.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/logoCharity.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Button fx:id="next" layoutX="600.0" layoutY="465.0" mnemonicParsing="false" onAction="#goToNext" prefHeight="27.0" prefWidth="71.0" style="-fx-background-color: #273c75;" text="Next" textFill="WHITE" />

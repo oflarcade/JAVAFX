@@ -68,6 +68,7 @@ public class EventValidation {
     }  
     
     public void approveEvent(Evenement ev){
+        System.out.println("this is the event :" + ev.getId());
         String query = "UPDATE `evenement` SET `validation_status`=? WHERE id=?";
         PreparedStatement preparedStatement;
         int validation_status = 1;

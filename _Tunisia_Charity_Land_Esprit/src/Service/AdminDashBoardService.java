@@ -5,6 +5,7 @@
  */
 package Service;
 
+import Entity.Article;
 import Entity.Evenement;
 import Entity.Users;
 import Utils.DataSource;
@@ -63,7 +64,14 @@ public class AdminDashBoardService {
     
     
     
-    
+    public void deleteSelectedArticle(Article article) throws SQLException {
+        int selectedId = article.getId();
+        System.out.println(selectedId);
+        String query = "DELETE FROM `article` WHERE `id`="+selectedId+";";
+        statement.executeUpdate(query);
+        
+        
+    }
     
     
 }

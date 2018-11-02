@@ -43,7 +43,7 @@
             <Button fx:id="usersButton" layoutX="50.0" layoutY="296.0" mnemonicParsing="false" onAction="#navigateToUsers" style="-fx-background-color: transparent;" text="User" textFill="WHITE" />
             <Button fx:id="blogButton" layoutX="50.0" layoutY="335.0" mnemonicParsing="false" onAction="#navigateToBlog" style="-fx-background-color: transprent;" text="Posts" textFill="WHITE" />
             <Button fx:id="eventButton" layoutX="50.0" layoutY="370.0" mnemonicParsing="false" onAction="#navigateToEvents" style="-fx-background-color: transparent;" text="Events" textFill="#f5f5f5" />
-            <Button fx:id="logoutButton" layoutX="50.0" layoutY="440.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: transparent;" text="Logout" textFill="#d30808" />
+            <Button fx:id="logoutButton" cache="true" depthTest="ENABLE" layoutX="50.0" layoutY="440.0" mnemonicParsing="false" onAction="#logout" pickOnBounds="false" style="-fx-background-color: transparent;" text="Logout" textFill="#d30808" textOverrun="CLIP" />
             <Button fx:id="apiControllButton" layoutX="50.0" layoutY="403.0" mnemonicParsing="false" onAction="#navigateToApiControllButton" style="-fx-background-color: transparent;" text="Api Control" textFill="WHITE" />
             <ImageView fitHeight="99.0" fitWidth="142.0" layoutX="54.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
                <image>

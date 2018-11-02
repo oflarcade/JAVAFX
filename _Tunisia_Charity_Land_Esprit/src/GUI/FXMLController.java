@@ -70,9 +70,7 @@ public class FXMLController implements Initializable {
      @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        if(!loggedInUser.equals(null)){
-            connectionButton.setText("Profile");
-        }
+
     }   
     
     
@@ -110,6 +108,7 @@ public class FXMLController implements Initializable {
         storeButton.getScene().setRoot(root);
     }
     
+    @FXML
     public void navigateToAssociation(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Gui/AssociationGuiFXML.fxml"));
         associationButton.getScene().setRoot(root);
