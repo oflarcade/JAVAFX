@@ -175,10 +175,10 @@ public class ProfilUserFXMLController implements Initializable {
        
         System.out.println("this is the email :" + email);
         //this.user = service.getUserByEmail(email);  
-         //textusernameuser.setText(user.getUsername());
-        //textpassuser.setText(user.getPassword());
-        //textadresseuserr.setText(user.getAdresse());
-        //textemailuser.setText(user.getEmail());
+         textusernameuser.setText("username");
+        textpassuser.setText("password");
+        textadresseuserr.setText("adresse");
+        textemailuser.setText("email@email.com");
          ParticipantService pa = null;
         try {
             pa = new ParticipantService();

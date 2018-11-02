@@ -93,8 +93,10 @@ public class RegistrationGuiFXMLController implements Initializable {
                 System.out.println(username);
                 System.out.println(pass);
                 System.out.println(roles);
+                
                 if(!(username.equals("") || pass.equals(""))){
                 // case treatment for each type of users
+                if(roles != null){
                 switch(roles){
                     case "admin":{
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/AdminDashBordFXML.fxml"));
@@ -122,7 +124,11 @@ public class RegistrationGuiFXMLController implements Initializable {
                             controller.initData(user);
                             loginBtn.getScene().setRoot(root);
                         break;
+                        }
                     }
+                } else {
+                    errorField.setText("Please check you credentials!");
+                    errorField.setStyle("-fx-text-fill:red; -fx-background-color:transparent");
                 }
                } else {
                     errorField.setText("Please check you credentials!");

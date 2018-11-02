@@ -272,9 +272,11 @@ public class UserAuthenticationService {
         int newID = getNewIdFromDatabase();
         boolean isChecked = validateUserInputFields(username, email, password, secondPassword);
         System.out.println("database check return :"+isChecked);
+        Calendar calendar = Calendar.getInstance();
+            java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
         if(isChecked){
             
-            String query = "INSERT INTO fos_user (id,username,email,password,enabled,confirmation_token,roles) VALUES (?,?,?,?,?,?,?)";
+            String query = "INSERT INTO fos_user (id,username,email,password,enabled,confirmation_token,roles,last_login,expires_at,password_requested_at,credentials_expires_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             try {
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setInt(1, newID);
@@ -284,6 +286,10 @@ public class UserAuthenticationService {
                 preparedStatement.setInt(5, 0);
                 preparedStatement.setString(6, confirmation_token);
                 preparedStatement.setString(7, "user");
+                preparedStatement.setDate(8, ourJavaDateObject);
+                preparedStatement.setDate(9, ourJavaDateObject);
+                preparedStatement.setDate(10, ourJavaDateObject);
+                preparedStatement.setDate(11, ourJavaDateObject);
                 preparedStatement.executeUpdate();
                 System.out.println("please check database new user is created");
                 isInserted = true;
@@ -303,9 +309,10 @@ public class UserAuthenticationService {
             boolean isInserted = false;
             String confirmation_token = genrateConfirmationToken();
             int newId = getNewIdFromDatabase();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            
             Calendar calendar = Calendar.getInstance();
             java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+            
                 if(validateUserInputFields(name,email,password,secondPassword)){
                     String query = "INSERT INTO fos_user (id,username,email,password,enabled,confirmation_token,roles,last_login,expires_at,password_requested_at,credentials_expires_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
                     try {

@@ -68,11 +68,9 @@ public class MailConfirmationTokenFXMLController implements Initializable {
            
         if(confirmationTokenField.getText().equals(userConfirmatiomToken)){
             System.out.println("mail is confirmed !");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("ProfilUserFXML.fxml"));
-            Parent root = (Parent) loader.load();
-            ProfilUserFXMLController controller = loader.<ProfilUserFXMLController>getController();
-            ProfilUserFXMLController.user = userService.getUserByEmail(email);
-            controller.initData(email);
+            Parent root = FXMLLoader.load(getClass().getResource("ProfilUserFXML.fxml"));
+            
+            
             activateAccount.getScene().setRoot(root);
             
         }else {
