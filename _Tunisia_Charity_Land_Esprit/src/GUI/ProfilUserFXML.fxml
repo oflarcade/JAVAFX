@@ -68,6 +68,12 @@
             <TextField fx:id="textsupp" layoutX="536.0" layoutY="433.0" />
             <Button fx:id="supprimerpart" layoutX="703.0" layoutY="433.0" mnemonicParsing="false" onAction="#supprimerPart" style="-fx-background-color: #273c75;" text="Supprimer" textFill="#fffdfd" />
             <Label fx:id="warning" layoutX="561.0" layoutY="483.0" prefHeight="17.0" prefWidth="100.0" textFill="RED" />
+            <Label layoutX="170.0" layoutY="437.0" text="Event ID">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="buttactpart" layoutX="339.0" layoutY="488.0" mnemonicParsing="false" onAction="#actpart" style="-fx-background-color: #273c75;" text="Actualiser" textFill="WHITE" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="blog" layoutX="191.0" layoutY="80.0" prefHeight="643.0" prefWidth="889.0" visible="false">
@@ -91,6 +97,11 @@
               </columns>
             </TableView>
             <Button layoutX="353.0" layoutY="430.0" mnemonicParsing="false" onAction="#modtitre" style="-fx-background-color: #273c75;" text="Modifier" textFill="WHITE" />
+            <Label fx:id="labelerreur" layoutX="630.0" layoutY="422.0" textFill="RED">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="order" layoutX="191.0" layoutY="76.0" prefHeight="643.0" prefWidth="889.0" visible="false">
@@ -119,6 +130,7 @@
                   <TableColumn fx:id="cproductowner" prefWidth="168.0" text="Product Owner" />
               </columns>
             </TableView>
+            <Button fx:id="buttactorder" layoutX="91.0" layoutY="469.0" mnemonicParsing="false" onAction="#actorder" style="-fx-background-color: #273c75;" text="Actualiser" textFill="WHITE" />
          </children></AnchorPane>
       <AnchorPane fx:id="profil" layoutX="191.0" layoutY="76.0" prefHeight="643.0" prefWidth="889.0">
          <children>

@@ -42,6 +42,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import Service.ArticleService;
+import static java.lang.Double.NaN;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import service.OrderService;
@@ -149,8 +150,8 @@ public class ProfilUserFXMLController implements Initializable {
     @FXML
     private TableColumn<Order2, Integer> cuseridorder;
     private Label laberr;
-   
-    public static Users user;
+    RegistrationGuiFXMLController C = new RegistrationGuiFXMLController();
+     Users user = C.user ;
     private String email;
     private ServiceUser service;
     @FXML
@@ -167,18 +168,43 @@ public class ProfilUserFXMLController implements Initializable {
     private Button storeButton;
     @FXML
     private Button logoutbutt;
+    @FXML
+    private Label labelerreur;
+    @FXML
+    private Button buttactpart;
+    @FXML
+    private Button buttactorder;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
        
         System.out.println("this is the email :" + email);
-        //this.user = service.getUserByEmail(email);  
+        this.user = service.getUserByEmail(email);  
          textusernameuser.setText("username");
         textpassuser.setText("password");
         textadresseuserr.setText("adresse");
         textemailuser.setText("email@email.com");
+
+/*          FXMLLoader fxmlLoader = new FXMLLoader();
+try {
+    fxmlLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml").openStream());
+    RegistrationGuiFXMLController controller = fxmlLoader.getController();
+    // Or use this to find your label
+    TextField mytextfield = (TextField) fxmlLoader.getNamespace().get("login_username");
+     TextField mytextfield1 = (TextField) fxmlLoader.getNamespace().get("login_pass");
+     String a = mytextfield.getText();
+     String b = mytextfield1.getText();
+} catch (IOException e) {
+    e.printStackTrace();
+}*/
+         textusernameuser.setText(user.getUsername() );
+        textpassuser.setText(user.getPassword());
+        textadresseuserr.setText(user.getAdresse());
+        textemailuser.setText(user.getEmail());
+
          ParticipantService pa = null;
         try {
             pa = new ParticipantService();
@@ -189,7 +215,7 @@ public class ProfilUserFXMLController implements Initializable {
         // User b = new User (555,"pipo","sarko",1,"raed","djdjd","jbhjbd","admin",null,"999","550cc");
       //  try {
           //  part = (ArrayList<Participant>) pa.getByUserID(ServiceUser.userStatic.getId());
-           part = (ArrayList <Participant>) pa.getByUserID(1);
+           part = (ArrayList <Participant>) pa.getByUserID(user.getId());
       // } catch (SQLException ex) {
         //    Logger.getLogger(MyeventsUserFXMLController.class.getName()).log(Level.SEVERE, null, ex);
      //  }
@@ -208,7 +234,6 @@ public class ProfilUserFXMLController implements Initializable {
     public void initData(String email){
         this.email = email;
         
-        System.out.println("");
     }
     
     public void Myeventsuser(ActionEvent event) {
@@ -258,6 +283,16 @@ public class ProfilUserFXMLController implements Initializable {
          user.setPassword(textpassuser.getText());
         user.setAdresse(textadresseuserr.getText());
         serv.moduser(user.getUsername(), user.getEmail(), user.getPassword(), user.getAdresse(), user.getId());
+        try{
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Gui/Modifie.fxml"));
+       Parent root = (Parent) fxmlloader.load();
+       Stage stage = new Stage();
+       
+       stage.setScene(new Scene(root));
+       stage.show();
+               }catch (Exception e){
+                   System.out.println(e);
+               }
         System.out.println("ModifiÈ");
     }catch (SQLException ex) {
             ex.printStackTrace();
@@ -279,6 +314,15 @@ public class ProfilUserFXMLController implements Initializable {
             events.setVisible(false);
            blog.setVisible(false);
            order.setVisible(false);
+            ParticipantService pa = new ParticipantService();
+        ArrayList<Participant> part = new ArrayList();
+           part =  (ArrayList<Participant>) pa.getByUserID(user.getId());
+         ObservableList obs = FXCollections.observableArrayList(part);
+            tableviewuser.setItems(obs);
+            cdate.setCellValueFactory(new PropertyValueFactory<>("date"));
+            ceventid.setCellValueFactory(new PropertyValueFactory<>("eventid"));
+            cuserid.setCellValueFactory(new PropertyValueFactory<>("userid"));
+           
             
       
         }else if (event.getTarget()== buttevents){
@@ -331,7 +375,7 @@ public class ProfilUserFXMLController implements Initializable {
        if (b==true){
            or.suppPart(a,user.getId());
              try{
-        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("DialogFXML.fxml"));
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Gui/DialogFXML.fxml"));
        Parent root = (Parent) fxmlloader.load();
        Stage stage = new Stage();
        stage.setTitle("Dialog");
@@ -380,7 +424,21 @@ public class ProfilUserFXMLController implements Initializable {
     public void supprimerArt(ActionEvent event) throws SQLException, IOException{
             ArticleService or = new ArticleService();
             int a = Integer.parseInt(textsuppart.getText());
-       or.suppArticle(12,a);
+            if (or.rech(a, user.getId())==true){
+                  try{
+                      or.suppArticle(user.getId(),a);
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Gui/DialogFXML.fxml"));
+       Parent root = (Parent) fxmlloader.load();
+       Stage stage = new Stage();
+       stage.setTitle("Dialog");
+       stage.setScene(new Scene(root));
+       stage.show();
+               }catch (Exception e){
+                   System.out.println(e);
+
+               }
+            }else labelerreur.setText("ID erroné");
+       
         ArticleService as = new ArticleService();
         ArrayList<Article> asl = new ArrayList();
            asl = (ArrayList <Article>) as.getByUserID(user.getId());
@@ -398,7 +456,23 @@ public class ProfilUserFXMLController implements Initializable {
         ArticleService or = new ArticleService ();
         String b = textmod.getText();
         int a = Integer.parseInt(textsuppart.getText());
+            if (a != NaN)
+            {
         or.modArticle(b, a);
+           try{
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Gui/Modifie.fxml"));
+       Parent root = (Parent) fxmlloader.load();
+       Stage stage = new Stage();
+       
+       stage.setScene(new Scene(root));
+       stage.show();
+               }catch (Exception e){
+                   System.out.println(e);
+               }
+        
+        }
+            
+            
          ArticleService as = new ArticleService();
         ArrayList<Article> asl = new ArrayList();
            asl = (ArrayList <Article>) as.getByUserID(user.getId());
@@ -435,7 +509,24 @@ public class ProfilUserFXMLController implements Initializable {
     private void supporder(ActionEvent event) throws SQLException {
          OrderService or = new OrderService();
             int a = Integer.parseInt(textsupporder.getText());
-       or.suppOrder(a,user.getId());
+            
+                
+       if(or.suppOrder(a,user.getId())){
+            try{
+                      
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Gui/DialogFXML.fxml"));
+       Parent root = (Parent) fxmlloader.load();
+       Stage stage = new Stage();
+       stage.setTitle("Dialog");
+       stage.setScene(new Scene(root));
+       stage.show();
+               }catch (Exception e){
+                   System.out.println(e);
+
+               }
+           
+       }
+       
         OrderService as = new OrderService();
         ArrayList<Order2> asl = new ArrayList();
            asl = (ArrayList <Order2>) as.getByUserID(user.getId());
@@ -539,7 +630,9 @@ public class ProfilUserFXMLController implements Initializable {
     }
 
     @FXML
-    private void navigateToHome(ActionEvent event) {
+    private void navigateToHome(ActionEvent event) throws IOException {
+        // FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/FXML.fxml"));
+        //Parent root =  (Parent) loader.load();
     }
 
     @FXML
@@ -578,5 +671,34 @@ public class ProfilUserFXMLController implements Initializable {
     private void logout(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml"));
         logoutbutt.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void actpart(ActionEvent event) throws SQLException {
+        ParticipantService pa = new ParticipantService();
+        ArrayList<Participant> part = new ArrayList();
+           part =  (ArrayList<Participant>) pa.getByUserID(user.getId());
+         ObservableList obs = FXCollections.observableArrayList(part);
+            tableviewuser.setItems(obs);
+            cdate.setCellValueFactory(new PropertyValueFactory<>("date"));
+            ceventid.setCellValueFactory(new PropertyValueFactory<>("eventid"));
+            cuserid.setCellValueFactory(new PropertyValueFactory<>("userid"));
+    }
+
+    @FXML
+    private void actorder(ActionEvent event) throws SQLException {
+        OrderService as = new OrderService();
+        ArrayList<Order2> part = new ArrayList();
+        part =  (ArrayList<Order2>) as.getByUserID(user.getId());
+       
+        
+         ObservableList obs = FXCollections.observableArrayList(part);
+            tableorder.setItems(obs);
+            cprodi.setCellValueFactory(new PropertyValueFactory<>("productid"));
+            cuseridorder.setCellValueFactory(new PropertyValueFactory<>("userid"));
+            cquantite.setCellValueFactory(new PropertyValueFactory<>("quantite"));
+            cprix.setCellValueFactory(new PropertyValueFactory<>("prix"));
+            cproductowner.setCellValueFactory(new PropertyValueFactory<>("productowner"));
+        
     }
 }
