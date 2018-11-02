@@ -42,12 +42,13 @@ public class FXMLController implements Initializable {
     private Button blogButton;
     @FXML
     private Button eventButton;
-    @FXML
     private Button associationButton;
     @FXML
     private Button connectionButton;
     @FXML
     private Button storeButton;
+    @FXML
+    private Button startButton;
 
     public FXMLController() {
         try {
@@ -56,6 +57,7 @@ public class FXMLController implements Initializable {
             Logger.getLogger(FXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     
     
     
@@ -68,7 +70,9 @@ public class FXMLController implements Initializable {
      @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        //cnxBtn.setText("Profile"); 
+        if(!loggedInUser.equals(null)){
+            connectionButton.setText("Profile");
+        }
     }   
     
     
@@ -106,15 +110,17 @@ public class FXMLController implements Initializable {
         storeButton.getScene().setRoot(root);
     }
     
-    @FXML
     public void navigateToAssociation(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Gui/AssociationGuiFXML.fxml"));
         associationButton.getScene().setRoot(root);
     }
 
     @FXML
-    private void navigateToBlog(ActionEvent event) throws IOException {
-         Parent root = FXMLLoader.load(getClass().getResource("Gui/BlogGuiFXML.fxml"));
+    public void navigateToBlog(ActionEvent event) throws IOException {
+         Parent root = FXMLLoader.load(getClass().getResource("Gui/AffichageArticle.fxml"));
           blogButton.getScene().setRoot(root);
     }
+    
+    
+    
 }
