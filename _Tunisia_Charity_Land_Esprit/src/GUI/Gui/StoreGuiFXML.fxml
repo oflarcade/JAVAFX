@@ -23,7 +23,7 @@
                <font>
                   <Font size="22.0" />
                </font></Button>
-            <Button fx:id="connectionButton" layoutX="36.0" layoutY="314.0" mnemonicParsing="false" onAction="#navigateToProfile" style="-fx-background-color: transparent;" text="Login/SignUp" textFill="WHITE">
+            <Button fx:id="connectionButton" layoutX="36.0" layoutY="314.0" mnemonicParsing="false" onAction="#navigateToProfile" style="-fx-background-color: transparent;" textFill="WHITE">
                <font>
                   <Font size="22.0" />
                </font></Button>
