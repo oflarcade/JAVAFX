@@ -189,13 +189,13 @@ public class CrudEventFXMLController implements Initializable {
                 loadTable();
            
         }
-        delegue.setText("");
+        
         img.setText("");
         localisation.setText("");
         Short.setText("");
         Longe.setText("");
 
-        delegue.setPromptText("Delegue");
+        
         img.setPromptText("URL");
         localisation.setPromptText("localisation");
         Short.setPromptText("breve description");
