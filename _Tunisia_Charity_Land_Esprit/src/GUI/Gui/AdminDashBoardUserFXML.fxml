@@ -54,6 +54,6 @@
             <DropShadow />
          </effect>
       </Pane>
-      <TextField fx:id="messageField" layoutX="298.0" layoutY="25.0" prefHeight="27.0" prefWidth="414.0" style="-fx-background-color: transparent;" />
+      <TextField fx:id="messageField" alignment="CENTER" layoutX="298.0" layoutY="25.0" prefHeight="27.0" prefWidth="414.0" style="-fx-background-color: transparent;" />
     </children>
 </AnchorPane>

@@ -155,14 +155,11 @@ public class AdminDashBoardUserFXMLController implements Initializable {
          Parent root = (Parent) loader.load();
         AdminDashBoardEventFXMLController controller = loader.<AdminDashBoardEventFXMLController>getController() ;
         controller.initData(this.user);
-        
-        
         eventButton.getScene().setRoot(root);
     } 
     
     @FXML
     public void navigateToExit() throws IOException {
-        
         Parent root = FXMLLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml"));
         logoutButton.getScene().setRoot(root);
     }
@@ -173,7 +170,6 @@ public class AdminDashBoardUserFXMLController implements Initializable {
          Parent root = (Parent) loader.load();
         AdminDashBoardApiController controller = loader.<AdminDashBoardApiController>getController() ;
         controller.initData(user);
-        
         apiControllButton.getScene().setRoot(root);
     }
     
@@ -191,8 +187,10 @@ public class AdminDashBoardUserFXMLController implements Initializable {
             emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
             enabledColumn.setCellValueFactory(new PropertyValueFactory<>("enabled"));
             lastLoginColumn.setCellValueFactory(new PropertyValueFactory<>("last_login"));
-            //lockedColumn.setCellFactory(new PropertyValueFactory<>("locked"));
+            lockedColumn.setCellValueFactory(new PropertyValueFactory<>("locked"));
             expiredColumn.setCellValueFactory(new PropertyValueFactory<>("credentials_expires_at"));
+            messageField.setText("Table has been refreshed");
+            messageField.setStyle("-fx-text-fill:green; -fx-background-color:transparent;");
             
         } catch (SQLException ex) {
             Logger.getLogger(AdminDashBoardUserFXMLController.class.getName()).log(Level.SEVERE, null, ex);
@@ -211,6 +209,8 @@ public class AdminDashBoardUserFXMLController implements Initializable {
         ServiceUser userService = new ServiceUser();
         userService.supprimerUser(selectedId);
         populateTabel();
+         messageField.setText("user has been deleted");
+         messageField.setStyle("-fx-text-fill:green; -fx-background-color:transparent;");
     }
     
     public void populateTabel() {
@@ -224,7 +224,7 @@ public class AdminDashBoardUserFXMLController implements Initializable {
             emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
             enabledColumn.setCellValueFactory(new PropertyValueFactory<>("enabled"));
             lastLoginColumn.setCellValueFactory(new PropertyValueFactory<>("last_login"));
-            //lockedColumn.setCellFactory(new PropertyValueFactory<>("locked"));
+            lockedColumn.setCellValueFactory(new PropertyValueFactory<>("locked"));
             expiredColumn.setCellValueFactory(new PropertyValueFactory<>("credentials_expires_at"));
             
         } catch (SQLException ex) {

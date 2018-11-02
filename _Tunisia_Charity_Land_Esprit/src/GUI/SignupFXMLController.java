@@ -70,6 +70,8 @@ public class SignupFXMLController implements Initializable {
     private Button storeButton;
     final  UserAuthenticationService service;
     final  SendMailSSL mailApi;
+    @FXML
+    private TextField errorFields;
     
     public SignupFXMLController() throws SQLException {
         this.service = new UserAuthenticationService();
@@ -111,6 +113,8 @@ public class SignupFXMLController implements Initializable {
                 controller.initData(email);
                 personalSignup.getScene().setRoot(root);
                } else {
+                 errorFields.setText("Please check your information !");
+                errorFields.setStyle("-fx-text-fill:red; -fx-background-color: transparent;");
                 System.out.println(" error From signup user controller ! line 104 ");
              }
         
@@ -141,7 +145,8 @@ public class SignupFXMLController implements Initializable {
                 associationSignup.getScene().setRoot(root); 
                 System.out.println("We are going to profile now");
             } else {
-                
+                errorFields.setText("Please check your information !");
+                errorFields.setStyle("-fx-text-fill:red; -fx-background-color: transparent;");
                 System.out.println("error mister piccola");
             }
         

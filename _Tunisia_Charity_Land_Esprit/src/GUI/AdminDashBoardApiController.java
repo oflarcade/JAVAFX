@@ -25,6 +25,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.shape.Circle;
 
 /**
@@ -60,6 +61,10 @@ public class AdminDashBoardApiController implements Initializable {
     private GoogleMapView mapView;
     private GoogleMap map;
     private GeocodingService geocodingService;
+    @FXML
+    private TextField mailFieldTest;
+    @FXML
+    private TextField mapFieldTest;
     /**
      * Initializes the controller class.
      */
@@ -77,9 +82,14 @@ public class AdminDashBoardApiController implements Initializable {
     
     @FXML 
     public void testMailingAPi() throws SQLException {
+        mailFieldTest.setText("Pinging google Mail API waitaing for RESPONSE 200!");
+            mailFieldTest.setStyle("-fx-text-fill: green; -fx-background-color: transparent");
+            mailingSignal.setStyle("-fx-fill: #fbc531");
         SendMailSSL mailingService = new SendMailSSL();
         boolean feedback = mailingService.adminApiTest();
         if(feedback){
+            mailFieldTest.setText("Pinging google Mail API result RESPONSE 200!");
+            mailFieldTest.setStyle("-fx-text-fill: green; -fx-background-color: transparent");
             mailingSignal.setStyle("-fx-fill: #27ae60");
         }
     }
@@ -144,6 +154,8 @@ public class AdminDashBoardApiController implements Initializable {
 
     @FXML
     public void testMapAPi(ActionEvent event) {
+        mapFieldTest.setText("Pinging google API waiting for RESPONSE 200!");
+        mapFieldTest.setStyle("-fx-text-filll: yellow; -fx-background-color: transparent");
         geocodingService = new GeocodingService();
         MapOptions mapOptions = new MapOptions();
 
@@ -157,6 +169,9 @@ public class AdminDashBoardApiController implements Initializable {
                 .zoomControl(false)
                 .zoom(5);
 
+        mapFieldTest.setText("Pinging google API result RESPONSE 200!");
+        mapFieldTest.setStyle("-fx-text-fill: green; -fx-background-color: transparent");
+        
         map = mapView.createMap(mapOptions);
     }
 

@@ -247,8 +247,11 @@ public class AdminDashBoardEventFXMLController implements Initializable {
         Evenement event = eventsTable.getSelectionModel().getSelectedItem();
         System.out.println(event.toString());
         if(event.equals(null)){
-            messageField.setText("Please select an Event To Validate");  
+            messageField.setText("Please select an Event To Validate");
+            messageField.setStyle("-fx-text-fill : red; -fx-background-color: transparent");
         } else {
+            messageField.setText("Selected event has been approved");
+            messageField.setStyle("-fx-text-fill : green; -fx-background-color: transparent");
             eventValidationService.approveEvent(event);
             populateTable();
         }

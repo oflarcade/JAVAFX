@@ -54,7 +54,7 @@ public class MailConfirmationTokenFXMLController implements Initializable {
         this.email  = email;
         emailField.setText(email);
         emailField.setStyle("-fx-text-fill: greeen; -fx-background-color: transparent;");
-        System.out.println("this is the email:"+ emailField.getText());
+        
     }
     
     /**
