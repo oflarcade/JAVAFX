@@ -62,8 +62,8 @@ public class OrderService {
         // execute the preparedstatement
         preparedStmt.execute();
     }
-      public void suppOrder(int x, int y) throws SQLException
-    {
+      public boolean suppOrder(int x, int y) throws SQLException
+    {   boolean g = false;
         String requete="DELETE FROM `orders` WHERE `id`=? and user_id=?;";
           PreparedStatement preparedStatement;
         try {
@@ -71,12 +71,14 @@ public class OrderService {
             preparedStatement.setInt(1, x);
             preparedStatement.setInt(2, y);
             preparedStatement.executeUpdate();
+            g=true;
         } catch (SQLException ex) {
             System.out.println(ex);
-        }
+        }return g;
     }
-    public void modOrder (int x, int a,int y) throws SQLException
+    public boolean modOrder (int x, int a,int y) throws SQLException
     {
+        boolean g;
         String requete="UPDATE `orders` SET `quantity`=? WHERE `id`=? and user_id=? ;";
           PreparedStatement preparedStatement;
         try {
@@ -85,9 +87,12 @@ public class OrderService {
             preparedStatement.setInt(2, a);
             preparedStatement.setInt(3, y);
             preparedStatement.executeUpdate();
+            g=true;
         } catch (SQLException ex) {
             System.out.println(ex);
+            g = false ;
         }
+        return g;
     }
     public boolean rech(int a, int x) throws SQLException{
            Statement stmt = connection.createStatement();
