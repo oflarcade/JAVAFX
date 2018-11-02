@@ -16,23 +16,23 @@
    <children>
       <Pane layoutX="-2.0" layoutY="-1.0" prefHeight="718.0" prefWidth="191.0" style="-fx-background-color: #273c75;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="889.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="homrBtn" layoutX="53.0" layoutY="192.0" mnemonicParsing="false" onAction="#navigatHome" style="-fx-background-color: transparent;" text="Home" textFill="WHITE">
+            <Button fx:id="homrBtn" layoutX="30.0" layoutY="192.0" mnemonicParsing="false" onAction="#navigatHome" style="-fx-background-color: transparent;" text="Home" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="blogBtn" layoutX="60.0" layoutY="243.0" mnemonicParsing="false" onAction="#navigateBlog" style="-fx-background-color: transparent;" text="Blog" textFill="WHITE">
+            <Button fx:id="blogBtn" layoutX="30.0" layoutY="243.0" mnemonicParsing="false" onAction="#navigateBlog" style="-fx-background-color: transparent;" text="Blog" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="eventBtn" layoutX="50.0" layoutY="289.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Events" textFill="#eb0505">
+            <Button fx:id="eventBtn" layoutX="30.0" layoutY="289.0" mnemonicParsing="false" style="-fx-background-color: transparent;" text="Events" textFill="#eb0505">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="cnxBtn" layoutX="19.0" layoutY="339.0" mnemonicParsing="false" onAction="#navigateConnexion" style="-fx-background-color: transparent;" text="Login/Signup" textFill="WHITE">
+            <Button fx:id="cnxBtn" layoutX="30.0" layoutY="339.0" mnemonicParsing="false" onAction="#navigateConnexion" style="-fx-background-color: transparent;" text="Login/Signup" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="storBttn" layoutX="56.0" layoutY="397.0" mnemonicParsing="false" onAction="#navigatsStore" style="-fx-background-color: transparent;" text="Store" textFill="WHITE">
+            <Button fx:id="storBttn" layoutX="30.0" layoutY="397.0" mnemonicParsing="false" onAction="#navigatsStore" style="-fx-background-color: transparent;" text="Store" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font></Button>
