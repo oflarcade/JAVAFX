@@ -119,6 +119,7 @@ public class ProfilUserFXMLController implements Initializable {
     private TextField textpassuser;
     @FXML
     private TextField textadresseuserr;
+    @FXML
     private TextField textmod;
     private TextField rechart;
     @FXML
@@ -127,6 +128,7 @@ public class ProfilUserFXMLController implements Initializable {
     private AnchorPane order;
     @FXML
     private TextField textmodorder;
+    @FXML
     private TextField textsupporder;
     @FXML
     private Button buttsupporder;
@@ -460,7 +462,7 @@ try {
          OrderService or = new OrderService ();
         int b = Integer.parseInt (textmodorder.getText());
         int a = Integer.parseInt(textsupporder.getText());
-        or.modOrder(b, a,1);
+        or.modOrder(b, a,user.getId());
          OrderService as = new OrderService();
         ArrayList<Order2> asl = new ArrayList();
            asl = (ArrayList <Order2>) as.getByUserID(user.getId());
@@ -484,7 +486,7 @@ try {
         OrderService as = new OrderService();
         ArrayList<Order2> part = new ArrayList();
         part =  (ArrayList<Order2>) as.getByUserID(user.getId());
-           part = as.rechercherOrder(user.getId(),a);   
+           part = as.rechercherOrder(a,user.getId());   
        
         
          ObservableList obs = FXCollections.observableArrayList(part);

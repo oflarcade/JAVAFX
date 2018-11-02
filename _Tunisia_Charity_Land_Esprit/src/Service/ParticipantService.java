@@ -79,7 +79,7 @@ public class ParticipantService {
     }
        public ArrayList<Participant> rechercherPart( Integer x, Integer a) {
          ArrayList<Participant> part = new ArrayList<>();
-        String req = "select * from participant where and user_id="+a+" event_id like '%"+x+"%'";
+        String req = "select * from participant where user_id="+a+" and event_id like '%"+x+"%'";
         System.out.println(req);
         PreparedStatement preparedStatement;
         try {

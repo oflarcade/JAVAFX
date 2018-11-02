@@ -102,7 +102,7 @@ public class OrderService {
        }
       public ArrayList<Order2> rechercherOrder( int x, Integer a) {
          ArrayList<Order2> part = new ArrayList<>();
-        String req = "select * from article where  user_id="+a+" and id like '%"+x+"%'";
+        String req = "select * from orders where  user_id="+a+" and id like '%"+x+"%'";
         System.out.println(req);
         PreparedStatement preparedStatement;
         try {
