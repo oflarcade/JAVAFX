@@ -147,7 +147,8 @@ public class ProfilUserFXMLController implements Initializable {
     @FXML
     private TableColumn<Order2, Integer> cuseridorder;
     private Label laberr;
-    public static Users user ;
+    RegistrationGuiFXMLController C = new RegistrationGuiFXMLController();
+    Users user = C.user;
     private String email;
     private ServiceUser service;
     @FXML
@@ -162,6 +163,8 @@ public class ProfilUserFXMLController implements Initializable {
     private Button connectionButton;
     @FXML
     private Button storeButton;
+    @FXML
+    private Button logoutbutt;
     /**
      * Initializes the controller class.
      */
@@ -179,10 +182,10 @@ try {
 } catch (IOException e) {
     e.printStackTrace();
 }*/
-         textusernameuser.setText("bb" );
-        textpassuser.setText("aa");
-        textadresseuserr.setText("sss");
-        textemailuser.setText("ddd");
+         textusernameuser.setText(user.getUsername() );
+        textpassuser.setText(user.getPassword());
+        textadresseuserr.setText(user.getAdresse());
+        textemailuser.setText(user.getEmail());
          ParticipantService pa = null;
         try {
             pa = new ParticipantService();
@@ -256,11 +259,11 @@ try {
     @FXML
     private void Enregistreruser(ActionEvent event){try{
       ServiceUser serv = new ServiceUser();
-     //   b.setUsername(textusernameuser.getText());
-      //  b.setNom(textnomuser.getText());
-       // b.setPrenom(textprenomuser.getText());
-       // b.setEmail(textemailuser.getText());
-        //serv.modifierUser(b);
+         user.setUsername(textusernameuser.getText());
+          user.setEmail(textemailuser.getText());
+         user.setPassword(textpassuser.getText());
+        user.setAdresse(textadresseuserr.getText());
+        serv.moduser(user.getUsername(), user.getEmail(), user.getPassword(), user.getAdresse(), user.getId());
         System.out.println("ModifiÈ");
     }catch (SQLException ex) {
             ex.printStackTrace();
@@ -296,7 +299,7 @@ try {
             order.setVisible(false);
              ArticleService as = new ArticleService();
         ArrayList<Article> asl = new ArrayList();
-           asl = (ArrayList <Article>) as.getByUserID(12);
+           asl = (ArrayList <Article>) as.getByUserID(user.getId());
          ObservableList obs = FXCollections.observableArrayList(asl);
             tableviewart.setItems(obs);
             cid.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -313,7 +316,7 @@ try {
             order.setVisible(true);
              OrderService as = new OrderService();
         ArrayList<Order2> asl = new ArrayList();
-           asl = (ArrayList <Order2>) as.getByUserID(1);
+           asl = (ArrayList <Order2>) as.getByUserID(user.getId());
          ObservableList obs = FXCollections.observableArrayList(asl);
             tableorder.setItems(obs);
             cprodi.setCellValueFactory(new PropertyValueFactory<>("productid"));
@@ -330,9 +333,9 @@ try {
             ParticipantService or = new ParticipantService();
             int a = Integer.parseInt(textsupp.getText());
      
-       boolean b=or.rech(a,1);
+       boolean b=or.rech(a,user.getId());
        if (b==true){
-           or.suppPart(a,1);
+           or.suppPart(a,user.getId());
              try{
         FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("DialogFXML.fxml"));
        Parent root = (Parent) fxmlloader.load();
@@ -348,7 +351,7 @@ try {
            warning.setText("ID erronÈ");
         ParticipantService pa = new ParticipantService();
         ArrayList<Participant> part = new ArrayList();
-           part =  (ArrayList<Participant>) pa.getByUserID(1);
+           part =  (ArrayList<Participant>) pa.getByUserID(user.getId());
          ObservableList obs = FXCollections.observableArrayList(part);
             tableviewuser.setItems(obs);
             cdate.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -369,8 +372,8 @@ try {
         //System.out.println(y);
         ParticipantService pa = new ParticipantService();
         ArrayList<Participant> part = new ArrayList();
-        part =  (ArrayList<Participant>) pa.getByUserID(1);
-           part = pa.rechercherPart(a,1);
+        part =  (ArrayList<Participant>) pa.getByUserID(user.getId());
+           part = pa.rechercherPart(a,user.getId());
          ObservableList obs = FXCollections.observableArrayList(part);
             tableviewuser.setItems(obs);
             cdate.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -386,7 +389,7 @@ try {
        or.suppArticle(12,a);
         ArticleService as = new ArticleService();
         ArrayList<Article> asl = new ArrayList();
-           asl = (ArrayList <Article>) as.getByUserID(12);
+           asl = (ArrayList <Article>) as.getByUserID(user.getId());
          ObservableList obs = FXCollections.observableArrayList(asl);
             tableviewart.setItems(obs);
             cid.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -404,7 +407,7 @@ try {
         or.modArticle(b, a);
          ArticleService as = new ArticleService();
         ArrayList<Article> asl = new ArrayList();
-           asl = (ArrayList <Article>) as.getByUserID(12);
+           asl = (ArrayList <Article>) as.getByUserID(user.getId());
          ObservableList obs = FXCollections.observableArrayList(asl);
             tableviewart.setItems(obs);
             cid.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -422,8 +425,8 @@ try {
         //System.out.println(y);
         ArticleService as = new ArticleService();
         ArrayList<Article> part = new ArrayList();
-        part =  (ArrayList<Article>) as.getByUserID(12);
-           part = as.rechercherArt(y,12);
+        part =  (ArrayList<Article>) as.getByUserID(user.getId());
+           part = as.rechercherArt(y,user.getId());
          ObservableList obs = FXCollections.observableArrayList(part);
             tableviewart.setItems(obs);
             cid.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -438,10 +441,10 @@ try {
     private void supporder(ActionEvent event) throws SQLException {
          OrderService or = new OrderService();
             int a = Integer.parseInt(textsupporder.getText());
-       or.suppOrder(a,1);
+       or.suppOrder(a,user.getId());
         OrderService as = new OrderService();
         ArrayList<Order2> asl = new ArrayList();
-           asl = (ArrayList <Order2>) as.getByUserID(1);
+           asl = (ArrayList <Order2>) as.getByUserID(user.getId());
          ObservableList obs = FXCollections.observableArrayList(asl);
             tableorder.setItems(obs);
             cprodi.setCellValueFactory(new PropertyValueFactory<>("productid"));
@@ -460,7 +463,7 @@ try {
         or.modOrder(b, a,1);
          OrderService as = new OrderService();
         ArrayList<Order2> asl = new ArrayList();
-           asl = (ArrayList <Order2>) as.getByUserID(1);
+           asl = (ArrayList <Order2>) as.getByUserID(user.getId());
          ObservableList obs = FXCollections.observableArrayList(asl);
             tableorder.setItems(obs);
             cprodi.setCellValueFactory(new PropertyValueFactory<>("productid"));
@@ -480,8 +483,8 @@ try {
       
         OrderService as = new OrderService();
         ArrayList<Order2> part = new ArrayList();
-        part =  (ArrayList<Order2>) as.getByUserID(1);
-           part = as.rechercherOrder(1,a);   
+        part =  (ArrayList<Order2>) as.getByUserID(user.getId());
+           part = as.rechercherOrder(user.getId(),a);   
        
         
          ObservableList obs = FXCollections.observableArrayList(part);
@@ -547,9 +550,9 @@ try {
 
     @FXML
     private void navigateToBlog(ActionEvent event) throws IOException {
-         FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/AffichageArticle.fxml"));
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/GestionArticleFXML.fxml"));
         Parent root =  (Parent) loader.load();
-        //AdminDashBoardBlogFXMLController controller = loader.<AdminDashBoardBlogFXMLController>getController();
+      //  AdminDashBoardBlogFXMLController controller = loader.<AdminDashBoardBlogFXMLController>getController();
         
         
         
@@ -571,6 +574,15 @@ try {
     }
 
     @FXML
-    private void navigateToStore(ActionEvent event) {
+    private void navigateToStore(ActionEvent event)throws IOException {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("Gui/StoreGuiFXML.fxml"));
+        Parent root =  (Parent) loader.load();
+        storeButton.getScene().setRoot(root);
+    }
+
+    @FXML
+    private void logout(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("Gui/registrationGuiFXML.fxml"));
+        logoutbutt.getScene().setRoot(root);
     }
 }

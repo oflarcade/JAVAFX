@@ -37,7 +37,7 @@ public class OrderService {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                Order2 pa;
-                pa = new Order2(resultSet.getInt("product_id"), resultSet.getInt("user_id"),resultSet.getInt("quantity"), resultSet.getInt("price"), resultSet.getInt("product_owner"));
+                pa = new Order2(resultSet.getInt("id"), resultSet.getInt("user_id"),resultSet.getInt("quantity"), resultSet.getInt("price"), resultSet.getInt("delegue_id"));
                 System.out.println(pa);
                 part.add(pa);
             }
@@ -48,7 +48,7 @@ public class OrderService {
     }
       public void ajouterOrder(Order2 p) throws SQLException
     {
-         String query = " insert into orders (product_id, user_id, quantity , price , product_owner)"
+         String query = " insert into orders (id, user_id, quantity , price , delegue_id)"
             + " values (?, ?, ?, ?, ?)";
 
         // create the mysql insert preparedstatement
@@ -64,7 +64,7 @@ public class OrderService {
     }
       public void suppOrder(int x, int y) throws SQLException
     {
-        String requete="DELETE FROM `orders` WHERE `product_id`=? and user_id=?;";
+        String requete="DELETE FROM `orders` WHERE `id`=? and user_id=?;";
           PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(requete);
@@ -77,7 +77,7 @@ public class OrderService {
     }
     public void modOrder (int x, int a,int y) throws SQLException
     {
-        String requete="UPDATE `orders` SET `quantity`=? WHERE `product_id`=? and user_id=? ;";
+        String requete="UPDATE `orders` SET `quantity`=? WHERE `id`=? and user_id=? ;";
           PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(requete);
@@ -91,7 +91,7 @@ public class OrderService {
     }
     public boolean rech(int a, int x) throws SQLException{
            Statement stmt = connection.createStatement();
-         ResultSet RS = stmt.executeQuery("select * from orders where user_id="+x+" product_id like "+a);
+         ResultSet RS = stmt.executeQuery("select * from orders where user_id="+x+" id like "+a);
          if (RS.next())
          {//System.out.println("True");
              return true ;
@@ -102,7 +102,7 @@ public class OrderService {
        }
       public ArrayList<Order2> rechercherOrder( int x, Integer a) {
          ArrayList<Order2> part = new ArrayList<>();
-        String req = "select * from article where  user_id="+a+" and prduct_id like '%"+x+"%'";
+        String req = "select * from article where  user_id="+a+" and id like '%"+x+"%'";
         System.out.println(req);
         PreparedStatement preparedStatement;
         try {
@@ -112,7 +112,7 @@ public class OrderService {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                Order2 pa;
-              pa = new Order2(resultSet.getInt("product_id"), resultSet.getInt("user_id"),resultSet.getInt("quantity"), resultSet.getInt("price"), resultSet.getInt("product_owner"));
+              pa = new Order2(resultSet.getInt("id"), resultSet.getInt("user_id"),resultSet.getInt("quantity"), resultSet.getInt("price"), resultSet.getInt("delegue_id"));
                 System.out.println(pa);
                 part.add(pa);
             }

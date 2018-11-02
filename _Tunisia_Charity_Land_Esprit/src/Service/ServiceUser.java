@@ -77,7 +77,21 @@ public class ServiceUser {
          
          return userStatic;
      }
-     
+     public void moduser (String a , String b , String c , String d , int e){
+         String query = "Update fos_user SET username=? , email=? , password=? , adresse = ? Where id = ? ";
+           PreparedStatement preparedStatement;
+        try {
+            preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, a);
+            preparedStatement.setString(2, b);
+            preparedStatement.setString(3, c);
+            preparedStatement.setString(4, d);
+            preparedStatement.setInt(5, e);
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+     }
      
      
      
