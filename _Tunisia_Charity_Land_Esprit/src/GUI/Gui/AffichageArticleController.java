@@ -220,7 +220,7 @@ final Image image = new Image(imageURI);*/
         dateLabel1.setText("");
         dateLabel2.setText("");
         Image image = new Image("images/empty-image.jpg");
-        Image logoimg =new Image("pics/images.png.jpg");
+        Image logoimg =new Image("pics/images.png");
         logo.setImage(logoimg);
         img1.setImage(image);
         img2.setImage(image);

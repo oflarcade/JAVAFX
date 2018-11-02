@@ -20,10 +20,13 @@
          <children>
             <VBox prefHeight="591.0" prefWidth="218.0" style="-fx-background-color: #273c75;">
                <children>
-                  <ImageView fitHeight="145.0" fitWidth="223.0">
+                  <ImageView fitHeight="150.0" fitWidth="150.0">
                      <image>
-                        <Image url="@../../../../../../../Users/Asus/Downloads/a13df6e4-88a2-4c6f-9d26-d1553bf66034.png" />
+                        <Image url="@../../Images/Logo.png" />
                      </image>
+                     <VBox.margin>
+                        <Insets left="30.0" />
+                     </VBox.margin>
                   </ImageView>
                   <Button fx:id="homeButton" mnemonicParsing="false" onAction="#navigateToHome" prefHeight="77.0" prefWidth="228.0" style="-fx-background-color: #273c75; -fx-font-size: 20;" text="Home" textFill="WHITE">
                      <font>
