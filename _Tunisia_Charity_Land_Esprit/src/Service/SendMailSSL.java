@@ -42,16 +42,16 @@ public class SendMailSSL {
 			new javax.mail.Authenticator() {
                                 @Override
 				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication("omarlakhdhar@gmail.com","mabroukhabiba91*/");
+					return new PasswordAuthentication("","");
 				}
 			});
 
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("omarlakhdhar@gmail.com"));
+			message.setFrom(new InternetAddress(""));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse("omarlakhdhar@gmail.com"));
+					InternetAddress.parse(""));
 			message.setSubject("Verification for Tunisia Charity Land subscription");
 			message.setText("Dear Mr/Mme '"+ username +"'," +
                                         
@@ -88,16 +88,16 @@ public class SendMailSSL {
 			new javax.mail.Authenticator() {
                                 @Override
 				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication("omarlakhdhar@gmail.com","mabroukhabiba91*/");
+					return new PasswordAuthentication("","");
 				}
 			});
 
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("omarlakhdhar@gmail.com"));
+			message.setFrom(new InternetAddress("example@example.com"));
 			message.setRecipients(Message.RecipientType.TO,
-					InternetAddress.parse("omarlakhdhar@gmail.com"));
+					InternetAddress.parse("developped@esprit.com"));
 			message.setSubject("Admin MAILING API TEST");
 			message.setText("Admin, " +
                                         
